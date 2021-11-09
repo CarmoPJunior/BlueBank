@@ -36,10 +36,11 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String dataDeNascimento; 
 	
-	@OneToMany(mappedBy="contato", cascade = CascadeType.ALL )
+	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
 	private List<Contato> contato;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idConta")
 	private Conta conta;
 
 	public Cliente() {
