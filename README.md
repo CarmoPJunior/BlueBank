@@ -1,4 +1,51 @@
-# BlueBank
+# BlueBank - Projeto Final PanAcademy
 
-## Link Diagrama de Classes
-[Diagrama de Classes - Blue Bank](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Diagrama%20de%20Classes%20-%20BlueBank#R7V3bcts2Gn4azaQX8YhHUZeW7KadON2sncx2eweTsISUEhQQiq0%2BfQESIEUCpCibkOwMZjIxceLhP%2BP7AWjkzVdPHwjYLD%2FhBKYjd5w8jbyrkes6rjtmf3jNrqhxI1mzICgRvaqKO%2FQPFJWy2xYlMKt1pBinFG3qlTFer2FMa3WAEPxY7%2FaA0%2FpTN2ABlYq7GKRq7f9QQpdFbeROqvrfIFos5ZOdcFq0rIDsLL4kW4IEP%2B5Vedcjb04wpsXV6mkOU049SZdi3K8treWLEbimfQZ8D5fwrwj%2FZzf7Dm7%2BO%2F%2F0F7jN3ou7%2FADpVnzwquBh%2FsZ0J8nAXn7DLzn9IBl5swe8pnei3WHlbANitF58wRteMWY1FNxLivmiXFLK8YuKzzhDFOE1q0rhA2uZLekqFbdUP1C%2BLSQUPu1ViQ%2F%2BAPEKUrJjXURrIGgvpO%2B940xFzWPFzMlY1C33GDmRAgiEAC3Km1c0ZheCzEeQ3FWICxMmcqKICV3iBV6D9LqqnRG8XSeQ35VTsupzgwt6s8pvkNKd0B%2BwpbgnLTO8JTHseF1PKB0gC0i7JEloBP%2BYTtYQmAKKftT1a3Aqe4pgxyliHw9V0X5EqxSsoUaoQYoWXDZjPpBLPZc8xIzDpWignPyzeInS5Abs8JYTKKMg%2FluWZktM0D%2FstkBygjUTKvjkhrUed3yk4DGBGevzWTLMaVR9Ak%2B1jjcgo6IixmkKNhm6Lz9jxXiH1jNMKV6JTgPolhMpyhWqyuUEGuUqbeLgbPcVtr8XQy75X%2FaxjOaulxso3rJmz2V%2FiuaMEmbCGj3izUN3B8g0k8DR3BtdTnDRr15V754ACq7gHyCL0YoRH3c9mkuF7HGDMv7yKc1ZXDS44YLmzFSHFYPm%2BWXVrAg%2F4zXNhZLgv%2BEcp5hJ%2BdUaF9qA0rRRJRVCGGu9OghXcJP3ufKrmlshAbwKs7EPae4PlyhJ4Dq3cuyrQCG3%2FG03mDEsl5Bgxv4xmZmPL4JRwF58zspOVWb%2FeHdC2QezbwEol2rIlOIRZlQr751W47ASyHgm7CfxjucbkvhAkXiFySnKmVcwWfpk51kcXjFe5R6p5u%2FfOwrbPZXtnobFKbiH6V4UQIq%2BDdafi7u9DZqxYCHUcHfGw2Lm7SHJmGqDVa5zRfndLzVlnxUmgNFsG1NMNK2%2FgWw5ZxFfeaPr71uQ5vexlmJYWZr0lKXAlCxNFFlq%2BCkbGA0SGPm%2BEhi5Gt6HusBobIr50ZGBEUrmIl5u6ZDiBWET2i3pjGBQAhLYFTwxriddd1hvV1A%2BQn2JGG6soeo2VJPe4tsR0uhk1THm9KY2pDHGXcfryd7IEHOl1NiQ5s1bCsf3%2B8lSEJoSJhW%2FLOfGNpoZJprxGtFMpIFQ9Q4iNOUgHHfoaKYIM67gF8i0O1f39pBlBVBab7d2pRMZ7i9zR4YgE1OgiqPCxzYEGYy9zrinBTEWg6gwsY1B3qitcMZRzyDENSVNgcLVE2T0GB3J7k8xPi%2F8nxcuvNCVFVdP%2B81Xu%2F3SZ0gQ%2B3we7nRHCgcThEKXDiYIBZteSX7QCc%2FBtBdTeTjqiaGfcR4MtUd7k0YQV%2FBZDKuYcEkI2O11E6aj%2FUHjJkg2HjfWLxwaIV%2BtdUDbt1RyU7x1JUUlIV8gWCrMWiTk7IRkmAmJE7kXQZ2xUx2%2B6geqDzCXqHEGB1gp2uB5lcqtirqZy15H9U5gAdcxam3OQCoh2ARvOfvq7UuUsSgHxfgLAetMzUZTXg2KLAL%2FfxbArEpN23inz6qZl82NdKIeGZsbWXjWIHtLVP0Qf31Tlsy1AO1PYyzKBPMhaTIG1bkqQssiEcaXukuzsdEwsdFk0oyNwkgjAto1LJExGVDh2v0QoxHotCzSEwvrtiv25x3r8H3LF07P4ri65opXNSTVtbUsByzLEZJ25MK3qakwxLUQrUH2ales6PhrCqJ1LUT709gKx9VAtNqlb6YgWvdVQbTB6ABA%2B4Ton3vXe6NYqRrEC3JMa%2FBwEFmUdvPwDo%2FBEVw9blfuDihDmHBSv0cLBqncqcwDlHdqrq8rqPNiNNOZRPoHtb5ZE8w8ekAklMUomOmeBSUv5f8iGPs1HRh7bqcW8MJwmQ138C1NB4Srlfve1K1z328G6y0qMZggqKh2BskPFGv2U73NrYIl8FKSWBMCBbrEot9MkQzntlRQWQ%2B22umzmbVOk74rFcp9pcPLgAq3HkwsdE2m%2BWz7S0OILr36Euy5O7oca%2FattY5jjc2sAXtfHhXvZxVsXN0ZV0e9xfXYldpjU5NwT4cV20n4QPx1vJ7Wx9Qk3FPBWzsJf6PGwvHOvU7KU23Dq15yIz3vGSbGL6OzioyKpQZ3bSG7jRefN2doni%2Fi9V0bbyzf5ulwU%2BuRuxVl8IjLmEPW7fbP3ezt1yvrM4dmt1Smg9t2Te1vkpv19vjdnINxAMDa9WHtutfEgnpveTK2f9tTAThr1w9pzdux6yrQV9j1DMSAKNOmBG44KTUtBTz4AEmx4tN6hIEFpa9HCI15BBUOzOE%2B6wIGhoKbp5udP7T3LdjWX7OnvRn%2BSlyA34a12dDeBLvPHtr7Z0HDqiUpF344qq1KmU4no9NuHOx7tOjwefiXcU7F10gRkDFfp8vGvs2EuB%2FWHKCjWUfs6U7ONXi4pwbb4qnKGeIBzANg0saKs5ncmHRP9k7ILGpkhQBEbyXfdrIHe7H71s1LA684kCZfeiBdstnRIfTGCKyBl55JYB1McV5qT%2BvU9rR7Bk9Kbc3hjs8VZx5hn5W8YdTYeKCl72mleXIOD9tKy%2Be6uT6eNHqhP9SvOguVPdrNuc3RyyeHXpfmq8AJ321N2CyRudqfxRO7ddOlO0rU0wevxnRLA0MULnXeQX6LRTzPtjqNQEG3R1Q7VzU1eQlUKCLfSS5AqOLs8e6cs53B6hVqcMDC2Aw20CEWFo8aiL1yGc658Cj5fAWPYrdf4uQd3W3gL%2BJoCnZp9XtoAdCdPX9a%2FdasI%2BLe03p4AwvPX52HV7GWunfvSjpZ3dcr0hvy7fZnRQyy9%2By%2Bve1nRaxvP40AnN%2B3q8uJdIitdfWDu%2FqgAeZ4fTOR5ly9PdCrv6ob%2BzkNY7ZeRUhZIIeqSO6YBaXW8L9QGs6%2B7CBUkTvr%2Bk8pAWd3%2FaFq3U97psOoOtFBtpziNAeZKjqYh%2FPPtp1rMfn44dvXj5BMb7%2F6v49X37w7oPmJ5tnN12tWM7v842Obfu5R%2FmA0VjrkPCZqVSeuMZyvWcFi5wgrMEDY5MnfeihzkeUJmHuaFOkU6fgcGCtWv8tdpCqrnzf3rv8F)
+
+
+## Desenvolvedores
+
+Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders 
+
+
+
+| [Tiago Almeida](https://github.com/tiagodalmeida87 ) | [Felipe Cândido](https://github.com/felipecandidoo ) | [Carmo Júnior](https://github.com/CarmoPJunior ) |
+| :--------------------------------------------------: | ---------------------------------------------------- | ------------------------------------------------ |
+|    [José Carlos](https://github.com/zecarlos558 )    |                                                      |                                                  |
+
+
+
+## Professores
+
+- Jennifer
+- Jonathan
+- Ana Verônica
+
+## Objetivo
+
+Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes,  permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](banco_pan_desafio_final_bluebank.pdf)
+
+## Modelagem do Software
+
+O sistema foi representado de forma visual sua estrutura a partir do modelo de diagrama de Classes, o qual foi dividido entre as camadas do MVC as classes a serem implementadas, facilitando a divisão de tarefas entre os membros da equipe.
+
+### Diagrama de Classes
+
+Ainda a definir versão final ...
+
+###### Link Diagrama de Classes: [Diagrama de Classes - Blue Bank](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#R7V1bc9o4FP41zGQfmsFX4DGQbLvTdDfbpLO7fVNsBdQ1iMqiCfvrV7JkG1uyMcEKSUcznQbrYuxz0fn06UgMvNny6T0B68UnHMNk4A7jp4F3OXBddxi67A8v2YoSz%2FFkyZygWJQ5ZcEt%2Bg%2FKwqEs3aAYppWGFOOEonW1MMKrFYxopQwQgh%2BrzR5wUv3WNZhDpeA2Aola%2BheK6UKUjt1RWf4Bovki%2F2YnnIiaJcgbyzdJFyDGjztF3tXAmxGMqfi0fJrBhEsvl4vo92tDbfFgBK5olw7fwwX8OsZ%2FbKffwfWfs09fwef0nbzLD5Bs5AsvhQ6zJ6bbXAzs4df8I5cfJANv%2BoBX9FbWO%2Bw6XYMIreZ3eM0LhqyEgvtcYr68LiTl%2BKLgBqeIIrxiRQl8YDXTBV0m8pbqC%2BZPCwmFTztF8oXfQ7yElGxZE1kbSNlL63vnOBNZ8lgqczSUZYsdRY5yAwTSgObFzUsZsw9SzAeI3FWEC2NmcvISE7rAc7wCyVVZOiV4s4ohvyuXZNnmGgt5s8JvkNKt9B%2BwobijLFO8IRFseVxPOh0gc0jbLEl6BH%2BZVtUQmACKflT9q3cpe4phRwliLw9V035EywSsoMaoQYLm3DYj3pFbPbc8xAaHC1lBufin0QIl8TXY4g0XUEpB9G9%2BNV1ggv5jtwW5Jlg1oVJPblhpcct7Sh0TmLI2N7nCnFrRJ%2FBUaXgNUioLIpwkYJ2i%2B%2BI1lkx3aDXFlOKlbNSDbzljxblC1bmcQONcxZjYu9p9Re3vZJcL%2Fpe9LJM5i0JcBrxmxb6X%2FRHVKSVsCKu1iNYP7Q0g80wCBzNvcDHCol21qNo8BhRcwt9BGqElEz5u%2B2puFXmLa5Tyh09opmJR4YZzmilT7SY6zbKPZbVi%2FEzXNDNKgv%2BFM5xgZuWXKyy8ASVJrSh3CDlY691BhoLrrM2lX5Z8lhbAizDr%2B5Bk8XCB4hiuslGOvRUQdsufdo2ZwjILCabsH7OZ2fA8GATswWfs2imv2T%2FenFD2wuxdAMqsGjKneIQp1dp766ix3wmk0XPRdrF4x%2FMNWXygWLyi5ARlyhNKzmOy8ywNL5musohUiffvHEXtnqp2T6PiBNzDZAcFENG2pvpTabfzgGYMLIQa7U45LGbRHpKUuTZYZj4nrs9%2BqTj7VAwBTGabiGKiqf0A0sWMIb7iRlffNyDJ7mNHin5tadTRlgJTtjRSbKkWpyww6gUY%2Bb4CjFyN7kMdMBqaUv74QGCE4pnEyw0NEjwnbEK7Ia0IBsUghm3giWk9brvDarOE%2BVeoDxHBtR2o2geqUWfzbYE0Olt1jAW9iYU0xrTreB3VOzak3NxqLKR58yOF4%2FvdbCkITRmTyl8Wc2OLZvpBM14NzYw1FKo%2BQISmAoTj9o1mBMy4hHeQeXfm7s2QZQlQUq2340orM9zd5g6EICNTpIqj0scWgvSmXmfYcQQxhkFUmthikDc6VjjDcUcQ4pqypkDR6gus6DE5ku3fsn928Q%2B%2FOPdCNy%2B4fNqtvtzuXt1Agtjrc7jTjhT2LhBKX9q7QCjV9ErWB53wFEo7Wsr9SU92vcEZGGpGe6MaiBN6lt1KJVwQArY7zeTQ0fxFwzpJNhzW8hf29cgfrbFD07uUdiOeurSiQpBHGJZKs4oFOTsh6WdC4ozd86Cq2ImOX%2FUDNQaYW6hxeidYKVrjWbmUW17qZi47DdU7gTlcRaixOgVJTsHGeMPVV61foJShHBThOwJWqboaTXkxEKsI%2FP9pANNyadrinS5ZM8fNjXSmPjY2N7L0rEH1Fqz6Pv36pkYy1xK0P81gUSww77MmY1SdqzK0DIkwvVRDmsVG%2FWCj0aiOjcKxxgS0OSxjYzag0rW7EKMGdBqS9GRi3WbJ%2FpyxBt83PHF6GkXlZ%2B54ZUVcfrYjy56R5QBLOzDxbWIKhriWojWoXm3Gik6%2Fpiha11K0P81Y4bgailab%2BmaKonVfFUUbDPYQtE%2BI%2Fr3zeacXuyo78Yu8TyN42Mss5uPm%2Fh0evTO4et6u2B1QQJhwVL1HAwep3KlYByjuVM%2BvE9I5ms10RmP9FzU%2BWZ3MPLjDWDqLUTLTPQlLXtj%2FeTD0Kz4w9NxWL%2BAX%2Fa1suL1vadpjXI3a9yZuVft%2BHaw3uERvhqCy2ikkP1Ck2U%2F1NrcKFsRLIWINBAp0C4t%2BfYmkv7Clksp6stVOn83kOo26ZioU%2B0r7twGVbt27sNA2meaz7buaEV141RTsmTu4GGr2rTX2Y5X1VQP2vBwV764qWFzdiqvHnc310EztoalJuKfjiu0kvCf9Ol7H0cfUJNxTyVs7CX%2Bjg4XjnTpPylPHhledcpNH3hNMjI%2BTs8qMylSD2ybIbvHi8%2BYM9fNFPE1uvKs7XsTcYounI05tSG73lGMgl1a%2FxiKybrs%2Fj6T4nrnnHY6xLghnlTeYsFB79hvz4znzZH5ORKw2jQgCRA4XZ3mGEisWn9T2MEa07FDeHGnuHcMENje2Ab9fU80Hgr1DkW9qd1a%2B1XDHWOszSE5f2KjUb1Ty6kxW5w1bxnafeyp9aIPSPq%2FpnQcwFpRUmlIM%2BCmIANGEgTUXpaZGkJsPkIh8VRsSejYUTUjQGkpoLCKoZGZGVtoQ0DORXT%2BbTTcx0ccAY4sZvuUKu7v2pLPGX0kM8Juown4nJtwXz2TOqDjornmakbW1kwyjZtc1ohTHjvRveCdhFcvUnnM%2FHFSyeyaT0eBlN2B2PaK1%2F3yG4zSn8pREQEMWdXWr2m8zsSCfXuc8vCYf29PNyw0ekqqhCPmS7xRxKPUAmLWxy%2Bk03%2BB1T3ZOGhUleYHkcj7netvmLdiD3Q%2BaNoH1nLmRx548FOoW7R3dSocxAWtYumcKWEeYnFbak6q0Pe3eyxeVtuaQzOeaM8cMJxVvOK5t4NDK92WteXSKCHtEPByfLB7qs%2FdCZa97fbvVwWmofef3%2BSqFw9E1YfNVDp5%2FkkjsVocu3ZGsnjbDz9hqna8hRERInbWI37IizxtbnRpQ0O21fdmTzAKVFMm25Es%2BTBzi3r54b%2Beweo%2FqnTpxTU1hAx13YpmxntSb5zOdihnLv98u2duRaI%2Bp6n5u4GUXagNN7hiP9BaNGNhs8PrQiEoMVZFI21qd9X69J70hHGJ%2FS8agek%2BOQ5p%2BS8au0P3Mo8orwBRq8peO1bYQo3eIEdQIr%2BKXafYag7HTxQJ7elx3Zzf22y3GYoxKIzMAiUoEeUj%2Brx36j7SGrskZxgBlqLKbNjH0NVpKV5BgbB0kVKPAyx40MiiPGclrXuKIkc5rlf7J9hjORx%2Fff%2FvyEZLJ5y%2F%2Bb8PlN%2B8WaH43fHr95YqVTC9%2B%2F9jknzuS3wvbisCdgadGd%2BIew%2FWaChU7B4wCPeArL%2F8BkmJh19UgrLFuyD3ckdhl%2BWPxYt2XgPXiU%2FZ77d7V%2Fw%3D%3D)
+
+## Gerência do Projeto
+
+O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a sua gestão. Através de uma equipe multidisciplinar auto gerenciável, com a presença de um líder.
+
+Para o controle e gestão de fluxo do projeto foi utilizado o Trello, adicionando e dividindo as tarefas através de um quadro Kanban, que possui a etapas padrão: to do, doing e done. As tarefas são adicionadas através de uma reunião de equipe, onde é definido o escopo e priorização de cada atividade. Cada desenvolvedor seleciona a tarefa para realizar, marca como concluída e registra a data de conclusão. Ao final, o código atualizado é enviado para o GitHub e passava por uma revisão antes de ser submetido.
+
+### KANBAN - Trello
+
+...
+
+# Patrocinadores
+
+![](logo_gamaAcademy.png)
+
+![](logo_bancoPan.png)
