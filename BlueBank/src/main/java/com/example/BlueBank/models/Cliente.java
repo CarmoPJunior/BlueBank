@@ -29,17 +29,16 @@ public class Cliente implements Serializable {
 	@CPF
 	private String cpf;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idEndereco", referencedColumnName = "id")
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)	
 	private Endereco endereco;
 	
 	@NotEmpty
 	private String dataDeNascimento; 
 	
-	@OneToMany(mappedBy="contato", cascade = CascadeType.ALL )
+	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
 	private List<Contato> contato;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)	
 	private Conta conta;
 
 	public Cliente() {

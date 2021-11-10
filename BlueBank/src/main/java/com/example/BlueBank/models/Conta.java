@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
@@ -17,8 +18,9 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@OneToOne(mappedBy = "conta")
-	private Integer idCliente;
+	@OneToOne()
+	@JoinColumn(name = "idCliente", referencedColumnName = "id")
+	private Cliente cliente;
 
 	@NotNull
 	private TipoConta tipoConta;
@@ -35,10 +37,10 @@ public class Conta {
 		super();
 	}
 
-	public Conta(Integer idCliente, @NotNull TipoConta tipoConta, @NotNull Integer numeroConta,
+	public Conta(Cliente cliente, @NotNull TipoConta tipoConta, @NotNull Integer numeroConta,
 			@NotNull Integer agencia, @PositiveOrZero @NotNull double saldo) {
 		super();
-		this.idCliente = idCliente;
+		this.cliente = cliente;
 		this.tipoConta = tipoConta;
 		this.numeroConta = numeroConta;
 		this.agencia = agencia;
@@ -52,13 +54,13 @@ public class Conta {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public Integer getIdCliente() {
-		return idCliente;
+	
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public TipoConta getTipoConta() {
@@ -95,7 +97,7 @@ public class Conta {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(agencia, id, idCliente, numeroConta, tipoConta);
+		return Objects.hash(agencia, id, cliente, numeroConta, tipoConta);
 	}
 
 	@Override
@@ -108,7 +110,7 @@ public class Conta {
 			return false;
 		Conta other = (Conta) obj;
 		return Objects.equals(agencia, other.agencia) && Objects.equals(id, other.id)
-				&& Objects.equals(idCliente, other.idCliente) && Objects.equals(numeroConta, other.numeroConta)
+				&& Objects.equals(cliente, other.cliente) && Objects.equals(numeroConta, other.numeroConta)
 				&& Objects.equals(tipoConta, other.tipoConta);
 	}
 

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
@@ -18,8 +19,9 @@ public class Endereco implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotEmpty
-	@OneToOne(mappedBy = "endereco")
-	private Cliente idCliente;
+	@OneToOne()
+	@JoinColumn(name = "idCliente", referencedColumnName = "id")
+	private Cliente cliente;
 	@NotEmpty
 	private String logradouro;
 	@NotEmpty
@@ -35,10 +37,10 @@ public class Endereco implements Serializable {
 		super();
 	}
 
-	public Endereco(@NotEmpty Cliente idCliente, @NotEmpty String logradouro, @NotEmpty String cidade,
+	public Endereco(@NotEmpty Cliente cliente, @NotEmpty String logradouro, @NotEmpty String cidade,
 			@NotEmpty String estado, @NotEmpty int numero, @NotEmpty String cep) {
 		super();
-		this.idCliente = idCliente;
+		this.cliente = cliente;
 		this.logradouro = logradouro;
 		this.cidade = cidade;
 		this.estado = estado;
@@ -54,12 +56,12 @@ public class Endereco implements Serializable {
 		this.id = id;
 	}
 
-	public Cliente getIdCliente() {
-		return idCliente;
+	public Cliente getcliente() {
+		return cliente;
 	}
 
-	public void setIdCliente(Cliente idCliente) {
-		this.idCliente = idCliente;
+	public void setcliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public String getLogradouro() {
@@ -108,7 +110,7 @@ public class Endereco implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cep, id, idCliente);
+		return Objects.hash(cep, id, cliente);
 	}
 
 	@Override
@@ -121,7 +123,7 @@ public class Endereco implements Serializable {
 			return false;
 		Endereco other = (Endereco) obj;
 		return Objects.equals(cep, other.cep) && Objects.equals(id, other.id)
-				&& Objects.equals(idCliente, other.idCliente);
+				&& Objects.equals(cliente, other.cliente);
 	}
 	
 	
