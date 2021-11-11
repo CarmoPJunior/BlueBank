@@ -15,49 +15,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.BlueBank.models.Cliente;
-import com.example.BlueBank.service.ClienteService;
-
+import com.example.BlueBank.models.Endereco;
+import com.example.BlueBank.service.EnderecoService;
 
 @RestController
-@RequestMapping(path = "/clientes")
-public class ClienteController {
+@RequestMapping(path = "/enderecos")
+public class EnderecoController {
 	
 	@Autowired
-	private ClienteService clienteService;
-	
+	EnderecoService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Cliente> findById(@PathVariable Integer id) {
-		Cliente obj = this.clienteService.obterPorCod(id);
+	public ResponseEntity<Endereco> findById(@PathVariable Integer id) {
+		Endereco obj = this.service.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
 
 	@GetMapping
-	public ResponseEntity<List<Cliente>> findAll() {
-		List<Cliente> list = clienteService.obterTodos();
+	public ResponseEntity<List<Endereco>> findAll() {
+		List<Endereco> list = service.obterTodos();
 		return ResponseEntity.ok().body(list);
 	}
 
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
-//		Cliente newObj = clienteService.(id, obj);
-//		return ResponseEntity.ok().body(newObj);
-//	}
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Endereco> update(@PathVariable Integer id, @RequestBody Endereco obj) {
+		Endereco newObj = service.alterarEndereco(id, obj);
+		return ResponseEntity.ok().body(newObj);
+	}
 
 	@PostMapping
-	public ResponseEntity<Cliente> create(@RequestBody Cliente obj) {
+	public ResponseEntity<Endereco> create(@RequestBody Endereco obj) {
 				
-		Cliente newObj = clienteService.criar(obj);
+		Endereco newObj = service.criar(obj);
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+
 		
 	}
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		clienteService.deletar(id);
+		service.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 

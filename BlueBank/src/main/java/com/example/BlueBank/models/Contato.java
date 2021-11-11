@@ -1,3 +1,4 @@
+
 package com.example.BlueBank.models;
 
 import java.io.Serializable;
@@ -121,3 +122,4 @@ public class Contato implements Serializable {
 	}
 
 }
+
