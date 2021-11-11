@@ -9,12 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.br.CPF;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Cliente implements Serializable {
@@ -35,6 +36,7 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String dataDeNascimento; 
 	
+	@JsonIgnoreProperties("cliente")
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
 	private List<Contato> contato;
 	
