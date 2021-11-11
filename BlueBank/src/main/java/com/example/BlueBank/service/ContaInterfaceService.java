@@ -12,6 +12,8 @@ public interface ContaInterfaceService {
 	
 	Conta criar(Conta conta);
 	
+	Conta atualizar(Integer id, Conta obj);
+	
 	void deletar(Integer id);
 	
 }

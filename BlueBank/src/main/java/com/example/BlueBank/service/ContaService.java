@@ -31,6 +31,15 @@ public class ContaService implements ContaInterfaceService {
 		return this.contaRepository.save(conta);
 	}
 	
+	public Conta atualizar(Integer id, Conta obj) {
+		Conta newObj = obterPorCod(id);
+        newObj.setTipoConta(obj.getTipoConta());
+        newObj.setNumeroConta(obj.getNumeroConta());
+        newObj.setAgencia(obj.getAgencia());
+        newObj.setSaldo(obj.getSaldo());
+        return contaRepository.save(newObj);
+    }
+	
 	@Override
 	public void deletar(Integer id) {
 		obterPorCod(id);
