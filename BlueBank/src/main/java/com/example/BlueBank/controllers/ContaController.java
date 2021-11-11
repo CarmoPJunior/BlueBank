@@ -40,7 +40,7 @@ public class ContaController {
 
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody Conta obj) {
-		Conta newObj = contaService.update(id, obj);
+		Conta newObj = contaService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
