@@ -22,6 +22,7 @@ public class Endereco implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 //  @NotEmpty
 	@JsonIgnoreProperties("endereco")
 	@OneToOne()

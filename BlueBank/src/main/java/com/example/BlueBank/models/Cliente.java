@@ -16,6 +16,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 @Entity
 public class Cliente implements Serializable {
 
@@ -28,17 +31,20 @@ public class Cliente implements Serializable {
 	private String nome;
 	@CPF
 	private String cpf;
-
-	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)	
+	
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("cliente")
 	private Endereco endereco;
 	
 	@NotEmpty
-	private String dataDeNascimento; 
+	private String dataDeNascimento;
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
+	@JsonIgnoreProperties("cliente")
 	private List<Contato> contato;
 	
-	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)	
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("cliente")
 	private Conta conta;
 
 	public Cliente() {

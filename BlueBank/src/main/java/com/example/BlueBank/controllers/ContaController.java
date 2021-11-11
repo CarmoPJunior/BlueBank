@@ -9,46 +9,44 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.BlueBank.models.Cliente;
-import com.example.BlueBank.service.ClienteService;
-
+import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.service.ContaInterfaceService;
+import com.example.BlueBank.service.ContaService;
 
 @RestController
-@RequestMapping(path = "/clientes")
-public class ClienteController {
-	
+@RequestMapping(path = "/contas")
+public class ContaController {
+
 	@Autowired
-	private ClienteService clienteService;
-	
+	private ContaService contaService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Cliente> findById(@PathVariable Integer id) {
-		Cliente obj = this.clienteService.obterPorCod(id);
+	public ResponseEntity<Conta> findById(@PathVariable Integer id) {
+		Conta obj = this.contaService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
 
 	@GetMapping
-	public ResponseEntity<List<Cliente>> findAll() {
-		List<Cliente> list = clienteService.obterTodos();
+	public ResponseEntity<List<Conta>> findAll() {
+		List<Conta> list = contaService.obterTodos();
 		return ResponseEntity.ok().body(list);
 	}
 
 //	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
-//		Cliente newObj = clienteService.(id, obj);
+//	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody Conta obj) {
+//		Conta newObj = contaService.(id, obj);
 //		return ResponseEntity.ok().body(newObj);
 //	}
 
 	@PostMapping
-	public ResponseEntity<Cliente> create(@RequestBody Cliente obj) {
+	public ResponseEntity<Conta> create(@RequestBody Conta obj) {
 				
-		Cliente newObj = clienteService.criar(obj);
+		Conta newObj = contaService.criar(obj);
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -57,8 +55,8 @@ public class ClienteController {
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		clienteService.deletar(id);
+		contaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
-
+	
 }
