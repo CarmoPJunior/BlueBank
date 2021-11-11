@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,11 +38,11 @@ public class ContaController {
 		return ResponseEntity.ok().body(list);
 	}
 
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody Conta obj) {
-//		Conta newObj = contaService.(id, obj);
-//		return ResponseEntity.ok().body(newObj);
-//	}
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody Conta obj) {
+		Conta newObj = contaService.update(id, obj);
+		return ResponseEntity.ok().body(newObj);
+	}
 
 	@PostMapping
 	public ResponseEntity<Conta> create(@RequestBody Conta obj) {
