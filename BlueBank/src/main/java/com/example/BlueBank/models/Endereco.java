@@ -18,7 +18,7 @@ public class Endereco implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@NotEmpty
+	//@NotEmpty
 	@OneToOne()
 	@JoinColumn(name = "idCliente", referencedColumnName = "id")
 	private Cliente cliente;
