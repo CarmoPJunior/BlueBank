@@ -1,3 +1,4 @@
+
 package com.example.BlueBank.models;
 
 import java.io.Serializable;
@@ -11,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Contato implements Serializable {
 
@@ -19,7 +22,7 @@ public class Contato implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	@JsonIgnoreProperties("contato")
 	@ManyToOne
 	@JoinColumn(name = "idCliente", nullable = false)
 	private Cliente cliente;
@@ -119,3 +122,4 @@ public class Contato implements Serializable {
 	}
 
 }
+
