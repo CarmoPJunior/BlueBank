@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -43,7 +44,7 @@ public class Endereco implements Serializable {
 		super();
 	}
 
-	public Endereco(@NotEmpty Cliente cliente, @NotEmpty String logradouro, @NotEmpty String cidade,
+	public Endereco(Cliente cliente, @NotEmpty String logradouro, @NotEmpty String cidade,
 			@NotEmpty String estado, @NotEmpty int numero, @NotEmpty String cep) {
 		super();
 		this.cliente = cliente;
@@ -116,7 +117,7 @@ public class Endereco implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cep, id, cliente);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -128,9 +129,9 @@ public class Endereco implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Endereco other = (Endereco) obj;
-		return Objects.equals(cep, other.cep) && Objects.equals(id, other.id)
-				&& Objects.equals(cliente, other.cliente);
+		return Objects.equals(id, other.id);
 	}
+
 	
 	
 	
