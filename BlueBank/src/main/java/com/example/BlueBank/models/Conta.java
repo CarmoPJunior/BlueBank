@@ -1,16 +1,21 @@
 package com.example.BlueBank.models;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Conta implements Serializable {
@@ -35,7 +40,11 @@ public class Conta implements Serializable {
 	@PositiveOrZero
 	@NotNull
 	private double saldo;
-
+	
+	@OneToMany(mappedBy="conta", cascade = CascadeType.ALL )
+	@JsonIgnoreProperties("conta")
+	private List<Transacoes> transacoes;
+	
 	public Conta() {
 		super();
 	}
@@ -96,6 +105,16 @@ public class Conta implements Serializable {
 
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
+	}
+	
+	
+
+	public List<Transacoes> getTransacoes() {
+		return transacoes;
+	}
+
+	public void setTransacoes(List<Transacoes> transacoes) {
+		this.transacoes = transacoes;
 	}
 
 	@Override
