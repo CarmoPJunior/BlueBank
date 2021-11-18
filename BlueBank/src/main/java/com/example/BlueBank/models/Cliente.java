@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,8 +32,8 @@ public class Cliente implements Serializable {
 	private String nome;
 	@CPF
 	private String cpf;
-	
-	@OneToOne(mappedBy="cliente")
+
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("cliente")
 	private Endereco endereco;
 	
@@ -43,7 +44,7 @@ public class Cliente implements Serializable {
 	@JsonIgnoreProperties("cliente")
 	private List<Contato> contato;
 	
-	@OneToOne(mappedBy="cliente", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("cliente")
 	private Conta conta;
 
