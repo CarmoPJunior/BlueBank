@@ -44,6 +44,12 @@ public class ContaController {
 		return ResponseEntity.ok().body(newObj);
 	}
 
+	@PutMapping(value = "/atualizarStatus/{id}")
+	public ResponseEntity<Conta> updateStatus(@PathVariable Integer id, @RequestBody Conta obj) {
+		Conta newObj = contaService.atualizarStatus(id, obj);
+		return ResponseEntity.ok().body(newObj);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Conta> create(@RequestBody Conta obj) {
 				

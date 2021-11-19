@@ -29,7 +29,8 @@ public class Conta implements Serializable {
 	@OneToOne()
 	@JoinColumn(name = "idCliente", referencedColumnName = "id")
 	private Cliente cliente;
-
+	@NotNull
+	private boolean status = true;
 	@NotNull
 	private TipoConta tipoConta;
 	@NotNull
@@ -49,15 +50,23 @@ public class Conta implements Serializable {
 		super();
 	}
 
-	public Conta(Cliente cliente, @NotNull TipoConta tipoConta, @NotNull Integer numeroConta,
-			@NotNull Integer agencia, @PositiveOrZero @NotNull double saldo) {
+	
+
+	public Conta(Integer id, Cliente cliente, @NotNull boolean status, @NotNull TipoConta tipoConta,
+			@NotNull Integer numeroConta, @NotNull Integer agencia, @PositiveOrZero @NotNull double saldo,
+			List<Transacoes> transacoes) {
 		super();
+		this.id = id;
 		this.cliente = cliente;
+		this.status = status;
 		this.tipoConta = tipoConta;
 		this.numeroConta = numeroConta;
 		this.agencia = agencia;
 		this.saldo = saldo;
+		this.transacoes = transacoes;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -107,7 +116,21 @@ public class Conta implements Serializable {
 		this.saldo = saldo;
 	}
 	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public void somaSaldo(double valor) {
+		this.saldo = saldo + valor;
+	}
 	
+	public void subtraiSaldo(double valor) {
+		this.saldo = saldo - valor;
+	}
 
 	public List<Transacoes> getTransacoes() {
 		return transacoes;
@@ -119,7 +142,7 @@ public class Conta implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(agencia, id, cliente, numeroConta, tipoConta);
+		return Objects.hash(agencia, id, cliente, numeroConta, tipoConta, status);
 	}
 
 	@Override

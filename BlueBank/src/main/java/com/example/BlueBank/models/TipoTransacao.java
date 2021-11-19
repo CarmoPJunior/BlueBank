@@ -6,7 +6,7 @@ public enum TipoTransacao {
 	
 	public int id;
 	
-	TipoTransacao(int i) {
+	TipoTransacao(int id) {
 		this.id = id;
 	}
 
