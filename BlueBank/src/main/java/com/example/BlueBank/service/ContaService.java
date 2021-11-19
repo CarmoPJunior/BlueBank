@@ -36,7 +36,13 @@ public class ContaService implements ContaInterfaceService {
         newObj.setTipoConta(obj.getTipoConta());
         newObj.setNumeroConta(obj.getNumeroConta());
         newObj.setAgencia(obj.getAgencia());
-        newObj.setSaldo(obj.getSaldo());
+        //newObj.setSaldo(obj.getSaldo());
+        return contaRepository.save(newObj);
+    }
+	
+	public Conta atualizarStatus(Integer id, Conta obj) {
+		Conta newObj = obterPorCod(id);        
+        newObj.setStatus(obj.isStatus());
         return contaRepository.save(newObj);
     }
 	
