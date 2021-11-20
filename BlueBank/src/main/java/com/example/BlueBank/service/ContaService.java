@@ -61,11 +61,12 @@ public class ContaService implements ContaInterfaceService {
 		obterPorCod(id);
 		this.contaRepository.deleteById(id);
 	}
-	
+	// formata uma conta em DTO
 	private ContaDTO contaDTO(Conta conta) {
 		return modelMapper.map(conta, ContaDTO.class);
 	}
 	
+	// formata um DTO em conta
 	private Conta conta(ContaDTO contaDTO) {
 		return modelMapper.map(contaDTO, Conta.class);
 	}
