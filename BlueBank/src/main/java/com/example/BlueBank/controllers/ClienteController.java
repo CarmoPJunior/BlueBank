@@ -39,20 +39,18 @@ public class ClienteController {
 		return ResponseEntity.ok().body(list);
 	}
 
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
-//		Cliente newObj = clienteService.(id, obj);
-//		return ResponseEntity.ok().body(newObj);
-//	}
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
+		Cliente newObj = clienteService.alterarCliente(id, obj);
+		return ResponseEntity.ok().body(newObj);
+	}
 
 	@PostMapping
-	public ResponseEntity<Cliente> create(@RequestBody Cliente obj) {
-				
+	public ResponseEntity<Cliente> create(@RequestBody Cliente obj) {		
 		Cliente newObj = clienteService.criar(obj);
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
-		
 	}
 
 	@DeleteMapping(value = "/{id}")
@@ -60,5 +58,4 @@ public class ClienteController {
 		clienteService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
-
 }

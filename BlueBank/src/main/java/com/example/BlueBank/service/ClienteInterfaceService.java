@@ -9,8 +9,9 @@ public interface ClienteInterfaceService {
 	
 	List<Cliente> obterTodos();	
 	
-	Cliente criar(Cliente cliente);
+	public Cliente criar(Cliente cliente);
 	
-	void deletar(Integer id);
-
+	public void deletar(Integer id);
+	
+	public Cliente alterarCliente(Integer id, Cliente cliente);
 }
