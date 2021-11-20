@@ -7,9 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.BlueBank.DTO.ClienteDTO;
-import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.models.Cliente;
-import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ClienteRepository;
 
 @Service
@@ -53,7 +51,6 @@ public class ClienteService implements ClienteInterfaceService {
 		this.clienteRepository.deleteById(id);
 	}
 	
-<<<<<<< HEAD
 	private ClienteDTO mapperClienteParaClienteDTO(Cliente cliente) {
 		return modelMapper.map(cliente, ClienteDTO.class);
 	}
@@ -62,15 +59,4 @@ public class ClienteService implements ClienteInterfaceService {
 		return modelMapper.map(clienteDTO, Cliente.class);
 	}
 	
-=======
-	@Override
-	public Cliente alterarCliente(Integer id, Cliente cliente) {
-		Cliente newObj = obterPorCod(id);
-		newObj.setNome(cliente.getNome());
-		//newObj.setCpf(cliente.getCpf());
-		newObj.setDataDeNascimento(cliente.getDataDeNascimento());
-		return this.clienteRepository.save(newObj);
-	}
->>>>>>> main
-
 }

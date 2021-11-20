@@ -1,20 +1,21 @@
 package com.example.BlueBank.DTO;
 
 import java.util.List;
-import com.example.BlueBank.models.Conta;
-import com.example.BlueBank.models.Contato;
-import com.example.BlueBank.models.Endereco;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class ClienteDTO {
 
 	private Integer id;
 	private String nome;
 	private String cpf;
-	private Endereco endereco;
+	@JsonIgnoreProperties("nomeCliente")
+	private EnderecoDTO endereco;
 	private String dataDeNascimento;
-	private List<Contato> contato;
-	private Conta conta;
+	@JsonIgnoreProperties("nomeCliente")
+	private List<ContatoDTO> contato;
+	@JsonIgnoreProperties("nomeCliente")
+	private ContaDTO conta;
 
 	public Integer getId() {
 		return id;
@@ -40,11 +41,11 @@ public class ClienteDTO {
 		this.cpf = cpf;
 	}
 
-	public Endereco getEndereco() {
+	public EnderecoDTO getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(EnderecoDTO endereco) {
 		this.endereco = endereco;
 	}
 
@@ -56,19 +57,19 @@ public class ClienteDTO {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
-	public List<Contato> getContato() {
+	public List<ContatoDTO> getContato() {
 		return contato;
 	}
 
-	public void setContato(List<Contato> contato) {
+	public void setContato(List<ContatoDTO> contato) {
 		this.contato = contato;
 	}
 
-	public Conta getConta() {
+	public ContaDTO getConta() {
 		return conta;
 	}
 
-	public void setConta(Conta conta) {
+	public void setConta(ContaDTO conta) {
 		this.conta = conta;
 	}
 

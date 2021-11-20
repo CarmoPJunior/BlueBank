@@ -2,7 +2,6 @@ package com.example.BlueBank.controllers;
 
 import java.net.URI;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.models.Cliente;
 import com.example.BlueBank.service.ClienteService;
@@ -41,8 +39,8 @@ public class ClienteController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
-		Cliente newObj = clienteService.alterarCliente(id, obj);
+	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody ClienteDTO obj) {
+		Cliente newObj = clienteService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 

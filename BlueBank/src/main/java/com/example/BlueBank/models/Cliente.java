@@ -11,15 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
-<<<<<<< HEAD
 import org.hibernate.validator.constraints.br.CPF;
-
-=======
-
-import org.hibernate.validator.constraints.br.CPF;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
->>>>>>> main
 
 @Entity
 public class Cliente implements Serializable {
