@@ -2,16 +2,20 @@ package com.example.BlueBank.service;
 
 import java.util.List;
 
+import com.example.BlueBank.DTO.ContatoDTO;
 import com.example.BlueBank.models.Contato;
 
 public interface ContatoInterfaceService {
 	
-	Contato obterPorCod(Integer id);
+	ContatoDTO obterPorCod(Integer id);
 	
-	List<Contato> obterTodos();	
+	Contato obterContatoPorCod(Integer id);
+	
+	List<ContatoDTO> obterTodos();	
 	
 	Contato criar(Contato contato);
 	
+	Contato alterarContato(Integer id, ContatoDTO obj);
+	
 	void deletar(Integer id);
-
-}
+	}

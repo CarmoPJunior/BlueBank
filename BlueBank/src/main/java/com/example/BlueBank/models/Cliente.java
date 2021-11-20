@@ -11,8 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
+<<<<<<< HEAD
 import org.hibernate.validator.constraints.br.CPF;
 
+=======
+
+import org.hibernate.validator.constraints.br.CPF;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+>>>>>>> main
 
 @Entity
 public class Cliente implements Serializable {
@@ -26,12 +33,11 @@ public class Cliente implements Serializable {
 	private String nome;
 	@CPF
 	private String cpf;
-
-	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
-	private Endereco endereco;
-	
 	@NotEmpty
 	private String dataDeNascimento;
+	
+	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
+	private Endereco endereco;
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
 	private List<Contato> contato;

@@ -10,10 +10,17 @@ public interface ClienteInterfaceService {
 	
 	List<ClienteDTO> obterTodos();	
 	
-	Cliente criar(Cliente cliente);
+	public Cliente criar(Cliente cliente);
 	
+<<<<<<< HEAD
 	Cliente atualizar(Integer id, ClienteDTO obj);
 	
 	void deletar(Integer id);
 
 }
+=======
+	public void deletar(Integer id);
+	
+	public Cliente alterarCliente(Integer id, Cliente cliente);
+}
+>>>>>>> main

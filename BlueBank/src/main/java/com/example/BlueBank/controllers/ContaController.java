@@ -3,7 +3,6 @@ package com.example.BlueBank.controllers;
 import java.net.URI;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.models.Conta;
-import com.example.BlueBank.service.ContaInterfaceService;
 import com.example.BlueBank.service.ContaService;
 
 @RestController
@@ -68,8 +66,5 @@ public class ContaController {
 		contaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
-	
-	
-	
-	
+		
 }
