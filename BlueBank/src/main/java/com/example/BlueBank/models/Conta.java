@@ -42,8 +42,8 @@ public class Conta implements Serializable {
 	@NotNull
 	private double saldo;
 	
-	@OneToMany(mappedBy="conta", cascade = CascadeType.ALL )
-	@JsonIgnoreProperties("conta")
+	@OneToMany(mappedBy="contaOrigem", cascade = CascadeType.ALL )
+	@JsonIgnoreProperties("contaOrigem")
 	private List<Transacoes> transacoes;
 	
 	public Conta() {

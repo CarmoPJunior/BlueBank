@@ -27,18 +27,26 @@ public class Transacoes implements Serializable {
 	private Double valor;
 	
 	private TipoTransacao tipoTransacao;
+	
 	@JsonIgnoreProperties("transacoes")
 	@ManyToOne
-	@JoinColumn(name = "idConta", nullable = false)
-	private Conta conta;
+	@JoinColumn(name = "idContaOrigem", nullable = false)
+	private Conta contaOrigem;
+	
+	@JsonIgnoreProperties("transacoes")
+	@ManyToOne
+	@JoinColumn(name = "idContaDestino", nullable = true)
+	private Conta contaDestino;
 
-	public Transacoes(Integer id, Date data, Double valor, TipoTransacao tipoTransacao, Conta conta) {
+	
+
+	public Transacoes(Date data, Double valor, TipoTransacao tipoTransacao, Conta contaOrigem, Conta contaDestino) {
 		super();
-		this.id = id;
 		this.data = data;
 		this.valor = valor;
 		this.tipoTransacao = tipoTransacao;
-		this.conta = conta;
+		this.contaOrigem = contaOrigem;
+		this.contaDestino = contaDestino;
 	}
 
 	public Transacoes() {
@@ -78,12 +86,22 @@ public class Transacoes implements Serializable {
 		this.tipoTransacao = tipoTransacao;
 	}
 
-	public Conta getConta() {
-		return conta;
+	
+
+	public Conta getContaOrigem() {
+		return contaOrigem;
 	}
 
-	public void setConta(Conta conta) {
-		this.conta = conta;
+	public void setContaOrigem(Conta contaOrigem) {
+		this.contaOrigem = contaOrigem;
+	}
+
+	public Conta getContaDestino() {
+		return contaDestino;
+	}
+
+	public void setContaDestino(Conta contaDestino) {
+		this.contaDestino = contaDestino;
 	}
 
 	@Override
