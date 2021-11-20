@@ -1,5 +1,7 @@
 package com.example.BlueBank.service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.BlueBank.DTO.ContaDTO;
+
 import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.models.TipoTransacao;
@@ -31,6 +33,8 @@ public class TransacaoService implements TransacaoInterfaceService {
 	
 	@Autowired
 	private ContaService contaService;
+	
+	private static SimpleDateFormat  fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	@Override
 	public Transacoes obterPorCod(Integer id) {
@@ -65,10 +69,12 @@ public class TransacaoService implements TransacaoInterfaceService {
 		contaOrigem.subtraiSaldo(valor);
 		contaRepository.save(contaOrigem);
 		
+		
+		
 		Transacoes transacaoDest = new Transacoes();
 		transacaoDest.setContaDestino(contaDestino);
 		transacaoDest.setContaOrigem(contaOrigem);
-		transacaoDest.setData(new Date());
+		transacaoDest.setData(fmt.format(new Date()));
 		transacaoDest.setValor(valor);
 		transacaoDest.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
 		transacaoRepository.save(transacaoDest);
@@ -77,7 +83,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		Transacoes transacaoOri = new Transacoes();
 		transacaoOri.setContaOrigem(contaOrigem);
 		transacaoOri.setContaDestino(contaDestino);
-		transacaoOri.setData(new Date());
+		transacaoOri.setData(fmt.format(new Date()));
 		transacaoOri.setValor(valor);
 		transacaoOri.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
 		return transacaoRepository.save(transacaoOri);
@@ -92,7 +98,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		
 		Transacoes transacaoAux = new Transacoes();
 		transacaoAux.setContaOrigem(contaAux);
-		transacaoAux.setData(new Date());
+		transacaoAux.setData(fmt.format(new Date()));
 		transacaoAux.setValor(valor);
 		transacaoAux.setTipoTransacao(TipoTransacao.DEPOSITO);
 		return transacaoRepository.save(transacaoAux);
@@ -106,7 +112,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		
 		Transacoes transacaoAux = new Transacoes();
 		transacaoAux.setContaOrigem(contaAux);
-		transacaoAux.setData(new Date());
+		transacaoAux.setData(fmt.format(new Date()));
 		transacaoAux.setValor(valor);
 		transacaoAux.setTipoTransacao(TipoTransacao.SAQUE);
 		return transacaoRepository.save(transacaoAux);

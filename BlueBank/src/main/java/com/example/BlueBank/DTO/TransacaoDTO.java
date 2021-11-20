@@ -1,5 +1,6 @@
 package com.example.BlueBank.DTO;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.example.BlueBank.models.TipoTransacao;
@@ -15,7 +16,7 @@ public class TransacaoDTO {
 	private String nomeClienteDestino;
 	private Integer contaDestino;
 	private TipoTransacao tipoTransacao;
-	private Date data;
+	private String data;
 	private Double valor;
 	
 	public Integer getId() {
@@ -49,10 +50,10 @@ public class TransacaoDTO {
 	public void setContaDestino(Integer contaDestino) {
 		this.contaDestino = contaDestino;
 	}
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	public Double getValor() {
