@@ -3,6 +3,7 @@ package com.example.BlueBank.controllers;
 import java.net.URI;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.service.ContaInterfaceService;
 import com.example.BlueBank.service.ContaService;
@@ -26,6 +28,7 @@ public class ContaController {
 	@Autowired
 	private ContaService contaService;
 	
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Conta> findById(@PathVariable Integer id) {
 		Conta obj = this.contaService.obterPorCod(id);
@@ -33,8 +36,8 @@ public class ContaController {
 	};
 
 	@GetMapping
-	public ResponseEntity<List<Conta>> findAll() {
-		List<Conta> list = contaService.obterTodos();
+	public ResponseEntity<List<ContaDTO>> findAll() {
+		List<ContaDTO> list = contaService.obterTodos();
 		return ResponseEntity.ok().body(list);
 	}
 
@@ -65,5 +68,8 @@ public class ContaController {
 		contaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	
+	
 	
 }

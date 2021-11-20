@@ -135,4 +135,11 @@ public class Cliente implements Serializable {
 		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
+	
+
 }
