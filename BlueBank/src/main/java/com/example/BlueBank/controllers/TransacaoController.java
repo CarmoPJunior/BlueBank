@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
+import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.service.TransacaoService;
 
@@ -25,14 +25,14 @@ public class TransacaoController {
 	private TransacaoService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Transacoes> findById(@PathVariable Integer id) {
-		Transacoes obj = this.service.obterPorCod(id);
+	public ResponseEntity<TransacaoDTO> findById(@PathVariable Integer id) {
+		TransacaoDTO obj = this.service.obterPorCodDTO(id);
 		return ResponseEntity.ok().body(obj);
 	};
 	
 	@GetMapping
-	public ResponseEntity<List<Transacoes>> findAll() {
-		List<Transacoes> list = service.obterTodos();
+	public ResponseEntity<List<TransacaoDTO>> findAll() {
+		List<TransacaoDTO> list = service.obterTodosDTO();
 		return ResponseEntity.ok().body(list);
 	}
 	

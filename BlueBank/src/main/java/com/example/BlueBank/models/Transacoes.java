@@ -38,8 +38,6 @@ public class Transacoes implements Serializable {
 	@JoinColumn(name = "idContaDestino", nullable = true)
 	private Conta contaDestino;
 
-	
-
 	public Transacoes(Date data, Double valor, TipoTransacao tipoTransacao, Conta contaOrigem, Conta contaDestino) {
 		super();
 		this.data = data;
