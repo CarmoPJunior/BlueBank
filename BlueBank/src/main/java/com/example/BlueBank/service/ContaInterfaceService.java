@@ -9,6 +9,8 @@ public interface ContaInterfaceService {
 
 	ContaDTO obterPorCod(Integer id);
 	
+	Conta obterContaPorCod(Integer id);
+	
 	List<ContaDTO> obterTodos();	
 	
 	Conta criar(Conta conta);

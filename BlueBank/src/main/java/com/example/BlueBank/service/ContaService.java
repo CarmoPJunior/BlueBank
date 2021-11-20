@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ContaDTO;
-import com.example.BlueBank.models.Cliente;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ContaRepository;
 
@@ -69,6 +68,14 @@ public class ContaService implements ContaInterfaceService {
 	
 	private Conta conta(ContaDTO contaDTO) {
 		return modelMapper.map(contaDTO, Conta.class);
+	}
+
+	@Override
+	public Conta obterContaPorCod(Integer id) {
+		Optional<Conta> obj = this.contaRepository.findById(id);
+		return obj.orElse(null);
+
+		
 	}
 	
 	

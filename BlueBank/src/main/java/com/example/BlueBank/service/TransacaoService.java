@@ -39,11 +39,11 @@ public class TransacaoService implements TransacaoInterfaceService {
 
 	@Override
 	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) {
-		Conta contaDestino = contaService.obterPorCod(destino.getId());
+		Conta contaDestino = contaService.obterContaPorCod(destino.getId());
 		contaDestino.somaSaldo(valor);
 		contaRepository.save(contaDestino);
 		
-		Conta contaOrigem = contaService.obterPorCod(origem.getId());
+		Conta contaOrigem = contaService.obterContaPorCod(origem.getId());
 		contaOrigem.subtraiSaldo(valor);
 		contaRepository.save(contaOrigem);
 		
@@ -68,7 +68,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	@Override
 	public Transacoes deposito(Conta conta, Double valor) {
 		
-		Conta contaAux = contaService.obterPorCod(conta.getId());
+		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.somaSaldo(valor);
 		contaRepository.save(contaAux);
 		
@@ -82,7 +82,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 
 	@Override
 	public Transacoes saque(Conta conta, Double valor) {
-		Conta contaAux = contaService.obterPorCod(conta.getId());
+		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.subtraiSaldo(valor);
 		contaRepository.save(contaAux);
 		
