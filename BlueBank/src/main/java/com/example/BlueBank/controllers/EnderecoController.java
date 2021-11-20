@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.BlueBank.DTO.EnderecoDTO;
 import com.example.BlueBank.models.Endereco;
 import com.example.BlueBank.service.EnderecoService;
 
@@ -26,20 +27,20 @@ public class EnderecoController {
 	EnderecoService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Endereco> findById(@PathVariable Integer id) {
-		Endereco obj = this.service.obterPorCod(id);
+	public ResponseEntity<EnderecoDTO> findById(@PathVariable Integer id) {
+		EnderecoDTO obj = this.service.obterPorCodDTO(id);
 		return ResponseEntity.ok().body(obj);
 	};
 
 	@GetMapping
-	public ResponseEntity<List<Endereco>> findAll() {
-		List<Endereco> list = service.obterTodos();
+	public ResponseEntity<List<EnderecoDTO>> findAll() {
+		List<EnderecoDTO> list = service.obterTodos();
 		return ResponseEntity.ok().body(list);
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Endereco> update(@PathVariable Integer id, @RequestBody Endereco obj) {
-		Endereco newObj = service.alterarEndereco(id, obj);
+	public ResponseEntity<EnderecoDTO> update(@PathVariable Integer id, @RequestBody Endereco obj) {
+		EnderecoDTO newObj = service.alterarEndereco(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
