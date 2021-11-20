@@ -15,7 +15,9 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 public class Conta implements Serializable {
@@ -36,7 +38,7 @@ public class Conta implements Serializable {
 	@NotNull
 	private Integer numeroConta;
 	@NotNull
-	private Integer agencia;
+	private Integer agencia; 
 
 	@PositiveOrZero
 	@NotNull
@@ -64,8 +66,9 @@ public class Conta implements Serializable {
 		this.agencia = agencia;
 		this.saldo = saldo;
 		this.transacoes = transacoes;
+		
 	}
-
+	
 
 
 	public Integer getId() {
@@ -158,5 +161,6 @@ public class Conta implements Serializable {
 				&& Objects.equals(cliente, other.cliente) && Objects.equals(numeroConta, other.numeroConta)
 				&& Objects.equals(tipoConta, other.tipoConta);
 	}
-
+	
+	
 }

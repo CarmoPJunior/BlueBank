@@ -2,9 +2,13 @@ package com.example.BlueBank.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ContaRepository;
 
@@ -15,6 +19,9 @@ public class ContaService implements ContaInterfaceService {
 	@Autowired
 	ContaRepository contaRepository;
 	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	@Override
 	public Conta obterPorCod(Integer id) {
 		Optional<Conta> obj = this.contaRepository.findById(id);
@@ -22,8 +29,8 @@ public class ContaService implements ContaInterfaceService {
 	}
 	
 	@Override
-	public List<Conta> obterTodos() {
-		return this.contaRepository.findAll();
+	public List<ContaDTO> obterTodos() {
+		return this.contaRepository.findAll().stream().map(this::contaDTO).collect(Collectors.toList());
 	}
 
 	@Override
@@ -51,5 +58,10 @@ public class ContaService implements ContaInterfaceService {
 		obterPorCod(id);
 		this.contaRepository.deleteById(id);
 	}
+	
+	private ContaDTO contaDTO(Conta conta) {
+		return modelMapper.map(conta, ContaDTO.class);
+	}
+	
 	
 }
