@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.models.Cliente;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ContaRepository;
 
@@ -23,9 +24,10 @@ public class ContaService implements ContaInterfaceService {
 	private ModelMapper modelMapper;
 	
 	@Override
-	public Conta obterPorCod(Integer id) {
-		Optional<Conta> obj = this.contaRepository.findById(id);
-		return obj.orElse(null);
+	public ContaDTO obterPorCod(Integer id) {
+		Optional<Conta> obj = this.contaRepository.findById(id);		
+		return contaDTO(obj.get());
+
 	}
 	
 	@Override
@@ -38,19 +40,21 @@ public class ContaService implements ContaInterfaceService {
 		return this.contaRepository.save(conta);
 	}
 	
-	public Conta atualizar(Integer id, Conta obj) {
-		Conta newObj = obterPorCod(id);
-        newObj.setTipoConta(obj.getTipoConta());
-        newObj.setNumeroConta(obj.getNumeroConta());
-        newObj.setAgencia(obj.getAgencia());
+	public Conta atualizar(Integer id, ContaDTO obj) {
+		ContaDTO newObj = obterPorCod(id);
+		Conta conta = conta(newObj);
+		conta.setTipoConta(obj.getTipoConta());
+		conta.setNumeroConta(obj.getNumeroConta());
+		conta.setAgencia(obj.getAgencia());
         //newObj.setSaldo(obj.getSaldo());
-        return contaRepository.save(newObj);
+        return contaRepository.save(conta);
     }
 	
-	public Conta atualizarStatus(Integer id, Conta obj) {
-		Conta newObj = obterPorCod(id);        
-        newObj.setStatus(obj.isStatus());
-        return contaRepository.save(newObj);
+	public Conta atualizarStatus(Integer id, ContaDTO obj) {
+		ContaDTO newObj = obterPorCod(id); 
+		Conta conta = conta(newObj);
+		conta.setStatus(obj.isStatus());
+        return contaRepository.save(conta);
     }
 	
 	@Override
@@ -61,6 +65,10 @@ public class ContaService implements ContaInterfaceService {
 	
 	private ContaDTO contaDTO(Conta conta) {
 		return modelMapper.map(conta, ContaDTO.class);
+	}
+	
+	private Conta conta(ContaDTO contaDTO) {
+		return modelMapper.map(contaDTO, Conta.class);
 	}
 	
 	
