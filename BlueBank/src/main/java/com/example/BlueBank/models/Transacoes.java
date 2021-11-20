@@ -1,6 +1,7 @@
 package com.example.BlueBank.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,7 +23,7 @@ public class Transacoes implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private Date data;
+	private String data;
 	
 	private Double valor;
 	
@@ -38,7 +39,7 @@ public class Transacoes implements Serializable {
 	@JoinColumn(name = "idContaDestino", nullable = true)
 	private Conta contaDestino;
 
-	public Transacoes(Date data, Double valor, TipoTransacao tipoTransacao, Conta contaOrigem, Conta contaDestino) {
+	public Transacoes(String data, Double valor, TipoTransacao tipoTransacao, Conta contaOrigem, Conta contaDestino) {
 		super();
 		this.data = data;
 		this.valor = valor;
@@ -60,12 +61,12 @@ public class Transacoes implements Serializable {
 		this.id = id;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setData(String string) {
+		this.data = string;
 	}
 
 	public Double getValor() {

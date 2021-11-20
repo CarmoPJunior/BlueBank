@@ -1,6 +1,12 @@
 package com.example.BlueBank.DTO;
 
+import java.util.List;
+
 import com.example.BlueBank.models.TipoConta;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+
 
 public class ContaDTO {
 
@@ -11,6 +17,8 @@ public class ContaDTO {
 	private Integer numeroConta;
 	private Integer agencia;
 	private double saldo;
+	@JsonIgnoreProperties({"nomeClienteOrigem", "contaOrigem"})
+	private List<TransacaoDTO> transacoes;
 
 	public Integer getId() {
 		return id;
@@ -67,5 +75,15 @@ public class ContaDTO {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+
+	public List<TransacaoDTO> getTransacoes() {
+		return transacoes;
+	}
+
+	public void setTransacoes(List<TransacaoDTO> transacoes) {
+		this.transacoes = transacoes;
+	}
+	
+	
 
 }
