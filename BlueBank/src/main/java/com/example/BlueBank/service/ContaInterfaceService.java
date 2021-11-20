@@ -7,13 +7,13 @@ import com.example.BlueBank.models.Conta;
 
 public interface ContaInterfaceService {
 
-	Conta obterPorCod(Integer id);
+	ContaDTO obterPorCod(Integer id);
 	
 	List<ContaDTO> obterTodos();	
 	
 	Conta criar(Conta conta);
 	
-	Conta atualizar(Integer id, Conta obj);
+	Conta atualizar(Integer id, ContaDTO obj);
 	
 	void deletar(Integer id);
 	

@@ -30,8 +30,8 @@ public class ContaController {
 	
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Conta> findById(@PathVariable Integer id) {
-		Conta obj = this.contaService.obterPorCod(id);
+	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) {
+		ContaDTO obj = this.contaService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
 
@@ -42,13 +42,13 @@ public class ContaController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody Conta obj) {
+	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody ContaDTO obj) {
 		Conta newObj = contaService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PutMapping(value = "/atualizarStatus/{id}")
-	public ResponseEntity<Conta> updateStatus(@PathVariable Integer id, @RequestBody Conta obj) {
+	public ResponseEntity<Conta> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) {
 		Conta newObj = contaService.atualizarStatus(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
