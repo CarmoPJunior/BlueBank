@@ -36,7 +36,6 @@ public class Contato implements Serializable {
 
 	public Contato() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Contato(Cliente cliente, @NotEmpty String numeroTelefone, @NotEmpty @Email String email) {
