@@ -3,10 +3,14 @@ package com.example.BlueBank.service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.models.TipoTransacao;
 import com.example.BlueBank.models.Transacoes;
@@ -23,6 +27,9 @@ public class TransacaoService implements TransacaoInterfaceService {
 	ContaRepository contaRepository;
 	
 	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
 	private ContaService contaService;
 	
 	@Override
@@ -31,10 +38,21 @@ public class TransacaoService implements TransacaoInterfaceService {
 		return obj.orElse(null);
 
 	}
+	
+	@Override
+	public TransacaoDTO obterPorCodDTO(Integer id) {
+		Optional<Transacoes> obj = this.transacaoRepository.findById(id);		
+		return transacaoDTO(obj.get());
+	}
 
 	@Override
 	public List<Transacoes> obterTodos() {		
 		return this.transacaoRepository.findAll();
+	}
+	
+	@Override
+	public List<TransacaoDTO> obterTodosDTO() {
+		return this.transacaoRepository.findAll().stream().map(this::transacaoDTO).collect(Collectors.toList());
 	}
 
 	@Override
@@ -95,6 +113,12 @@ public class TransacaoService implements TransacaoInterfaceService {
 		
 	}
 
+	private Transacoes transacao(TransacaoDTO transacaoDTO) {
+		return modelMapper.map(transacaoDTO, Transacoes.class);
+	}
 	
-	
+	private TransacaoDTO transacaoDTO(Transacoes transacao) {
+		return modelMapper.map(transacao, TransacaoDTO.class);
+	}
+
 }
