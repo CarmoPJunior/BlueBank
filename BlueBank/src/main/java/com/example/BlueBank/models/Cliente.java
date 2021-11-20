@@ -3,7 +3,6 @@ package com.example.BlueBank.models;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
-
 import org.hibernate.validator.constraints.br.CPF;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Cliente implements Serializable {
@@ -33,15 +29,12 @@ public class Cliente implements Serializable {
 	private String dataDeNascimento;
 	
 	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("cliente")
 	private Endereco endereco;
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
-	@JsonIgnoreProperties("cliente")
 	private List<Contato> contato;
 	
 	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("cliente")
 	private Conta conta;
 
 	public Cliente() {

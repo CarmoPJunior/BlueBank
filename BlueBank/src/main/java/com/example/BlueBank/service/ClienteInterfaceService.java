@@ -1,17 +1,20 @@
 package com.example.BlueBank.service;
 
 import java.util.List;
+import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.models.Cliente;
 
 public interface ClienteInterfaceService {
 	
-	Cliente obterPorCod(Integer id);
+	ClienteDTO obterPorCod(Integer id);
 	
-	List<Cliente> obterTodos();	
+	List<ClienteDTO> obterTodos();	
 	
-	public Cliente criar(Cliente cliente);
+	public Cliente criar(Cliente cliente);	
+
+	Cliente atualizar(Integer id, ClienteDTO obj);
 	
-	public void deletar(Integer id);
+	void deletar(Integer id);
 	
-	public Cliente alterarCliente(Integer id, Cliente cliente);
 }
+
