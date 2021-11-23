@@ -1,7 +1,6 @@
 package com.example.BlueBank.service;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.models.TipoTransacao;
 import com.example.BlueBank.models.Transacoes;
@@ -34,7 +35,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	@Autowired
 	private ContaService contaService;
 	
-	private static SimpleDateFormat  fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	private SimpleDateFormat  fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	@Override
 	public Transacoes obterPorCod(Integer id) {
@@ -60,7 +61,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) {
+	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException {
 		Conta contaDestino = contaService.obterContaPorCod(destino.getId());
 		contaDestino.somaSaldo(valor);
 		contaRepository.save(contaDestino);
@@ -90,7 +91,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes deposito(Conta conta, Double valor) {
+	public Transacoes deposito(Conta conta, Double valor) throws ContaNaoEncontradaException {
 		
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.somaSaldo(valor);
@@ -105,7 +106,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes saque(Conta conta, Double valor) {
+	public Transacoes saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException {
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.subtraiSaldo(valor);
 		contaRepository.save(contaAux);

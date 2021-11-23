@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
@@ -24,6 +26,7 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String nome;
 	@CPF
+	@UniqueElements
 	private String cpf;
 	@NotEmpty
 	private String dataDeNascimento;
