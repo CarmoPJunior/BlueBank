@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.service.ContaService;
 
@@ -28,7 +29,7 @@ public class ContaController {
 	
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) {
+	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) throws ContaNaoEncontradaException {
 		ContaDTO obj = this.contaService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
@@ -40,14 +41,14 @@ public class ContaController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody ContaDTO obj) {
+	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException {
 		Conta newObj = contaService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PutMapping(value = "/atualizarStatus/{id}")
-	public ResponseEntity<Conta> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) {
-		Conta newObj = contaService.atualizarStatus(id, obj);
+	public ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException {
+		ContaDTO newObj = contaService.atualizarStatus(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 	
@@ -62,7 +63,7 @@ public class ContaController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id) throws ContaNaoEncontradaException {
 		contaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}

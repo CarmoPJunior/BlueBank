@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -127,12 +128,18 @@ public class Conta implements Serializable {
 		this.status = status;
 	}
 
-	public void somaSaldo(double valor) {
+	public void somaSaldo(double valor) throws ContaBloqueadaException {
+		if(!status) {
+			throw new ContaBloqueadaException();
+		}
 		this.saldo = saldo + valor;
 	}
 	
-	public void subtraiSaldo(double valor) throws SaldoInsuficienteException{
-		if(valor > saldo) {
+	public void subtraiSaldo(double valor) throws SaldoInsuficienteException, ContaBloqueadaException{
+		if(!status) {
+			throw new ContaBloqueadaException();
+		}else if(valor > saldo ) {
+			
 			throw new SaldoInsuficienteException();
 		}
 		this.saldo = saldo - valor;
