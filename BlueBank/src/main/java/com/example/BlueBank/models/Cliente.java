@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String nome;
 	@CPF
-	@UniqueElements
+	@Column(unique = true)
 	private String cpf;
 	@NotEmpty
 	private String dataDeNascimento;
