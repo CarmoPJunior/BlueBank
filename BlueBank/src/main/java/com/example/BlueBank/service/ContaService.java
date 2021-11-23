@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ContaRepository;
 
@@ -69,9 +70,9 @@ public class ContaService implements ContaInterfaceService {
 	}
 
 	@Override
-	public Conta obterContaPorCod(Integer id) {
+	public Conta obterContaPorCod(Integer id) throws ContaNaoEncontradaException {
 		Optional<Conta> obj = this.contaRepository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() ->  new ContaNaoEncontradaException());
 
 	}
 

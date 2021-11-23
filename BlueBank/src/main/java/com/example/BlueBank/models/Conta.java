@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -35,9 +36,9 @@ public class Conta implements Serializable {
 	@NotNull
 	private TipoConta tipoConta;
 	@NotNull
-	private Integer numeroConta;
+	private String numeroConta;
 	@NotNull
-	private Integer agencia; 
+	private String agencia; 
 
 	@PositiveOrZero
 	@NotNull
@@ -54,7 +55,7 @@ public class Conta implements Serializable {
 	
 
 	public Conta(Integer id, Cliente cliente, @NotNull boolean status, @NotNull TipoConta tipoConta,
-			@NotNull Integer numeroConta, @NotNull Integer agencia, @PositiveOrZero @NotNull double saldo,
+			@NotNull String numeroConta, @NotNull String agencia, @PositiveOrZero @NotNull double saldo,
 			List<Transacoes> transacoes) {
 		super();
 		this.id = id;
@@ -94,19 +95,19 @@ public class Conta implements Serializable {
 		this.tipoConta = tipoConta;
 	}
 
-	public Integer getNumeroConta() {
+	public String getNumeroConta() {
 		return numeroConta;
 	}
 
-	public void setNumeroConta(Integer numeroConta) {
+	public void setNumeroConta(String numeroConta) {
 		this.numeroConta = numeroConta;
 	}
 
-	public Integer getAgencia() {
+	public String getAgencia() {
 		return agencia;
 	}
 
-	public void setAgencia(Integer agencia) {
+	public void setAgencia(String agencia) {
 		this.agencia = agencia;
 	}
 
@@ -130,7 +131,10 @@ public class Conta implements Serializable {
 		this.saldo = saldo + valor;
 	}
 	
-	public void subtraiSaldo(double valor) {
+	public void subtraiSaldo(double valor) throws SaldoInsuficienteException{
+		if(valor > saldo) {
+			throw new SaldoInsuficienteException();
+		}
 		this.saldo = saldo - valor;
 	}
 

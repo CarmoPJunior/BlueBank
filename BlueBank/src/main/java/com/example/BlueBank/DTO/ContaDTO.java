@@ -14,8 +14,8 @@ public class ContaDTO {
 	private String nomeCliente;
 	private boolean status;
 	private TipoConta tipoConta;
-	private Integer numeroConta;
-	private Integer agencia;
+	private String numeroConta;
+	private String agencia;
 	private double saldo;
 	@JsonIgnoreProperties({"nomeClienteOrigem", "contaOrigem"})
 	private List<TransacaoDTO> transacoes;
@@ -52,19 +52,19 @@ public class ContaDTO {
 		this.tipoConta = tipoConta;
 	}
 
-	public Integer getNumeroConta() {
+	public String getNumeroConta() {
 		return numeroConta;
 	}
 
-	public void setNumeroConta(Integer numeroConta) {
+	public void setNumeroConta(String numeroConta) {
 		this.numeroConta = numeroConta;
 	}
 
-	public Integer getAgencia() {
+	public String getAgencia() {
 		return agencia;
 	}
 
-	public void setAgencia(Integer agencia) {
+	public void setAgencia(String agencia) {
 		this.agencia = agencia;
 	}
 

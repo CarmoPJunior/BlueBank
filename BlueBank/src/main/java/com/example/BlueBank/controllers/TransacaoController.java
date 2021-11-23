@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.service.TransacaoService;
 
@@ -37,7 +38,7 @@ public class TransacaoController {
 	}
 	
 	@PostMapping(value = "/transferencia")
-	public ResponseEntity<Transacoes> create(@RequestBody Transacoes transacao) {
+	public ResponseEntity<Transacoes> create(@RequestBody Transacoes transacao) throws SaldoInsuficienteException {
 				
 		Transacoes newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(), transacao.getValor());
 		URI uri =
@@ -61,7 +62,7 @@ public class TransacaoController {
 	
 
 	@PostMapping(value = "/saque")
-	public ResponseEntity<Transacoes> saque(@RequestBody Transacoes transacao) {
+	public ResponseEntity<Transacoes> saque(@RequestBody Transacoes transacao) throws SaldoInsuficienteException {
 				
 		Transacoes newObj = service.saque(transacao.getContaOrigem(), transacao.getValor());
 		URI uri =
