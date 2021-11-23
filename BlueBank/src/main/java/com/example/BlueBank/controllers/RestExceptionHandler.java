@@ -17,6 +17,7 @@ import com.example.BlueBank.DTOExceptions.ErrorObject;
 import com.example.BlueBank.DTOExceptions.ErrorResponse;
 import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.ContatoNaoEncontradoException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 
 @RestControllerAdvice
@@ -54,7 +55,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 			return new ResponseEntity<ErrorResponse>(message, HttpStatus.BAD_REQUEST);
 		}
 		
-		@ExceptionHandler({ContaNaoEncontradaException.class})
+		@ExceptionHandler({ContaNaoEncontradaException.class, ContatoNaoEncontradoException.class})
 		public ResponseEntity<ErrorResponse> handleNotFoundException(Exception ex, WebRequest request) {
 			
 			ErrorResponse message = new ErrorResponse(
