@@ -10,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,13 +27,14 @@ public class Contato implements Serializable {
 	@JsonIgnoreProperties("contato")
 	@ManyToOne
 	@JoinColumn(name = "idCliente", nullable = false)
+	@NotNull(message =  "{id.not.null}")
 	private Cliente cliente;
 
-	@NotEmpty
+	@NotBlank(message = "{telefone.not.blank}")
 	private String numeroTelefone;
 
-	@NotEmpty
-	@Email
+	@NotBlank(message = "{email.not.blank}")
+	@Email(message = "{email.not.valid}")
 	private String email;
 
 	public Contato() {

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.exceptions.ContaBloqueadaException;
+import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.service.TransacaoService;
@@ -38,7 +40,7 @@ public class TransacaoController {
 	}
 	
 	@PostMapping(value = "/transferencia")
-	public ResponseEntity<Transacoes> create(@RequestBody Transacoes transacao) throws SaldoInsuficienteException {
+	public ResponseEntity<Transacoes> create(@RequestBody Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 				
 		Transacoes newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(), transacao.getValor());
 		URI uri =
@@ -50,7 +52,7 @@ public class TransacaoController {
 
 
 	@PostMapping(value = "/deposito")
-	public ResponseEntity<Transacoes> deposito(@RequestBody Transacoes transacao) {
+	public ResponseEntity<Transacoes> deposito(@RequestBody Transacoes transacao) throws ContaNaoEncontradaException, ContaBloqueadaException {
 				
 		Transacoes newObj = service.deposito(transacao.getContaOrigem(), transacao.getValor());
 		URI uri =
@@ -62,7 +64,7 @@ public class TransacaoController {
 	
 
 	@PostMapping(value = "/saque")
-	public ResponseEntity<Transacoes> saque(@RequestBody Transacoes transacao) throws SaldoInsuficienteException {
+	public ResponseEntity<Transacoes> saque(@RequestBody Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 				
 		Transacoes newObj = service.saque(transacao.getContaOrigem(), transacao.getValor());
 		URI uri =

@@ -23,9 +23,10 @@ public class ContaService implements ContaInterfaceService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public ContaDTO obterPorCod(Integer id) {
-		Optional<Conta> obj = this.contaRepository.findById(id);
-		return contaDTO(obj.get());
+	public ContaDTO obterPorCod(Integer id) throws ContaNaoEncontradaException {
+		Conta obj = this.contaRepository.findById(id).orElseThrow(ContaNaoEncontradaException::new);
+;
+		return contaDTO(obj);
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class ContaService implements ContaInterfaceService {
 		return this.contaRepository.save(conta);
 	}
 
-	public Conta atualizar(Integer id, ContaDTO obj) {
+	public Conta atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
 		ContaDTO newObj = obterPorCod(id);
 		Conta conta = conta(newObj);
 		conta.setTipoConta(obj.getTipoConta());
@@ -48,15 +49,16 @@ public class ContaService implements ContaInterfaceService {
 		return contaRepository.save(conta);
 	}
 
-	public Conta atualizarStatus(Integer id, ContaDTO obj) {
-		ContaDTO newObj = obterPorCod(id);
-		Conta conta = conta(newObj);
+	public ContaDTO atualizarStatus(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
+//		ContaDTO newObj = obterPorCod(id);
+		Conta conta = obterContaPorCod(id);
 		conta.setStatus(obj.isStatus());
-		return contaRepository.save(conta);
+		contaRepository.save(conta);
+		return contaDTO(conta);
 	}
 
 	@Override
-	public void deletar(Integer id) {
+	public void deletar(Integer id) throws ContaNaoEncontradaException {
 		obterPorCod(id);
 		this.contaRepository.deleteById(id);
 	}

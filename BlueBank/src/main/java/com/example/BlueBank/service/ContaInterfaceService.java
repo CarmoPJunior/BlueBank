@@ -8,7 +8,7 @@ import com.example.BlueBank.models.Conta;
 
 public interface ContaInterfaceService {
 
-	ContaDTO obterPorCod(Integer id);
+	ContaDTO obterPorCod(Integer id) throws ContaNaoEncontradaException;
 	
 	Conta obterContaPorCod(Integer id) throws ContaNaoEncontradaException;
 	
@@ -16,8 +16,8 @@ public interface ContaInterfaceService {
 	
 	Conta criar(Conta conta);
 	
-	Conta atualizar(Integer id, ContaDTO obj);
+	Conta atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException;
 	
-	void deletar(Integer id);
+	void deletar(Integer id) throws ContaNaoEncontradaException;
 	
 }

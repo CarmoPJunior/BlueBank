@@ -1,7 +1,6 @@
 package com.example.BlueBank.DTO;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 import com.example.BlueBank.models.TipoTransacao;
 import com.fasterxml.jackson.annotation.JsonInclude;

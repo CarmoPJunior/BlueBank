@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.example.BlueBank.models.Conta;
@@ -61,7 +62,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException {
+	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 		Conta contaDestino = contaService.obterContaPorCod(destino.getId());
 		contaDestino.somaSaldo(valor);
 		contaRepository.save(contaDestino);
@@ -91,7 +92,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes deposito(Conta conta, Double valor) throws ContaNaoEncontradaException {
+	public Transacoes deposito(Conta conta, Double valor) throws ContaNaoEncontradaException, ContaBloqueadaException {
 		
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.somaSaldo(valor);
@@ -106,7 +107,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException {
+	public Transacoes saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.subtraiSaldo(valor);
 		contaRepository.save(contaAux);
