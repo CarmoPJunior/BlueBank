@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -23,20 +24,27 @@ public class Endereco implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-//  @NotEmpty
+//	@NotEmpty
 	@JsonIgnoreProperties("endereco")
-	@OneToOne()
-	@JoinColumn(name = "idCliente", referencedColumnName = "id")
+	@OneToOne
+	@JoinColumn(name = "idCliente", nullable = false)
+	@NotNull(message = "{id.not.null}")
 	private Cliente cliente;
-	@NotEmpty
+
+//	@NotEmpty
+	@NotBlank(message = "{logradouro.not.blank}")
 	private String logradouro;
-	@NotEmpty
+//	@NotEmpty
+	@NotBlank(message = "{cidade.not.blank}")
 	private String cidade;
-	@NotEmpty
+//	@NotEmpty
+	@NotBlank(message = "{estado.not.blank}")
 	private String estado;
 	@NotNull
+//	@NotBlank(message = "{nuncasa.not.blank}")
 	private Integer numero;
-	@NotEmpty
+//	@NotEmpty
+	@NotBlank(message = "{cep.not.blank}")
 	private String cep;
 	
 	public Endereco() {
@@ -130,8 +138,5 @@ public class Endereco implements Serializable {
 		Endereco other = (Endereco) obj;
 		return Objects.equals(id, other.id);
 	}
-
-	
-	
 	
 }

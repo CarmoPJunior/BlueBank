@@ -8,67 +8,69 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.DTO.EnderecoDTO;
-import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.exceptions.EnderecoNaoEncontradoException;
 import com.example.BlueBank.models.Endereco;
 import com.example.BlueBank.repositories.EnderecoRepository;
 
 @Service
 public class EnderecoService implements EnderecoInterfaceService {
 	
-	
 	@Autowired
-	EnderecoRepository repository;
+	EnderecoRepository enderecoRepository;
 	
 	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
-	public Endereco obterPorCod(Integer id) {
-		Optional<Endereco> obj = this.repository.findById(id);
-		return obj.orElse(null);
+	public EnderecoDTO obterPorCodDTO(Integer id) throws EnderecoNaoEncontradoException {
+		Endereco obj = this.enderecoRepository.findById(id).orElseThrow(EnderecoNaoEncontradoException::new);
+		return enderecoDTO(obj);
 	}
 
 	@Override
 	public List<EnderecoDTO> obterTodos() {
-		return this.repository.findAll().stream().map(this::enderecoToDTO).collect(Collectors.toList());
+		return this.enderecoRepository.findAll().stream().map(this::enderecoDTO).collect(Collectors.toList());
 	}
 
 	@Override
 	public Endereco criar(Endereco endereco) {
-		return this.repository.save(endereco);
+		return this.enderecoRepository.save(endereco);
 	}
 
-	@Override
-	public void deletar(Integer id) {
-		obterPorCod(id);
-		this.repository.deleteById(id);
+	public EnderecoDTO alterarEndereco(Integer id, EnderecoDTO obj) throws EnderecoNaoEncontradoException {		
+	//  EnderecoDTO newObj = obterPorCod(id);
+		Endereco endereco = obterPorCod(id);
+
+		endereco.setCep(obj.getCep());
+		endereco.setCidade(obj.getCidade());
+		endereco.setEstado(obj.getEstado());
+		endereco.setLogradouro(obj.getLogradouro());
+		endereco.setNumero(obj.getNumero());
 		
-	}
-
-	@Override
-	public EnderecoDTO alterarEndereco(Integer id, Endereco endereco) {
-		Endereco newObj = obterPorCod(id);;
-
-		newObj.setCep(endereco.getCep());
-		newObj.setCidade(endereco.getCidade());
-		newObj.setEstado(endereco.getEstado());
-		newObj.setLogradouro(endereco.getLogradouro());
-		newObj.setNumero(endereco.getNumero());
-		
-		this.repository.save(newObj);
-		return enderecoToDTO(newObj);
-	}
-
-	@Override
-	public EnderecoDTO obterPorCodDTO(Integer id) {
-		Optional<Endereco> obj = this.repository.findById(id);		
-		return enderecoToDTO(obj.get());
+		enderecoRepository.save(endereco);
+		return enderecoDTO(endereco);
 	}
 	
-	private EnderecoDTO enderecoToDTO(Endereco endereco) {
+	
+	@Override
+	public void deletar(Integer id) throws EnderecoNaoEncontradoException {
+		obterPorCod(id);
+		this.enderecoRepository.deleteById(id);	
+	}
+
+	private EnderecoDTO enderecoDTO(Endereco endereco) {
 		return modelMapper.map(endereco, EnderecoDTO.class);
+	}
+	
+//	private Endereco endereco(EnderecoDTO enderecoDTO) {
+//		return modelMapper.map(enderecoDTO, Endereco.class);
+//	}
+	
+	@Override
+	public Endereco obterPorCod(Integer id) throws EnderecoNaoEncontradoException {
+		Optional<Endereco> obj = this.enderecoRepository.findById(id);		
+		return obj.orElseThrow(EnderecoNaoEncontradoException::new);
 	}
 	
 
