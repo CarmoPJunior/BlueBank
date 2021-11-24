@@ -3,6 +3,8 @@ package com.example.BlueBank.controllers;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,7 +55,7 @@ public class ContaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Conta> create(@RequestBody Conta obj) {
+	public ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) {
 				
 		Conta newObj = contaService.criar(obj);
 		URI uri =
