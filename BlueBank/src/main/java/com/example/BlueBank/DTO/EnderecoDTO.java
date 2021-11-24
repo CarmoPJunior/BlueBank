@@ -1,9 +1,6 @@
 package com.example.BlueBank.DTO;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-@JsonInclude(Include.NON_EMPTY)
+//@JsonInclude(Include.NON_EMPTY)
 public class EnderecoDTO {
 
 	private Integer id;
@@ -14,8 +11,6 @@ public class EnderecoDTO {
 	private String estado;
 	private Integer numero;
 	private String cep;
-	
-	
 
 	public Integer getIdCliente() {
 		return idCliente;

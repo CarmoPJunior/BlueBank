@@ -7,22 +7,26 @@
 Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders 
 
 
-
-| [Tiago Almeida](https://github.com/tiagodalmeida87 ) | [Felipe Cândido](https://github.com/felipecandidoo ) | [Carmo Júnior](https://github.com/CarmoPJunior ) |
-| :--------------------------------------------------: | ---------------------------------------------------- | ------------------------------------------------ |
-|    [José Carlos](https://github.com/zecarlos558 )    |                                                      |                                                  |
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/CarmoPJunior"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/CarmoPJunior" width="100px;" alt=""/><br /><sub><b>Carmo Júnior</b></sub></a><br /><a href="https://github.com/CarmoPJunior" title="Carmo Júnior"></a></td>
+    <td align="center"><a href="https://github.com/felipecandidoo"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/felipecandidoo" width="100px;" alt=""/><br /><sub><b>Felipe Cândido</b></sub></a><br /><a href="https://github.com/felipecandidoo" title="Felipe Cândido"></a></td>
+    <td align="center"><a href="https://github.com/zecarlos558"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/zecarlos558" width="100px;" alt=""/><br /><sub><b>José Carlos</b></sub></a><br /><a href="https://github.com/hellomp" title="José Carlos"></a></td>
+    <td align="center"><a href="https://github.com/tiagodalmeida87"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/tiagodalmeida87" width="100px;" alt=""/><br /><sub><b>Tiago Almeida</b></sub></a><br /><a href="https://github.com/tiagodalmeida87" title="Tiago Almeida"></a></td>
+  </tr>
 
 
 
 ## Professores
 
-- Jennifer
-- Jonathan
 - Ana Verônica
+- [Jennifer Plácido](https://www.linkedin.com/in/jenifer-pl%C3%A1cido-00b5611ab/)
+- Jonathan Ferreira
+
 
 ## Objetivo
 
-Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes,  permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](banco_pan_desafio_final_bluebank.pdf)
+Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](banco_pan_desafio_final_bluebank.pdf)
 
 ## Modelagem do Software
 
@@ -44,8 +48,10 @@ Para o controle e gestão de fluxo do projeto foi utilizado o Trello, adicionand
 
 ...
 
-# Patrocinadores
+## Patrocinadores
 
+###### Gama Academy
 ![](logo_gamaAcademy.png)
 
+###### Banco PAN
 ![](logo_bancoPan.png)

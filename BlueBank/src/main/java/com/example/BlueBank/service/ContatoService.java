@@ -59,9 +59,9 @@ public class ContatoService implements ContatoInterfaceService {
 		return modelMapper.map(contato, ContatoDTO.class);
 	}
 	
-	private Contato contato(ContatoDTO contatoDTO) {
-		return modelMapper.map(contatoDTO, Contato.class);
-	}
+//	private Contato contato(ContatoDTO contatoDTO) {
+//		return modelMapper.map(contatoDTO, Contato.class);
+//	}
 
 	@Override
 	public Contato obterContatoPorCod(Integer id) throws ContatoNaoEncontradoException {
