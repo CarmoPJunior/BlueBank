@@ -1,17 +1,25 @@
 package com.example.BlueBank.DTO;
 
 import java.util.List;
-
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_EMPTY)
 public class ClienteDTO {
 
 	private Integer id;
+	@NotEmpty(message =  "{cliente.nome.not.blank}")
 	private String nome;
+	@NotEmpty(message =  "{cliente.cpf.not.blank}")
+	@CPF
 	private String cpf;
+	@NotEmpty(message =  "{cliente.dataDeNascimento.not.blank}")
+	private String dataDeNascimento;	
 	@JsonIgnoreProperties("nomeCliente")
-	private EnderecoDTO endereco;
-	private String dataDeNascimento;
+	private EnderecoDTO endereco;	
 	@JsonIgnoreProperties("nomeCliente")
 	private List<ContatoDTO> contato;
 	@JsonIgnoreProperties("nomeCliente")
