@@ -24,12 +24,13 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@NotEmpty
+	@NotEmpty(message =  "{cliente.nome.not.blank}")
 	private String nome;
-	@CPF
+	@CPF	
+	@NotEmpty(message =  "{cliente.cpf.not.blank}")
 	@Column(unique = true)
 	private String cpf;
-	@NotEmpty
+	@NotEmpty(message =  "{cliente.dataDeNascimento.not.blank}")
 	private String dataDeNascimento;
 	
 	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)

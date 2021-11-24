@@ -2,6 +2,9 @@ package com.example.BlueBank.controllers;
 
 import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.BlueBank.DTO.ClienteDTO;
+import com.example.BlueBank.exceptions.ClienteJaExisteException;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.models.Cliente;
 import com.example.BlueBank.service.ClienteService;
 
@@ -27,7 +32,7 @@ public class ClienteController {
 	
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) {
+	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) throws ClienteNaoEncontradaException {
 		ClienteDTO obj = this.clienteService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
@@ -39,21 +44,21 @@ public class ClienteController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody ClienteDTO obj) {
-		Cliente newObj = clienteService.atualizar(id, obj);
+	public ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @RequestBody @Valid ClienteDTO obj) throws ClienteNaoEncontradaException {
+		ClienteDTO newObj = clienteService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PostMapping
-	public ResponseEntity<Cliente> create(@RequestBody Cliente obj) {		
-		Cliente newObj = clienteService.criar(obj);
+	public ResponseEntity<ClienteDTO> create(@RequestBody @Valid Cliente obj) throws ClienteJaExisteException {		
+		ClienteDTO newObj = clienteService.criar(obj);
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id) throws ClienteNaoEncontradaException {
 		clienteService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
