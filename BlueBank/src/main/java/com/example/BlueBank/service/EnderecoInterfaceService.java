@@ -3,20 +3,20 @@ package com.example.BlueBank.service;
 import java.util.List;
 
 import com.example.BlueBank.DTO.EnderecoDTO;
+import com.example.BlueBank.exceptions.EnderecoNaoEncontradoException;
 import com.example.BlueBank.models.Endereco;
 
 public interface EnderecoInterfaceService {
-	
-	public Endereco obterPorCod(Integer id);
-	
-	public EnderecoDTO obterPorCodDTO(Integer id);
-	
-	public List<EnderecoDTO> obterTodos();	
-	
-	public Endereco criar(Endereco endereco);
-	
-	public void deletar(Integer id);
-	
-	public EnderecoDTO alterarEndereco(Integer id, Endereco endereco);
 
+	EnderecoDTO obterPorCodDTO(Integer id) throws EnderecoNaoEncontradoException;
+
+	Endereco obterPorCod(Integer id) throws EnderecoNaoEncontradoException;
+
+	List<EnderecoDTO> obterTodos();
+
+	Endereco criar(Endereco endereco);
+
+	EnderecoDTO alterarEndereco(Integer id, EnderecoDTO endereco) throws EnderecoNaoEncontradoException;
+
+	void deletar(Integer id) throws EnderecoNaoEncontradoException;
 }

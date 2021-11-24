@@ -10,7 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
@@ -121,9 +120,9 @@ public class TransacaoService implements TransacaoInterfaceService {
 		
 	}
 
-	private Transacoes transacao(TransacaoDTO transacaoDTO) {
-		return modelMapper.map(transacaoDTO, Transacoes.class);
-	}
+//	private Transacoes transacao(TransacaoDTO transacaoDTO) {
+//		return modelMapper.map(transacaoDTO, Transacoes.class);
+//	}
 	
 	private TransacaoDTO transacaoDTO(Transacoes transacao) {
 		return modelMapper.map(transacao, TransacaoDTO.class);

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
@@ -32,17 +33,19 @@ public class Conta implements Serializable {
 	@OneToOne()
 	@JoinColumn(name = "idCliente", referencedColumnName = "id")
 	private Cliente cliente;
-	@NotNull
+	@NotNull(message =  "{status.not.null}")
 	private boolean status = true;
-	@NotNull
+	@NotNull(message =  "{tipoConta.not.null}")
 	private TipoConta tipoConta;
-	@NotNull
+	@NotBlank(message =  "{numeroConta.not.null}")
 	private String numeroConta;
-	@NotNull
+	@NotBlank(message =  "{agencia.not.null}")
 	private String agencia; 
 
-	@PositiveOrZero
-	@NotNull
+	@PositiveOrZero(message =  "{saldo.Positive}")
+	//@NotEmpty(message =  "{saldo.not.empty}")
+	//@NotBlank(message =  "{saldo.not.null}")	
+	@NotNull(message =  "{saldo.not.null}")
 	private double saldo;
 	
 	@OneToMany(mappedBy="contaOrigem", cascade = CascadeType.ALL )

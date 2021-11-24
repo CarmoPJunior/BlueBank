@@ -2,10 +2,12 @@ package com.example.BlueBank.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.exceptions.ClienteJaExisteException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
@@ -77,8 +79,8 @@ public class ClienteService implements ClienteInterfaceService {
 		return modelMapper.map(cliente, ClienteDTO.class);
 	}
 	
-	private Cliente mapperClienteDTOParaCliente(ClienteDTO clienteDTO) {
-		return modelMapper.map(clienteDTO, Cliente.class);
-	}
+//	private Cliente mapperClienteDTOParaCliente(ClienteDTO clienteDTO) {
+//		return modelMapper.map(clienteDTO, Cliente.class);
+//	}
 	
 }
