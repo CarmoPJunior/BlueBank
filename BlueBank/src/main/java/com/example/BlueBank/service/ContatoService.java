@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ContatoDTO;
+import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.ContatoNaoEncontradoException;
 import com.example.BlueBank.models.Contato;
 import com.example.BlueBank.repositories.ContatoRepository;
 
@@ -22,9 +24,9 @@ public class ContatoService implements ContatoInterfaceService {
 	private ModelMapper modelMapper;
 	
 	@Override
-	public ContatoDTO obterPorCod(Integer id) {
-		Optional<Contato> obj = this.contatoRepository.findById(id);
-		return contatoDTO(obj.get());
+	public ContatoDTO obterPorCod(Integer id) throws ContatoNaoEncontradoException {
+		Contato obj = this.contatoRepository.findById(id).orElseThrow(ContatoNaoEncontradoException::new);
+		return contatoDTO(obj);
 	}
 	
 	@Override
@@ -38,16 +40,17 @@ public class ContatoService implements ContatoInterfaceService {
 	}
 	
 	@Override
-	public Contato alterarContato(Integer id, ContatoDTO obj) {
-		ContatoDTO newObj = obterPorCod(id);
-		Contato contato = contato(newObj);
+	public ContatoDTO alterarContato(Integer id, ContatoDTO obj) throws ContatoNaoEncontradoException {
+		//ContatoDTO newObj = obterPorCod(id);
+		Contato contato = obterContatoPorCod(id);
 		contato.setNumeroTelefone(obj.getNumeroTelefone());
 		contato.setEmail(obj.getEmail());
-		return contatoRepository.save(contato);
+		contatoRepository.save(contato);
+		return contatoDTO(contato);
 	}
 
 	@Override
-	public void deletar(Integer id) {
+	public void deletar(Integer id) throws ContatoNaoEncontradoException {
 		obterPorCod(id);
 		this.contatoRepository.deleteById(id);
 	}
@@ -61,8 +64,8 @@ public class ContatoService implements ContatoInterfaceService {
 	}
 
 	@Override
-	public Contato obterContatoPorCod(Integer id) {
+	public Contato obterContatoPorCod(Integer id) throws ContatoNaoEncontradoException {
 		Optional<Contato> obj = this.contatoRepository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(ContatoNaoEncontradoException::new);
 	}
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContatoDTO;
+import com.example.BlueBank.exceptions.ContatoNaoEncontradoException;
 import com.example.BlueBank.models.Contato;
 import com.example.BlueBank.service.ContatoService;
 
@@ -29,7 +30,7 @@ public class ContatoController {
 	private ContatoService contatoService;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ContatoDTO> findById(@PathVariable Integer id) {
+	public ResponseEntity<ContatoDTO> findById(@PathVariable Integer id) throws ContatoNaoEncontradoException {
 		ContatoDTO obj = this.contatoService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
@@ -41,8 +42,8 @@ public class ContatoController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Contato> update(@PathVariable Integer id, @RequestBody ContatoDTO obj) {
-		Contato newObj = contatoService.alterarContato(id, obj);
+	public ResponseEntity<ContatoDTO> update(@PathVariable Integer id, @RequestBody ContatoDTO obj) throws ContatoNaoEncontradoException {
+		ContatoDTO newObj = contatoService.alterarContato(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
@@ -55,7 +56,7 @@ public class ContatoController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id) throws ContatoNaoEncontradoException {
 		contatoService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}

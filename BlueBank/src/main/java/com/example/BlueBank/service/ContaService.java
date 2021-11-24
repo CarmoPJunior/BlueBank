@@ -25,7 +25,7 @@ public class ContaService implements ContaInterfaceService {
 	@Override
 	public ContaDTO obterPorCod(Integer id) throws ContaNaoEncontradaException {
 		Conta obj = this.contaRepository.findById(id).orElseThrow(ContaNaoEncontradaException::new);
-;
+
 		return contaDTO(obj);
 	}
 
