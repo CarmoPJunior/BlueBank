@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.BlueBank.DTO.ClienteDTO;
+import com.example.BlueBank.controllers.docs.ClienteControllerDocs;
 import com.example.BlueBank.exceptions.ClienteJaExisteException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.models.Cliente;
@@ -25,7 +26,7 @@ import com.example.BlueBank.service.ClienteService;
 
 @RestController
 @RequestMapping(path = "/clientes")
-public class ClienteController {
+public class ClienteController implements ClienteControllerDocs{
 	
 	@Autowired
 	private ClienteService clienteService;
