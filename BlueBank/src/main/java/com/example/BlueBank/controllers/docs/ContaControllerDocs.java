@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
 
 import io.swagger.annotations.Api;
@@ -49,7 +50,7 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 401, message = "Não foi possível fazer a operação. É preciso estar zerada a conta!"),
             @ApiResponse(code = 404, message = "Conta não encontrada!")
     })
-	ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException;
+	ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException, PossuiSaldoException;
 	
 	@ApiOperation(value = "Cadastra uma nova conta, passando os dados da conta.")
     @ApiResponses(value = {
