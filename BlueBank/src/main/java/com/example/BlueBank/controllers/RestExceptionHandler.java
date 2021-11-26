@@ -48,13 +48,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 			
 			ErrorResponse message = new ErrorResponse(
 					ex.getMessage(),
-					HttpStatus.BAD_REQUEST.value(),
-					HttpStatus.BAD_REQUEST.getReasonPhrase(),
+					HttpStatus.UNAUTHORIZED.value(),
+					HttpStatus.UNAUTHORIZED.getReasonPhrase(),
 					null,
 					new Date(),
 					null);
 
-			return new ResponseEntity<ErrorResponse>(message, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<ErrorResponse>(message, HttpStatus.UNAUTHORIZED);
 		}
 		
 		@ExceptionHandler({ContaNaoEncontradaException.class, ContatoNaoEncontradoException.class, ClienteNaoEncontradaException.class})

@@ -11,9 +11,9 @@ public class TransacaoDTO {
 
 	private Integer id;
 	private String nomeClienteOrigem;
-	private Integer contaOrigem;
+	private String contaOrigem;
 	private String nomeClienteDestino;
-	private Integer contaDestino;
+	private String contaDestino;
 	private TipoTransacao tipoTransacao;
 	private String data;
 	private Double valor;
@@ -30,25 +30,26 @@ public class TransacaoDTO {
 	public void setNomeClienteOrigem(String nomeClienteOrigem) {
 		this.nomeClienteOrigem = nomeClienteOrigem;
 	}
-	public Integer getContaOrigem() {
+
+	public String getContaOrigem() {
 		return contaOrigem;
 	}
-	public void setContaOrigem(Integer contaOrigem) {
+	public void setContaOrigem(String contaOrigem) {
 		this.contaOrigem = contaOrigem;
 	}
-
+	public String getContaDestino() {
+		return contaDestino;
+	}
+	public void setContaDestino(String contaDestino) {
+		this.contaDestino = contaDestino;
+	}
 	public String getNomeClienteDestino() {
 		return nomeClienteDestino;
 	}
 	public void setNomeClienteDestino(String nomeClienteDestino) {
 		this.nomeClienteDestino = nomeClienteDestino;
 	}
-	public Integer getContaDestino() {
-		return contaDestino;
-	}
-	public void setContaDestino(Integer contaDestino) {
-		this.contaDestino = contaDestino;
-	}
+	
 	public String getData() {
 		return data;
 	}
