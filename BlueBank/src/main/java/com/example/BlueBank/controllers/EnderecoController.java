@@ -18,13 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.EnderecoDTO;
+import com.example.BlueBank.controllers.docs.EnderecoControllerDocs;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.EnderecoNaoEncontradoException;
 import com.example.BlueBank.models.Endereco;
 import com.example.BlueBank.service.EnderecoService;
 
 @RestController
 @RequestMapping(path = "/enderecos")
-public class EnderecoController {
+public class EnderecoController implements EnderecoControllerDocs{
 	
 	@Autowired
 	private EnderecoService enderecoService;
@@ -48,7 +50,7 @@ public class EnderecoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Endereco> create(@RequestBody @Valid Endereco obj) {
+	public ResponseEntity<Endereco> create(@RequestBody @Valid Endereco obj) throws ClienteNaoEncontradaException {
 				
 		Endereco newObj = enderecoService.criar(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
