@@ -40,8 +40,8 @@ public class ContaService implements ContaInterfaceService {
 	}
 
 	public Conta atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
-		ContaDTO newObj = obterPorCod(id);
-		Conta conta = conta(newObj);
+		//ContaDTO newObj = obterPorCod(id);
+		Conta conta = obterContaPorCod(id);
 		conta.setTipoConta(obj.getTipoConta());
 		conta.setNumeroConta(obj.getNumeroConta());
 		conta.setAgencia(obj.getAgencia());
