@@ -8,7 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.EnderecoDTO;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.EnderecoNaoEncontradoException;
 import com.example.BlueBank.models.Endereco;
 import com.example.BlueBank.repositories.EnderecoRepository;
@@ -21,6 +23,9 @@ public class EnderecoService implements EnderecoInterfaceService {
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private ClienteService clienteService;
 
 	@Override
 	public EnderecoDTO obterPorCodDTO(Integer id) throws EnderecoNaoEncontradoException {
@@ -34,7 +39,8 @@ public class EnderecoService implements EnderecoInterfaceService {
 	}
 
 	@Override
-	public Endereco criar(Endereco endereco) {
+	public Endereco criar(Endereco endereco) throws ClienteNaoEncontradaException {
+		ClienteDTO cliente = clienteService.obterPorCod(endereco.getCliente().getId());
 		return this.enderecoRepository.save(endereco);
 	}
 
