@@ -2,9 +2,7 @@ package com.example.BlueBank.controllers;
 
 import java.net.URI;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,15 +21,13 @@ import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.models.Cliente;
 import com.example.BlueBank.service.ClienteService;
 
-
 @RestController
 @RequestMapping(path = "/clientes")
 public class ClienteController implements ClienteControllerDocs{
 	
 	@Autowired
 	private ClienteService clienteService;
-	
-	
+		
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) throws ClienteNaoEncontradaException {
 		ClienteDTO obj = this.clienteService.obterPorCod(id);

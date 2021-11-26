@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.service.ContaService;
 
@@ -49,7 +50,7 @@ public class ContaController {
 	}
 
 	@PutMapping(value = "/atualizarStatus/{id}")
-	public ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException {
+	public ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException, PossuiSaldoException {
 		ContaDTO newObj = contaService.atualizarStatus(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
