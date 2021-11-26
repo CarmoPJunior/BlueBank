@@ -20,6 +20,7 @@ import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContatoNaoEncontradoException;
+import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.exceptions.EnderecoNaoEncontradoException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 
@@ -44,7 +45,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 	                .collect(Collectors.toList());
 	    }
 	    
-	    @ExceptionHandler({SaldoInsuficienteException.class, ContaBloqueadaException.class, ClienteJaExisteException.class})
+	  @ExceptionHandler({SaldoInsuficienteException.class, ContaBloqueadaException.class, ClienteJaExisteException.class, PossuiSaldoException.class})
 		public ResponseEntity<ErrorResponse> handleBadRequestException(Exception ex, WebRequest request) {
 			
 			ErrorResponse message = new ErrorResponse(
@@ -56,10 +57,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 					null);
 
 			return new ResponseEntity<ErrorResponse>(message, HttpStatus.UNAUTHORIZED);
-		}
-		
-		@ExceptionHandler({ContaNaoEncontradaException.class, ContatoNaoEncontradoException.class, ClienteNaoEncontradaException.class, EnderecoNaoEncontradoException.class})
+		}		
+	    
 
+		@ExceptionHandler({ContaNaoEncontradaException.class, ContatoNaoEncontradoException.class, ClienteNaoEncontradaException.class, EnderecoNaoEncontradoException.class})
 		public ResponseEntity<ErrorResponse> handleNotFoundException(Exception ex, WebRequest request) {
 			
 			ErrorResponse message = new ErrorResponse(

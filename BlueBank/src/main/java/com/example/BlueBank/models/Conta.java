@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import com.example.BlueBank.exceptions.ContaBloqueadaException;
+import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -128,7 +129,12 @@ public class Conta implements Serializable {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(boolean status) throws  PossuiSaldoException {
+		
+		if(this.saldo >0 ) {
+			throw new PossuiSaldoException();
+		}
+		
 		this.status = status;
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ContaRepository;
 
@@ -49,7 +50,7 @@ public class ContaService implements ContaInterfaceService {
 		return contaRepository.save(conta);
 	}
 
-	public ContaDTO atualizarStatus(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
+	public ContaDTO atualizarStatus(Integer id, ContaDTO obj) throws ContaNaoEncontradaException, PossuiSaldoException {
 //		ContaDTO newObj = obterPorCod(id);
 		Conta conta = obterContaPorCod(id);
 		conta.setStatus(obj.isStatus());
