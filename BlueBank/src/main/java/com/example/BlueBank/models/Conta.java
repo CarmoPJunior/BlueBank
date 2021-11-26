@@ -33,6 +33,7 @@ public class Conta implements Serializable {
 
 	@OneToOne()
 	@JoinColumn(name = "idCliente", referencedColumnName = "id")
+	@NotNull(message =  "{cliente.not.null}")
 	private Cliente cliente;
 	@NotNull(message =  "{status.not.null}")
 	private boolean status = true;

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.controllers.docs.ContaControllerDocs;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
@@ -25,7 +26,7 @@ import com.example.BlueBank.service.ContaService;
 
 @RestController
 @RequestMapping(path = "/contas")
-public class ContaController {
+public class ContaController implements ContaControllerDocs{
 
 	@Autowired
 	private ContaService contaService;
