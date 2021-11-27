@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.controllers.docs.ContaControllerDocs;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.service.ContaService;
@@ -44,8 +45,8 @@ public class ContaController implements ContaControllerDocs{
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException {
-		Conta newObj = contaService.atualizar(id, obj);
+	public ResponseEntity<ContaDTO> update(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException {
+		ContaDTO newObj = contaService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
@@ -56,7 +57,7 @@ public class ContaController implements ContaControllerDocs{
 	}
 	
 	@PostMapping
-	public ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) {
+	public ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException {
 				
 		Conta newObj = contaService.criar(obj);
 		URI uri =

@@ -8,7 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.models.Conta;
 import com.example.BlueBank.repositories.ContaRepository;
@@ -19,6 +21,9 @@ public class ContaService implements ContaInterfaceService {
 	@Autowired
 	ContaRepository contaRepository;
 
+	@Autowired
+	ClienteService clienteService;
+	
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -35,18 +40,20 @@ public class ContaService implements ContaInterfaceService {
 	}
 
 	@Override
-	public Conta criar(Conta conta) {
+	public Conta criar(Conta conta) throws ClienteNaoEncontradaException {
+		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
 		return this.contaRepository.save(conta);
 	}
 
-	public Conta atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
+	public ContaDTO atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
 		//ContaDTO newObj = obterPorCod(id);
 		Conta conta = obterContaPorCod(id);
 		conta.setTipoConta(obj.getTipoConta());
 		conta.setNumeroConta(obj.getNumeroConta());
 		conta.setAgencia(obj.getAgencia());
 		// newObj.setSaldo(obj.getSaldo());
-		return contaRepository.save(conta);
+		contaRepository.save(conta);
+		return contaDTO(conta);
 	}
 
 	public ContaDTO atualizarStatus(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {

@@ -3,6 +3,7 @@ package com.example.BlueBank.service;
 import java.util.List;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.models.Conta;
 
@@ -14,9 +15,9 @@ public interface ContaInterfaceService {
 	
 	List<ContaDTO> obterTodos();	
 	
-	Conta criar(Conta conta);
+	Conta criar(Conta conta) throws ClienteNaoEncontradaException;
 	
-	Conta atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException;
+	ContaDTO atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException;
 	
 	void deletar(Integer id) throws ContaNaoEncontradaException;
 	
