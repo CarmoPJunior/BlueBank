@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContatoDTO;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContatoNaoEncontradoException;
 import com.example.BlueBank.models.Contato;
 import com.example.BlueBank.service.ContatoService;
@@ -48,7 +49,7 @@ public class ContatoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Contato> create(@RequestBody @Valid Contato obj) {
+	public ResponseEntity<Contato> create(@RequestBody @Valid Contato obj) throws ClienteNaoEncontradaException {
 
 		Contato newObj = contatoService.criar(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
