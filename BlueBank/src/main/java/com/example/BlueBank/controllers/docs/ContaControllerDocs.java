@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
@@ -41,7 +42,7 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 400, message = "Requisição possui campos inválidos!"),
             @ApiResponse(code = 404, message = "Conta não encontrada!")
     })
-	ResponseEntity<Conta> update(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException;
+	ResponseEntity<ContaDTO> update(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException;
 	
 	@ApiOperation(value = "Atualiza o Status de uma conta, passando o ID da Conta o estado a ser alterado")
     @ApiResponses(value = {
@@ -58,7 +59,7 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 400, message = "Requisição possui campos inválidos!"),
             @ApiResponse(code = 404, message = "Conta não encontrada!")
     })
-	ResponseEntity<Conta> create(@RequestBody @Valid Conta obj);
+	ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException;
 	
 	@ApiOperation(value = "Deleta uma conta, passando o ID da conta.")
     @ApiResponses(value = {

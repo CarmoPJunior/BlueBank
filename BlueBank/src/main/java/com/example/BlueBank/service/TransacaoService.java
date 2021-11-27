@@ -73,8 +73,8 @@ public class TransacaoService implements TransacaoInterfaceService {
 		
 		
 		Transacoes transacaoDest = new Transacoes();
-		transacaoDest.setContaDestino(contaDestino);
-		transacaoDest.setContaOrigem(contaOrigem);
+		transacaoDest.setContaDestino(contaOrigem);
+		transacaoDest.setContaOrigem(contaDestino);
 		transacaoDest.setData(fmt.format(new Date()));
 		transacaoDest.setValor(valor);
 		transacaoDest.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
