@@ -70,9 +70,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		Conta contaOrigem = contaService.obterContaPorCod(origem.getId());
 		contaOrigem.subtraiSaldo(valor);
 		contaRepository.save(contaOrigem);
-		
-		
-		
+		/*
 		Transacoes transacaoDest = new Transacoes();
 		transacaoDest.setContaDestino(contaOrigem);
 		transacaoDest.setContaOrigem(contaDestino);
@@ -80,8 +78,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoDest.setValor(valor);
 		transacaoDest.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
 		transacaoRepository.save(transacaoDest);
-		
-		
+		*/
 		Transacoes transacaoOri = new Transacoes();
 		transacaoOri.setContaOrigem(contaOrigem);
 		transacaoOri.setContaDestino(contaDestino);
