@@ -8,8 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContatoDTO;
-import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
+import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContatoNaoEncontradoException;
 import com.example.BlueBank.models.Contato;
 import com.example.BlueBank.repositories.ContatoRepository;
@@ -23,6 +24,10 @@ public class ContatoService implements ContatoInterfaceService {
 	@Autowired
 	private ModelMapper modelMapper;
 	
+
+	@Autowired
+	private ClienteService clienteService;
+	
 	@Override
 	public ContatoDTO obterPorCod(Integer id) throws ContatoNaoEncontradoException {
 		Contato obj = this.contatoRepository.findById(id).orElseThrow(ContatoNaoEncontradoException::new);
@@ -35,7 +40,8 @@ public class ContatoService implements ContatoInterfaceService {
 	}
 
 	@Override
-	public Contato criar(Contato contato) {
+	public Contato criar(Contato contato) throws ClienteNaoEncontradaException {
+		ClienteDTO cliente = clienteService.obterPorCod(contato.getCliente().getId());
 		return this.contatoRepository.save(contato);
 	}
 	
