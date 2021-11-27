@@ -4,15 +4,19 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.models.Transacoes;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +31,7 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 200, message = "Conta encontrada!"),
             @ApiResponse(code = 404, message = "Conta não encontrado!")
     })
-	ResponseEntity<ContaDTO> findById(@PathVariable Integer id) throws ContaNaoEncontradaException;
+	ResponseEntity<Page<TransacaoDTO>> findById(@PathVariable Integer id, Pageable page) throws ContaNaoEncontradaException;
 
 	@ApiOperation(value = "Retorna todas as contas existentes")
     @ApiResponses(value = {
