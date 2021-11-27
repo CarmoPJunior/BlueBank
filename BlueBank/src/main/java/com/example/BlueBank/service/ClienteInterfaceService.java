@@ -1,6 +1,7 @@
 package com.example.BlueBank.service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.exceptions.ClienteJaExisteException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
@@ -10,7 +11,7 @@ public interface ClienteInterfaceService {
 	
 	ClienteDTO obterPorCod(Integer id) throws ClienteNaoEncontradaException;
 	
-	List<ClienteDTO> obterTodos();	
+	Page<ClienteDTO> obterTodos(Pageable page);	
 	
 	ClienteDTO criar(Cliente cliente) throws ClienteJaExisteException;	
 

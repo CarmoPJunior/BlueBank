@@ -6,12 +6,17 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ClienteDTO;
+import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.exceptions.ClienteJaExisteException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.models.Cliente;
+import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.repositories.ClienteRepository;
 
 @Service
@@ -40,8 +45,17 @@ public class ClienteService implements ClienteInterfaceService {
 	}
 	
 	@Override
-	public List<ClienteDTO> obterTodos() {
-		return this.clienteRepository.findAll().stream().map(this::mapperClienteParaClienteDTO).collect(Collectors.toList());
+	public Page<ClienteDTO> obterTodos(Pageable page) {
+		
+		
+		Page<Cliente> clientes = clienteRepository.findAll(page);
+        int totalElements = (int) clientes.getTotalElements();
+        
+        return new PageImpl<ClienteDTO>(clientes.getContent()
+                .stream()
+                .map(this::mapperClienteParaClienteDTO)
+                .collect(Collectors.toList()), page, totalElements);
+		
 	}
 
 	@Override
@@ -78,9 +92,5 @@ public class ClienteService implements ClienteInterfaceService {
 	private ClienteDTO mapperClienteParaClienteDTO(Cliente cliente) {
 		return modelMapper.map(cliente, ClienteDTO.class);
 	}
-	
-//	private Cliente mapperClienteDTOParaCliente(ClienteDTO clienteDTO) {
-//		return modelMapper.map(clienteDTO, Cliente.class);
-//	}
 	
 }

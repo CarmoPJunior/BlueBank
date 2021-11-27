@@ -1,18 +1,17 @@
 package com.example.BlueBank.controllers.docs;
 
 import java.util.List;
-
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.exceptions.ClienteJaExisteException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.models.Cliente;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -34,7 +33,7 @@ public interface  ClienteControllerDocs {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Lista todos os clientes cadastrados."),
     })
-    ResponseEntity<List<ClienteDTO>> findAll();
+    ResponseEntity<Page<ClienteDTO>> findAll(Pageable page);
     
     @ApiOperation(value = "Insere um cliente.")
     @ApiResponses(value = {
