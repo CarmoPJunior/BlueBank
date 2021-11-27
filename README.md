@@ -26,7 +26,7 @@ Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders
 
 ## Objetivo
 
-Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](banco_pan_desafio_final_bluebank.pdf)
+Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/doc/banco_pan_desafio_final_bluebank.pdf)
 
 ## Modelagem do Software
 
@@ -47,8 +47,10 @@ Para o controle e gestão de fluxo do projeto foi utilizado o [Trello](https://t
 As tarefas são adicionadas através de uma reunião de equipe, onde é definido o escopo e priorização de cada atividade. Cada desenvolvedor seleciona a tarefa para realizar, marca como concluída e registra a data de conclusão. Ao final, o código atualizado é enviado para o GitHub e passava por uma revisão antes de ser submetido.
 
 
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Trello-Squad2.jpg)
 
 ###### KANBAN - [Trello](https://trello.com/b/b2gm8LNx/kanban-bluebank-squad2)
+
 
 
 ## O Projeto
@@ -158,9 +160,9 @@ http://localhost:8080/enderecos/{id}
 ## Patrocinadores
 
 ###### [Banco PAN](https://www.bancopan.com.br/)
-![](logo_bancoPan.png)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_bancoPan.png)
 
 
 ###### [Gama Academy](https://www.gama.academy/)
-![](logo_gamaAcademy.png)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
 
