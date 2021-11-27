@@ -1,19 +1,25 @@
 package com.example.BlueBank.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.repositories.ContaRepository;
 
 @Service
@@ -26,6 +32,9 @@ public class ContaService implements ContaInterfaceService {
 	ClienteService clienteService;
 	
 	@Autowired
+	TransacaoService transacaoService;
+	
+	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
@@ -33,6 +42,24 @@ public class ContaService implements ContaInterfaceService {
 		Conta obj = this.contaRepository.findById(id).orElseThrow(ContaNaoEncontradaException::new);
 
 		return contaDTO(obj);
+	}
+	
+	public Page<TransacaoDTO>  obterContasPaginadas(Integer id, Pageable page) throws ContaNaoEncontradaException {
+		Conta obj = this.contaRepository.findById(id).orElseThrow(ContaNaoEncontradaException::new);
+		ContaDTO objDTO = contaDTO(obj);
+//		Page<Transacoes> newObj = contaRepository.findAllByConta(objDTO, page);
+//		
+//		Page<TransacaoDTO> newObjDTO = transacaoService.transacaoDTO(newObj);
+//		
+//		return newObjDTO;
+		
+		Page<Transacoes> personPage = contaRepository.findAllByConta(objDTO, page);
+        int totalElements = (int) personPage.getTotalElements();
+        return new PageImpl<TransacaoDTO>(personPage.getContent()
+                .stream()
+                .map(this::transacaoDTO)
+                .collect(Collectors.toList()), page, totalElements);
+		
 	}
 
 	@Override
@@ -84,6 +111,10 @@ public class ContaService implements ContaInterfaceService {
 		Optional<Conta> obj = this.contaRepository.findById(id);
 		return obj.orElseThrow(() ->  new ContaNaoEncontradaException());
 
+	}
+	
+	public TransacaoDTO transacaoDTO(Transacoes transacao) {
+		return modelMapper.map(transacao, TransacaoDTO.class);
 	}
 
 }

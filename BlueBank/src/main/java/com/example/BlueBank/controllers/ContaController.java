@@ -6,6 +6,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.controllers.docs.ContaControllerDocs;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.service.ContaService;
 
 @RestController
@@ -32,10 +37,15 @@ public class ContaController implements ContaControllerDocs{
 	@Autowired
 	private ContaService contaService;
 	
-	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) throws ContaNaoEncontradaException {
-		ContaDTO obj = this.contaService.obterPorCod(id);
+	public ResponseEntity<List<ContaDTO>> findById() throws ContaNaoEncontradaException {
+		List<ContaDTO> obj = this.contaService.obterTodos();
+		return ResponseEntity.ok().body(obj);
+	};
+	
+	@GetMapping(value = "/{id}/transacoes")
+	public ResponseEntity<Page<TransacaoDTO>> findById(@PathVariable Integer id,@PageableDefault(size = 6) Pageable page) throws ContaNaoEncontradaException {
+		Page<TransacaoDTO> obj = this.contaService.obterContasPaginadas(id, page);
 		return ResponseEntity.ok().body(obj);
 	};
 

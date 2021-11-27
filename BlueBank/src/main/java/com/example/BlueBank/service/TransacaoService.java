@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.TransacaoDTO;
@@ -124,8 +125,11 @@ public class TransacaoService implements TransacaoInterfaceService {
 //		return modelMapper.map(transacaoDTO, Transacoes.class);
 //	}
 	
-	private TransacaoDTO transacaoDTO(Transacoes transacao) {
+	public TransacaoDTO transacaoDTO(Transacoes transacao) {
 		return modelMapper.map(transacao, TransacaoDTO.class);
 	}
+
+
+
 
 }
