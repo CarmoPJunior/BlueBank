@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContaDTO;
+import com.example.BlueBank.DTO.ContatoDTO;
 import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
@@ -53,19 +54,19 @@ public class ContaService implements ContaInterfaceService {
 //		
 //		return newObjDTO;
 		
-		Page<Transacoes> personPage = contaRepository.findAllByConta(objDTO, page);
+		Page<Transacoes> personPage = contaRepository.findAllByConta(objDTO.getId(), page);
         int totalElements = (int) personPage.getTotalElements();
         return new PageImpl<TransacaoDTO>(personPage.getContent()
                 .stream()
                 .map(this::transacaoDTO)
-                .collect(Collectors.toList()), page, totalElements);
-		
+                .collect(Collectors.toList()), page, totalElements);		
 	}
 
 	@Override
 	public List<ContaDTO> obterTodos() {
 		return this.contaRepository.findAll().stream().map(this::contaDTO).collect(Collectors.toList());
 	}
+	
 
 	@Override
 	public Conta criar(Conta conta) throws ClienteNaoEncontradaException {

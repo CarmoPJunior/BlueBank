@@ -5,9 +5,6 @@ import java.util.List;
 import com.example.BlueBank.models.TipoConta;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
-
 public class ContaDTO {
 
 	private Integer id;
