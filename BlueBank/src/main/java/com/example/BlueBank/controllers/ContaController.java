@@ -38,8 +38,8 @@ public class ContaController implements ContaControllerDocs{
 	private ContaService contaService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<List<ContaDTO>> findById() throws ContaNaoEncontradaException {
-		List<ContaDTO> obj = this.contaService.obterTodos();
+	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) throws ContaNaoEncontradaException {
+		ContaDTO obj = this.contaService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
 	
