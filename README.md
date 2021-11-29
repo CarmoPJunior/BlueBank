@@ -17,16 +17,16 @@ Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders
 </table>
 
 
-## Professores
+## Transformadores da Gama Academy
 
-- Ana Verônica
+- [Ana Verônica](https://www.linkedin.com/in/ana-ver%C3%B4nica-nascimento-cruz-1896a0158/)
 - [Jennifer Plácido](https://www.linkedin.com/in/jenifer-pl%C3%A1cido-00b5611ab/)
-- Jonathan Ferreira
+- [Jonathan Ferreira](https://www.linkedin.com/in/jferreira33/)
 
 
 ## Objetivo
 
-Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](banco_pan_desafio_final_bluebank.pdf)
+Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/doc/banco_pan_desafio_final_bluebank.pdf)
 
 ## Modelagem do Software
 
@@ -40,18 +40,129 @@ Ainda a definir versão final ...
 
 ## Gerência do Projeto
 
-O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a sua gestão. Através de uma equipe multidisciplinar auto gerenciável, com a presença de um líder.
+O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a sua gestão. Através de uma equipe multidisciplinar auto gerenciável, com a rotação de Tech Leader entre os desenvolvedores.
 
-Para o controle e gestão de fluxo do projeto foi utilizado o Trello, adicionando e dividindo as tarefas através de um quadro Kanban, que possui a etapas padrão: to do, doing e done. As tarefas são adicionadas através de uma reunião de equipe, onde é definido o escopo e priorização de cada atividade. Cada desenvolvedor seleciona a tarefa para realizar, marca como concluída e registra a data de conclusão. Ao final, o código atualizado é enviado para o GitHub e passava por uma revisão antes de ser submetido.
+Para o controle e gestão de fluxo do projeto foi utilizado o [Trello](https://trello.com/b/b2gm8LNx/kanban-bluebank-squad2), adicionando e dividindo as tarefas através de um quadro Kanban, que possui a etapas padrão: to do, doing e done. 
 
-### KANBAN - Trello
+As tarefas são adicionadas através de uma reunião de equipe, onde é definido o escopo e priorização de cada atividade. Cada desenvolvedor seleciona a tarefa para realizar, marca como concluída e registra a data de conclusão. Ao final, o código atualizado é enviado para o GitHub e passava por uma revisão antes de ser submetido.
+
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Trello-Squad2.jpg)
+
+###### KANBAN - [Trello](https://trello.com/b/b2gm8LNx/kanban-bluebank-squad2)
+
+
+
+## O Projeto
+
+Os endpoints para acesso ao seus métodos HTTPs (GET, POST, PUT e DELETE.) do BlueBank são:
+
+## Endepoint do Cliente
+
+#### Endpoint do método GET, que consulta todos os clientes, e para o método POST que cria os clientes:
+
+```
+http://localhost:8080/clientes
+```
+###### Método GET
+
+```
+{
+        "nome": "Lionel Messi",
+        "cpf": "214.033.700-01",
+        "dataDeNascimento": "18/08/1987"
+}
+```
+###### Método POST
+
+
+#### Endpoint do método PUT, que atualiza o cadastro do cliente, e para o método DELETE que exclui o cliente:
+
+```
+http://localhost:8080/clientes/{id}
+```
+###### Método PUT
+
+```
+{
+        "nome": "Lionel Andrés Messi Cuccittini",
+        "cpf": "214.033.700-01",
+        "dataDeNascimento": "24/06/1987"
+}
+```
+###### Método DELETE - passa a URL com o ID do Cliente que deseja excluir.
+
+
+## Endepoint da Conta
+
+###### Endpoint do método GET, que consulta todos as contas, e para o método POST que cria as contas:
+
+```
+http://localhost:8080/contas
+```
+###### Método GET
+
+```
+{
+    "cliente":{"id":1},
+    "tipoConta": 1,
+    "numeroConta": 99005,
+    "agencia": 0117
+}
+```
+###### Método POST
+
+
+
+###### Endpoint do método PUT, que atualiza o cadastro da conta do cliente, e para o método DELETE que exclui a conta do cliente:
+
+```
+http://localhost:8080/contas/{id}
+```
+
+
+## Endepoint do Endereço
+
+###### Endpoint do método GET, que consulta todos os endereços, e para o método POST que cria os endereços:
+
+```
+http://localhost:8080/enderecos
+```
+
+
+###### Endpoint do método PUT, que atualiza o cadastro de endereço do cliente, e para o método DELETE que exclui o endereço do cliente:
+
+```
+http://localhost:8080/enderecos/{id}
+```
+
+
+## Endepoint do Contato
+
+###### Endpoint do método GET, que consulta todos os contatos, e para o método POST que cria os contatos:
+
+```
+http://localhost:8080/enderecos
+```
+
+
+###### Endpoint do método PUT, que atualiza o cadastro de contato do cliente, e para o método DELETE que exclui o contato do cliente:
+
+```
+http://localhost:8080/enderecos/{id}
+```
+
+
+
 
 ...
 
 ## Patrocinadores
 
-###### Gama Academy
-![](logo_gamaAcademy.png)
+###### [Banco PAN](https://www.bancopan.com.br/)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_bancoPan.png)
 
-###### Banco PAN
-![](logo_bancoPan.png)
+
+###### [Gama Academy](https://www.gama.academy/)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
+
