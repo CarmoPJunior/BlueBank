@@ -1,7 +1,6 @@
 # BlueBank - Projeto Final PanAcademy
 
 
-
 ## Desenvolvedores
 
 Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders 
@@ -23,14 +22,21 @@ Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders
 - [Jennifer Plácido](https://www.linkedin.com/in/jenifer-pl%C3%A1cido-00b5611ab/)
 - [Jonathan Ferreira](https://www.linkedin.com/in/jferreira33/)
 
+## Tópicos
+
+* [Objetivo](#Objetivo)
+* [Diagrama de Classes](#Diagrama-de-Classes)
+* [Gerência do Projeto](#Gerência-do-Projeto)
+* [O Projeto](#O-Projeto)
+* [Patrocinadores](#Patrocinadores)
 
 ## Objetivo
 
-Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e dados para contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/doc/banco_pan_desafio_final_bluebank.pdf)
+Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e de contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy.](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/doc/banco_pan_desafio_final_bluebank.pdf)
 
 ## Modelagem do Software
 
-O sistema foi representado de forma visual sua estrutura a partir do modelo de diagrama de Classes, o qual foi dividido entre as camadas do MVC as classes a serem implementadas, facilitando a divisão de tarefas entre os membros da equipe.
+O sistema foi representado de forma visual sua estrutura a partir do modelo de Diagrama de Classes, o qual foi dividido entre as camadas do MVC as classes a serem implementadas, facilitando a divisão de tarefas entre os membros da equipe.
 
 ### Diagrama de Classes
 
@@ -44,7 +50,7 @@ O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a 
 
 Para o controle e gestão de fluxo do projeto foi utilizado o [Trello](https://trello.com/b/b2gm8LNx/kanban-bluebank-squad2), adicionando e dividindo as tarefas através de um quadro Kanban, que possui a etapas padrão: to do, doing e done. 
 
-As tarefas são adicionadas através de uma reunião de equipe, onde é definido o escopo e priorização de cada atividade. Cada desenvolvedor seleciona a tarefa para realizar, marca como concluída e registra a data de conclusão. Ao final, o código atualizado é enviado para o GitHub e passava por uma revisão antes de ser submetido.
+As tarefas são adicionadas através de uma reunião de equipe, onde é definido o escopo e priorização de cada atividade. Cada desenvolvedor seleciona a tarefa para realizar, registra a data de conclusão e marca como concluída. Ao final, o código atualizado é enviado para o GitHub e passa por uma revisão antes de ser submetido.
 
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Trello-Squad2.jpg)
@@ -55,54 +61,96 @@ As tarefas são adicionadas através de uma reunião de equipe, onde é definido
 
 ## O Projeto
 
-Os endpoints para acesso ao seus métodos HTTPs (GET, POST, PUT e DELETE.) do BlueBank são:
+Para utilizar e testar o back-end do BlueBank, é necessário:
+  - Baixar ou clonar o projeto do Github, 
+  - Instalar uma IDE em Java([Eclipse](https://www.eclipse.org/downloads/) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/download/#section=windows)) ou outra IDE Java e importar o projeto do BlueBank. 
+  - Instalar uma base de dados MySQL([MySQL Workbench](https://dev.mysql.com/downloads/workbench/))
+  - Alterar a senha da base de dados do MySQL no application.properties na package -> src/main/resources
+  - Instalar o [Postman](https://www.postman.com/downloads/), [Insomnia](https://insomnia.rest/download) ou acessar o link do [Swagger](http://localhost:8080/swagger-ui.html#/) para inserção de dados, consulta, alterção e inclusão de dados.
+
+---
+
+Os endpoints para teste e acesso ao seus métodos HTTPs (GET, POST, PUT e DELETE) do BlueBank são:
 
 ## Endepoint do Cliente
 
-#### Endpoint do método GET, que consulta todos os clientes, e para o método POST que cria os clientes:
+### Endpoint do método GET consulta todos os clientes, o método POST que cria os clientes, o método PUT atualiza o cadastro do cliente e para o método DELETE que exclui o cliente:
 
+##### Método GET - Lista todos os clientes.
 ```
 http://localhost:8080/clientes
 ```
-###### Método GET
 
+##### Método POST - Cria o cliente.
 ```
+http://localhost:8080/clientes
+```
+```json
 {
-        "nome": "Lionel Messi",
-        "cpf": "214.033.700-01",
-        "dataDeNascimento": "18/08/1987"
+    "nome": "Lionel Andrés Messi Cuccittini",
+    "cpf": "214.033.700-01",
+    "dataDeNascimento": "18/08/1987"
 }
 ```
-###### Método POST
+###### Exemplo de inclusão JSON
+---
 
-
-#### Endpoint do método PUT, que atualiza o cadastro do cliente, e para o método DELETE que exclui o cliente:
-
+##### Método PUT - Atualiza o cliente por ID.
 ```
 http://localhost:8080/clientes/{id}
 ```
-###### Método PUT
-
-```
+```json
 {
-        "nome": "Lionel Andrés Messi Cuccittini",
-        "cpf": "214.033.700-01",
-        "dataDeNascimento": "24/06/1987"
+    "nome": "Lionel Messi",
+    "cpf": "214.033.700-01",
+    "dataDeNascimento": "24/06/1987"
 }
 ```
-###### Método DELETE - passa a URL com o ID do Cliente que deseja excluir.
+###### Exemplo de inclusão JSON
+---
 
+##### Método DELETE - Exclui o cliente por ID.
+```
+http://localhost:8080/clientes/{id}
+```
+
+##### Método GET - Consulta o cliente por ID.
+```
+http://localhost:8080/clientes/{id}
+```
+```json
+{
+    "id": 1,
+    "nome": "Lionel Messi",
+    "cpf": "214.033.700-01",
+    "dataDeNascimento": "18/08/1987"
+}
+```
+###### Exemplo de consulta por ID
+---
 
 ## Endepoint da Conta
 
-###### Endpoint do método GET, que consulta todos as contas, e para o método POST que cria as contas:
+### Endpoint do método GET consulta todos as contas, o método POST que cria a conta, método PUT atualiza o cadastro da conta do cliente e o método DELETE que exclui a conta do cliente:
 
+##### Método GET - Lista todos as contas.
 ```
 http://localhost:8080/contas
 ```
-###### Método GET
+
+##### Método GET - Lista todas as contas com paginação e definição de filtros() na busca das páginas .
 
 ```
+http://localhost:8080/contas/1/transacoes?page=0&sort=id,asc
+
+```
+
+
+##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (1-Conta Corrente, 2-Conta Poupança, 3-Conta Salário).
+```
+http://localhost:8080/contas
+```
+```json
 {
     "cliente":{"id":1},
     "tipoConta": 1,
@@ -110,52 +158,238 @@ http://localhost:8080/contas
     "agencia": 0117
 }
 ```
-###### Método POST
+###### Exemplo de inclusão JSON
+---
 
+###### Método PUT - Atualiza a conta por ID.
+```
+http://localhost:8080/contas/{id}
+```
+```json
+{
+    "tipoConta": 2,
+    "numeroConta": 99005-x,
+    "agencia": 0117
+}
+```
+###### Exemplo de inclusão JSON
+---
 
-
-###### Endpoint do método PUT, que atualiza o cadastro da conta do cliente, e para o método DELETE que exclui a conta do cliente:
-
+##### Método DELETE - Exclui a conta por ID.
 ```
 http://localhost:8080/contas/{id}
 ```
 
+##### Método GET - Consulta a conta por ID.
+```
+http://localhost:8080/contas/{id}
+```
+```json
+{
+    "id": 1,
+    "nomeCliente": "Lionel Messi",
+    "status": true,
+    "tipoConta": "POUPANÇA",
+    "numeroConta": "99005-x",
+    "agencia": "0117",
+    "saldo": 0.0,
+    "transacoes": []
+}
+```
+###### Exemplo de consulta por ID
+---
 
-## Endepoint do Endereço
 
-###### Endpoint do método GET, que consulta todos os endereços, e para o método POST que cria os endereços:
+## Endepoint de Endereço
 
+### Endpoint do método GET consulta todos os endereços, o método POST cria o endereço, método PUT atualiza o cadastro de endereço do cliente e o método DELETE que exclui o endereço do cliente:
+
+##### Método GET - Lista todos os endereços.
 ```
 http://localhost:8080/enderecos
 ```
 
-
-###### Endpoint do método PUT, que atualiza o cadastro de endereço do cliente, e para o método DELETE que exclui o endereço do cliente:
-
-```
-http://localhost:8080/enderecos/{id}
-```
-
-
-## Endepoint do Contato
-
-###### Endpoint do método GET, que consulta todos os contatos, e para o método POST que cria os contatos:
-
+##### Método POST - Cria o endereço de acordo com o ID do cliente.
 ```
 http://localhost:8080/enderecos
 ```
+```json
+{
+    "cliente":{"id": 1},
+    "logradouro": "Rua Edson Arantes do Nascimento",
+    "cidade": "Campinas",
+    "estado": "SP",
+    "numero": 800,
+    "cep": "13056-340"
+}
+```
+###### Exemplo de inclusão JSON
+---
 
+###### Método PUT - Atualiza o endereço por ID.
+```
+http://localhost:8080/enderecos/{id}
+```
+```json
+{
+    "logradouro": "Rua Edson Arantes - Rei Pelé",
+    "cidade": "Campinas",
+    "estado": "SP",
+    "numero": 1000,
+    "cep": "13056-340"
+}
+```
+###### Exemplo de inclusão JSON
+---
 
-###### Endpoint do método PUT, que atualiza o cadastro de contato do cliente, e para o método DELETE que exclui o contato do cliente:
-
+##### Método DELETE - Exclui o endereço por ID.
 ```
 http://localhost:8080/enderecos/{id}
 ```
 
+##### Método GET - Consulta o endereço por ID.
+```
+http://localhost:8080/enderecos/{id}
+```
+```json
+{
+    "id": 1,
+    "nomeCliente": "Lionel Messi",
+    "logradouro": "Rua Edson Arantes - Rei Pelé",
+    "cidade": "Campinas",
+    "estado": "SP",
+    "numero": 1000,
+    "cep": "13056-340"
+}
+```
+###### Exemplo de consulta por ID
+---
 
 
+## Endepoint de Contato
 
-...
+### Endpoint do método GET consulta todos os contatos, o método POST que cria o contato, método PUT atualiza o cadastro de contato do cliente e o método DELETE que exclui o cantato do cliente:
+
+##### Método GET - Lista todos os contatos.
+```
+http://localhost:8080/contatos
+```
+
+##### Método POST - Cria o contato de acordo com o ID do cliente.
+```
+http://localhost:8080/contatos
+```
+```json
+{
+    "cliente":{"id":1},
+    "numeroTelefone": "(11) 97710-8811",
+    "email": "lionel_messi@hotmail.com"
+}
+```
+###### Exemplo de inclusão JSON
+---
+
+###### Método PUT - Atualiza o contato do cliente por ID.
+```
+http://localhost:8080/contatos/{id}
+```
+```json
+{
+    "numeroTelefone": "(11) 93384-7744",
+    "email": "messi_30@gmail.com"
+}
+```
+###### Exemplo de inclusão JSON
+---
+
+##### Método DELETE - Exclui o contato do cliente por ID.
+```
+http://localhost:8080/contatos/{id}
+```
+
+##### Método GET - Consulta o endereço por ID.
+```
+http://localhost:8080/contatos/{id}
+```
+```json
+{
+    "id": 1,
+    "nomeCliente": "Lionel Messi",
+    "numeroTelefone": "(11) 93384-7744",
+    "email": "messi_30@gmail.com"
+}
+```
+###### Exemplo de consulta por ID
+---
+
+
+## Endepoint de Transações
+
+### Endpoint do método GET consulta todas as transações, o método POST que cria a transação de Depósito, Saque e Transferência:
+
+##### Método GET - Lista todas as transações.
+```
+http://localhost:8080/transacoes
+```
+
+##### Método GET - Consulta a transação por ID.
+```
+http://localhost:8080/transacoes/{id}
+```
+```json
+{
+    "id": 1,
+    "nomeCliente": "Lionel Messi",
+    "contaOrigem": "99005-x",
+    "tipoTransacao": "POUPANÇA",
+    "data": "29/11/2021 20:44:57",
+    "valor": 79.89
+}
+```
+###### Exemplo de consulta por ID
+---
+
+##### Método POST - Cria a transação de Depósito em conta.
+```
+http://localhost:8080/transacoes/deposito
+```
+```json
+{
+    "contaOrigem" : {"id" : 1},
+    "valor": 3500
+}
+```
+###### Exemplo de inclusão JSON
+---
+
+##### Método POST - Cria a transação de Saque da conta.
+```
+http://localhost:8080/transacoes/saque
+```
+```json
+{
+    "contaOrigem" : {"id" : 1},
+    "valor" : 1500
+}
+```
+###### Exemplo de inclusão JSON
+---
+
+##### Método POST - Cria a transação de transferência entre contas.
+```
+http://localhost:8080/transacoes/transferencia
+```
+```json
+{
+    "contaOrigem" : {"id" : 1},
+    "contaDestino" : {"id" : 2},
+    "valor" : 1100,
+}
+```
+###### Exemplo de inclusão JSON
+---
+
+
 
 ## Patrocinadores
 
