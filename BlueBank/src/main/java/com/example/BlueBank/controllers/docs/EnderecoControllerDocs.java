@@ -48,7 +48,7 @@ public interface EnderecoControllerDocs {
             @ApiResponse(code = 400, message = "Requisição possui campos inválidos!")
 
     })
-	ResponseEntity<Endereco> create(@RequestBody @Valid Endereco obj) throws ClienteNaoEncontradaException;
+	ResponseEntity<EnderecoDTO> create(@RequestBody @Valid Endereco obj) throws ClienteNaoEncontradaException;
 	
 	@ApiOperation(value = "Deleta um endereço, passando o id do endereço")
     @ApiResponses(value = {

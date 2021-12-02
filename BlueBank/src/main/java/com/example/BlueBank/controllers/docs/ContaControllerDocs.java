@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.exceptions.ClienteJaPossuiContaException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
@@ -63,7 +64,7 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 400, message = "Requisição possui campos inválidos!"),
             @ApiResponse(code = 404, message = "Conta não encontrada!")
     })
-	ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException;
+	ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException;
 	
 	@ApiOperation(value = "Deleta uma conta, passando o ID da conta.")
     @ApiResponses(value = {

@@ -39,9 +39,12 @@ public class EnderecoService implements EnderecoInterfaceService {
 	}
 
 	@Override
-	public Endereco criar(Endereco endereco) throws ClienteNaoEncontradaException {
+	public EnderecoDTO criar(Endereco endereco) throws ClienteNaoEncontradaException {
 		ClienteDTO cliente = clienteService.obterPorCod(endereco.getCliente().getId());
-		return this.enderecoRepository.save(endereco);
+		endereco.getCliente().setNome(cliente.getNome());;
+		this.enderecoRepository.save(endereco);
+		EnderecoDTO enderecoDTO = enderecoDTO(endereco);
+		return enderecoDTO;
 	}
 
 	public EnderecoDTO alterarEndereco(Integer id, EnderecoDTO obj) throws EnderecoNaoEncontradoException {		

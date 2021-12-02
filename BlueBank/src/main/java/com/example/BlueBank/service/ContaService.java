@@ -16,6 +16,7 @@ import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.DTO.ContatoDTO;
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.exceptions.ClienteJaPossuiContaException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
@@ -48,11 +49,6 @@ public class ContaService implements ContaInterfaceService {
 	public Page<TransacaoDTO>  obterContasPaginadas(Integer id, Pageable page) throws ContaNaoEncontradaException {
 		Conta obj = this.contaRepository.findById(id).orElseThrow(ContaNaoEncontradaException::new);
 		ContaDTO objDTO = contaDTO(obj);
-//		Page<Transacoes> newObj = contaRepository.findAllByConta(objDTO, page);
-//		
-//		Page<TransacaoDTO> newObjDTO = transacaoService.transacaoDTO(newObj);
-//		
-//		return newObjDTO;
 		
 		Page<Transacoes> personPage = contaRepository.findAllByConta(objDTO.getId(), page);
         int totalElements = (int) personPage.getTotalElements();
@@ -69,8 +65,11 @@ public class ContaService implements ContaInterfaceService {
 	
 
 	@Override
-	public Conta criar(Conta conta) throws ClienteNaoEncontradaException {
+	public Conta criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
 		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
+		if (cliente!=null) {
+			throw new ClienteJaPossuiContaException();
+		}
 		return this.contaRepository.save(conta);
 	}
 

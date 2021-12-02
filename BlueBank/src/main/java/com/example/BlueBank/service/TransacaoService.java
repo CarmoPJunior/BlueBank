@@ -50,6 +50,12 @@ public class TransacaoService implements TransacaoInterfaceService {
 		Optional<Transacoes> obj = this.transacaoRepository.findById(id);		
 		return transacaoDTO(obj.get());
 	}
+	
+	@Override
+	public List<TransacaoDTO> obterPorTipoTransacao(Integer id) {
+				
+		return this.transacaoRepository.findAllByTipo(id).stream().map(this::transacaoDTO).collect(Collectors.toList());
+	}
 
 	@Override
 	public List<Transacoes> obterTodos() {		

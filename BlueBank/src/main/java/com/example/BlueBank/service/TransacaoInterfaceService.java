@@ -7,6 +7,7 @@ import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.models.TipoTransacao;
 import com.example.BlueBank.models.Transacoes;
 
 public interface TransacaoInterfaceService {
@@ -24,5 +25,9 @@ public interface TransacaoInterfaceService {
 	TransacaoDTO obterPorCodDTO(Integer id);
 
 	List<TransacaoDTO> obterTodosDTO();
+
+	List<TransacaoDTO> obterPorTipoTransacao(Integer id);
+
+	
 	
 }

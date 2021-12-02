@@ -50,9 +50,9 @@ public class EnderecoController implements EnderecoControllerDocs{
 	}
 
 	@PostMapping
-	public ResponseEntity<Endereco> create(@RequestBody @Valid Endereco obj) throws ClienteNaoEncontradaException {
+	public ResponseEntity<EnderecoDTO> create(@RequestBody @Valid Endereco obj) throws ClienteNaoEncontradaException {
 				
-		Endereco newObj = enderecoService.criar(obj);
+		EnderecoDTO newObj = enderecoService.criar(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
 	}
