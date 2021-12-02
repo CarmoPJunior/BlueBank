@@ -69,12 +69,12 @@ public class ContaController implements ContaControllerDocs{
 	}
 	
 	@PostMapping
-	public ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
+	public ResponseEntity<ContaDTO> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
 				
-		Conta newObj = contaService.criar(obj);
+		ContaDTO newObj = contaService.criar(obj);
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(newObj);
 		
 	}
 

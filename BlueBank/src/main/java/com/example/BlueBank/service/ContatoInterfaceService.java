@@ -15,7 +15,7 @@ public interface ContatoInterfaceService {
 	
 	List<ContatoDTO> obterTodos();	
 	
-	Contato criar(Contato contato) throws ClienteNaoEncontradaException;
+	ContatoDTO criar(Contato contato) throws ClienteNaoEncontradaException;
 	
 	ContatoDTO alterarContato(Integer id, ContatoDTO obj) throws ContatoNaoEncontradoException;
 	

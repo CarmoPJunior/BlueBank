@@ -66,12 +66,15 @@ public class ContaService implements ContaInterfaceService {
 	
 	
 	@Override
-	public Conta criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
+	public ContaDTO criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
 		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
 		Conta clienteConta = contaRepository.findByClienteConta(conta.getCliente().getId());
+		conta.getCliente().setNome(cliente.getNome());
+		ContaDTO contaDTO = contaDTO(conta);
 		if (clienteConta==null) {
-			return this.contaRepository.save(conta);
-		}							
+			this.contaRepository.save(conta);
+			return contaDTO;
+		}
 		throw new ClienteJaPossuiContaException();
 	}
 
