@@ -40,9 +40,12 @@ public class ContatoService implements ContatoInterfaceService {
 	}
 
 	@Override
-	public Contato criar(Contato contato) throws ClienteNaoEncontradaException {
+	public ContatoDTO criar(Contato contato) throws ClienteNaoEncontradaException {
 		ClienteDTO cliente = clienteService.obterPorCod(contato.getCliente().getId());
-		return this.contatoRepository.save(contato);
+		contato.getCliente().setNome(cliente.getNome());
+		this.contatoRepository.save(contato);
+		ContatoDTO contatoDTO = contatoDTO(contato);
+		return contatoDTO;
 	}
 	
 	@Override
@@ -61,7 +64,7 @@ public class ContatoService implements ContatoInterfaceService {
 		this.contatoRepository.deleteById(id);
 	}
 	
-	private ContatoDTO contatoDTO(Contato contato) {
+	public ContatoDTO contatoDTO(Contato contato) {
 		return modelMapper.map(contato, ContatoDTO.class);
 	}
 	

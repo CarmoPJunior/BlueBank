@@ -64,7 +64,7 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 400, message = "Requisição possui campos inválidos!"),
             @ApiResponse(code = 404, message = "Conta não encontrada!")
     })
-	ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException;
+	ResponseEntity<ContaDTO> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException;
 	
 	@ApiOperation(value = "Deleta uma conta, passando o ID da conta.")
     @ApiResponses(value = {

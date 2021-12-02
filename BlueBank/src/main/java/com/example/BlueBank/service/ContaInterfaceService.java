@@ -16,7 +16,7 @@ public interface ContaInterfaceService {
 	
 	List<ContaDTO> obterTodos();	
 	
-	Conta criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException;
+	ContaDTO criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException;
 	
 	ContaDTO atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException;
 	

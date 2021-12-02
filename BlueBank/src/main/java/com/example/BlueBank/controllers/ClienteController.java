@@ -53,7 +53,7 @@ public class ClienteController implements ClienteControllerDocs{
 		ClienteDTO newObj = clienteService.criar(obj);
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(newObj);
 	}
 
 	@DeleteMapping(value = "/{id}")

@@ -50,7 +50,7 @@ public interface  ContatoControllerDocs {
             @ApiResponse(code = 200, message = "Contato cadastrado com sucesso!"),
             @ApiResponse(code = 404, message = "Campos de cadastro Inválido(s)!")
     })
-	ResponseEntity<Contato> create(@RequestBody @Valid Contato obj) throws ClienteNaoEncontradaException;
+	ResponseEntity<ContatoDTO> create(@RequestBody @Valid Contato obj) throws ClienteNaoEncontradaException;
 	
 
 	@ApiOperation(value = "Deleta o contato do cliente, passando o ID do contato.")
