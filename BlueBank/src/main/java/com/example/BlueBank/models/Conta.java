@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,6 +41,7 @@ public class Conta implements Serializable {
 	@NotNull(message =  "{tipoConta.not.null}")
 	private TipoConta tipoConta;
 	@NotBlank(message =  "{numeroConta.not.null}")
+	@Column(unique = true)
 	private String numeroConta;
 	@NotBlank(message =  "{agencia.not.null}")
 	private String agencia; 

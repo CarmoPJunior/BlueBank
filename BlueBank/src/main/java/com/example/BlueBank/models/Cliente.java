@@ -40,6 +40,7 @@ public class Cliente implements Serializable {
 	private List<Contato> contato;
 	
 	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
+	
 	private Conta conta;
 
 	public Cliente() {

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.DTO.TransacaoDTO;
 import com.example.BlueBank.controllers.docs.ContaControllerDocs;
+import com.example.BlueBank.exceptions.ClienteJaPossuiContaException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
@@ -68,7 +69,7 @@ public class ContaController implements ContaControllerDocs{
 	}
 	
 	@PostMapping
-	public ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException {
+	public ResponseEntity<Conta> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
 				
 		Conta newObj = contaService.criar(obj);
 		URI uri =

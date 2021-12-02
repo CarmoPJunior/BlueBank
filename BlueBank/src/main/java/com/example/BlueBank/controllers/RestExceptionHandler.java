@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.example.BlueBank.DTOExceptions.ErrorObject;
 import com.example.BlueBank.DTOExceptions.ErrorResponse;
 import com.example.BlueBank.exceptions.ClienteJaExisteException;
+import com.example.BlueBank.exceptions.ClienteJaPossuiContaException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
@@ -45,7 +46,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 	                .collect(Collectors.toList());
 	    }
 	    
-	  @ExceptionHandler({SaldoInsuficienteException.class, ContaBloqueadaException.class, ClienteJaExisteException.class, PossuiSaldoException.class})
+	  @ExceptionHandler({SaldoInsuficienteException.class, ContaBloqueadaException.class, ClienteJaExisteException.class, PossuiSaldoException.class, ClienteJaPossuiContaException.class})
 		public ResponseEntity<ErrorResponse> handleBadRequestException(Exception ex, WebRequest request) {
 			
 			ErrorResponse message = new ErrorResponse(

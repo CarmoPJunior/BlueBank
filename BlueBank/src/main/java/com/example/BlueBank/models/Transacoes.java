@@ -4,13 +4,21 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
+import com.example.BlueBank.validacao.GroupTransacao;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 
 @Entity
 public class Transacoes implements Serializable {
@@ -22,19 +30,24 @@ public class Transacoes implements Serializable {
 	private Integer id;
 	
 	private String data;
-	
+	@PositiveOrZero(message =  "{valor.Positive}")
+	@NotNull(groups = GroupTransacao.class,message ="{valor.not.null}")
+	@NotNull(message ="{valor.not.null}")
 	private Double valor;
-	
+	@Enumerated(EnumType.ORDINAL)
 	private TipoTransacao tipoTransacao;
 	
 	@JsonIgnoreProperties("transacoes")
 	@ManyToOne
-	@JoinColumn(name = "idContaOrigem", nullable = false)
+	@JoinColumn(name = "idContaOrigem")
+	@NotNull(groups = GroupTransacao.class,message ="{contaOrigem.not.null}")
+	@NotNull(message ="{contaOrigem.not.null}")
 	private Conta contaOrigem;
 	
 	@JsonIgnoreProperties("transacoes")
 	@ManyToOne
 	@JoinColumn(name = "idContaDestino", nullable = true)
+	@NotNull(groups = GroupTransacao.class,message ="{contaDestino.not.null}")
 	private Conta contaDestino;
 
 	public Transacoes(String data, Double valor, TipoTransacao tipoTransacao, Conta contaOrigem, Conta contaDestino) {

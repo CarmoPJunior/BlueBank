@@ -15,7 +15,7 @@ public interface EnderecoInterfaceService {
 
 	List<EnderecoDTO> obterTodos();
 
-	Endereco criar(Endereco endereco) throws ClienteNaoEncontradaException;
+	EnderecoDTO criar(Endereco endereco) throws ClienteNaoEncontradaException;
 
 	EnderecoDTO alterarEndereco(Integer id, EnderecoDTO endereco) throws EnderecoNaoEncontradoException;
 
