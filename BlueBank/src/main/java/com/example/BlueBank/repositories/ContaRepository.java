@@ -1,6 +1,7 @@
 package com.example.BlueBank.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,9 @@ public interface ContaRepository extends JpaRepository<Conta, Integer> {
 	 
 	 @Query("select t from Transacoes t WHERE t.contaOrigem.id = :conta or t.contaDestino.id = :conta")
 	 Page<Transacoes> findAllByConta(@Param("conta") Integer conta, Pageable pageable);
+	 
+	 @Query("select c from Conta c WHERE c.cliente.id = :cliente")
+	 Conta findByClienteConta(@Param("cliente") Integer idCliente);
 
 	
 	 
