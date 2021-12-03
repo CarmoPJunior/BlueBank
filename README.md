@@ -162,14 +162,13 @@ http://localhost:8080/contas
 
 ##### Método GET - Lista todas as contas com paginação e definição de filtros(id, data, valor, desc, asc) na busca das páginas.
 Os filtros pode ser ajustados conforme a necessidade através dos campos:
-  - Page: Deve informar qual página apresentar.
-  - Size: Informa a quantidade de itens para apresentar na página.
-  - Sort: Informa a coluna chave da pesquisa(id, valor, data).
-  - Asc ou Desc: Apresenta a listagem em ordem crescente ou decrescente.
+  - Page: deve informar qual página apresentar.
+  - Size: informa a quantidade de itens para apresentar na página.
+  - Sort: informa a coluna chave da pesquisa(id, valor, data).
+  - Asc ou Desc: apresenta a listagem em ordem crescente ou decrescente.
  
 ```
 http://localhost:8080/contas/1/transacoes?page=1&size=2&sort=id,asc
-
 ```
 
 ```json
