@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.controllers.docs.TransacaoControllerDocs;
 import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
@@ -26,7 +27,7 @@ import com.example.BlueBank.validacao.GroupTransacao;
 
 @RestController
 @RequestMapping(path = "/transacoes")
-public class TransacaoController {
+public class TransacaoController implements TransacaoControllerDocs{
 	
 	@Autowired
 	private TransacaoService service;
@@ -50,7 +51,7 @@ public class TransacaoController {
 	};
 	
 	@PostMapping(value = "/transferencia")
-	public ResponseEntity<Transacoes> create(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+	public ResponseEntity<Transacoes> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 				
 		Transacoes newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(), transacao.getValor());
 		URI uri =
