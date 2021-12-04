@@ -525,7 +525,7 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 A Swagger UI fornece uma página que lê um documento de especificação OpenAPI e gera um site de documentação interativo a partir de seu projeto em spring boot.
 
-![Swagger BlueBank]()
+![Swagger BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger%20BlueBank.jpg)
 ###### Swagger BlueBank
 
 ---
