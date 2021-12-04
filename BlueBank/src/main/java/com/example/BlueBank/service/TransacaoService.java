@@ -3,6 +3,7 @@ package com.example.BlueBank.service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -55,8 +56,15 @@ public class TransacaoService implements TransacaoInterfaceService {
 	
 	@Override
 	public List<TransacaoDTO> obterPorTipoTransacao(Integer id) {
-				
-		return this.transacaoRepository.findAllByTipo(id).stream().map(this::transacaoDTO).collect(Collectors.toList());
+		List<TransacaoDTO> listaAux = new ArrayList<TransacaoDTO>();
+		//this.transacaoRepository.findAllByTipo().stream().map(this::transacaoDTO).collect(Collectors.toList());
+		List<TransacaoDTO> lista = this.transacaoRepository.findAll().stream().map(this::transacaoDTO).collect(Collectors.toList());
+		for (TransacaoDTO transacaoDTO : lista) {
+			if (transacaoDTO.getTipoTransacao().getId() == id) {
+				listaAux.add(transacaoDTO);
+			}
+		}
+		return listaAux;
 	}
 
 	@Override
