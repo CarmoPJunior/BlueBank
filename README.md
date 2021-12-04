@@ -55,6 +55,8 @@ O sistema foi representado de forma visual sua estrutura a partir do modelo de D
 
 ![Diagrama do Banco de Dados](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/DIAGRAMA_DER_BLUE_BANK.PNG)
 
+###### Diagrama de Banco de Dados SQL
+
 ## Gerência do Projeto
 
 O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a sua gestão. Através de uma equipe multidisciplinar auto gerenciável, com a rotação de Tech Leader entre os desenvolvedores.
@@ -245,7 +247,7 @@ http://localhost:8080/contas/{id}
     "agencia": "0117"
 }
 ```
-###### Exemplo de inclusão JSON
+###### Exemplo de atualização via JSON
 ---
 
 ##### Método DELETE - Exclui a conta por ID.
@@ -312,7 +314,7 @@ http://localhost:8080/enderecos/{id}
     "cep": "13056-340"
 }
 ```
-###### Exemplo de inclusão JSON
+###### Exemplo de atualização via JSON
 ---
 
 ##### Método DELETE - Exclui o endereço por ID.
@@ -372,7 +374,7 @@ http://localhost:8080/contatos/{id}
     "email": "messi_30@gmail.com"
 }
 ```
-###### Exemplo de inclusão JSON
+###### Exemplo de atualização via JSON
 ---
 
 ##### Método DELETE - Exclui o contato do cliente por ID.
@@ -422,7 +424,7 @@ http://localhost:8080/transacoes/{id}
 ###### Exemplo de consulta por ID
 ---
 
-##### Método GET - Consulta o tipo de transação por ID - SAQUE(1), DEPOSITO(2), TRANSFERENCIA(3).
+##### Método GET - Consulta o tipo de transação por ID - (0-SAQUE, 1-DEPOSITO, 3-TRANSFERENCIA).
 ```
 http://localhost:8080/transacoes/tipo/{id}
 ```
@@ -495,11 +497,26 @@ http://localhost:8080/transacoes/transferencia
 {
     "contaOrigem" : {"id" : 1},
     "contaDestino" : {"id" : 2},
-    "valor" : 1100,
+    "valor" : 1100
 }
 ```
 ###### Exemplo de inclusão JSON
 ---
+
+## Tratamento de Exceção
+
+O tratamento de exceções do BlueBank é realizado de diversas formas e parâmetros nas classes do projeto. O package de Exceptions apresenta as exceções das classes de Cliente, Conta, Contato, Endereço e Transações. E suas mensagens de validação pode ser verificadas e alteradas em -> src/main/resources/ValidationMessages.properties
+
+
+###### [Exemplos de tratamento de exceção do Cliente]()
+
+
+###### [Exemplos de tratamento de exceção da Conta]()
+
+
+###### [Exemplos de tratamento de exceção da Transferência]()
+
+
 
 
 ## Patrocinadores

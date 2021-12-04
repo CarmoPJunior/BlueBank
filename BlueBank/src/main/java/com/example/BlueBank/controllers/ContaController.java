@@ -62,7 +62,7 @@ public class ContaController implements ContaControllerDocs{
 		return ResponseEntity.ok().body(newObj);
 	}
 
-	@PutMapping(value = "/atualizarStatus/{id}")
+	@PutMapping(value = "/atualizarstatus/{id}")
 	public ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException, PossuiSaldoException {
 		ContaDTO newObj = contaService.atualizarStatus(id, obj);
 		return ResponseEntity.ok().body(newObj);
