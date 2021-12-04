@@ -1,5 +1,7 @@
 package com.example.BlueBank.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -69,6 +71,10 @@ public class TransacaoService implements TransacaoInterfaceService {
 
 	@Override
 	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+		
+		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
+		valor = bd.doubleValue();
+		
 		Conta contaDestino = contaService.obterContaPorCod(destino.getId());
 		contaDestino.somaSaldo(valor);
 		contaRepository.save(contaDestino);
@@ -76,15 +82,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		Conta contaOrigem = contaService.obterContaPorCod(origem.getId());
 		contaOrigem.subtraiSaldo(valor);
 		contaRepository.save(contaOrigem);
-		/*
-		Transacoes transacaoDest = new Transacoes();
-		transacaoDest.setContaDestino(contaOrigem);
-		transacaoDest.setContaOrigem(contaDestino);
-		transacaoDest.setData(fmt.format(new Date()));
-		transacaoDest.setValor(valor);
-		transacaoDest.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
-		transacaoRepository.save(transacaoDest);
-		*/
+		
 		Transacoes transacaoOri = new Transacoes();
 		transacaoOri.setContaOrigem(contaOrigem);
 		transacaoOri.setContaDestino(contaDestino);
@@ -96,6 +94,9 @@ public class TransacaoService implements TransacaoInterfaceService {
 
 	@Override
 	public Transacoes deposito(Conta conta, Double valor) throws ContaNaoEncontradaException, ContaBloqueadaException {
+		
+		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
+		valor = bd.doubleValue();
 		
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.somaSaldo(valor);
@@ -111,6 +112,10 @@ public class TransacaoService implements TransacaoInterfaceService {
 
 	@Override
 	public Transacoes saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+		
+		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
+		valor = bd.doubleValue();
+		
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
 		contaAux.subtraiSaldo(valor);
 		contaRepository.save(contaAux);

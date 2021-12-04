@@ -1,6 +1,8 @@
 package com.example.BlueBank.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Objects;
 
@@ -140,11 +142,15 @@ public class Conta implements Serializable {
 		this.status = status;
 	}
 
-	public void somaSaldo(double valor) throws ContaBloqueadaException {
+	public void somaSaldo(double valor) throws ContaBloqueadaException {	
 		if(!status) {
 			throw new ContaBloqueadaException();
 		}
+				
 		this.saldo = saldo + valor;
+		
+		BigDecimal bd = new BigDecimal(this.saldo).setScale(2, RoundingMode.HALF_EVEN);	
+		this.saldo = bd.doubleValue();
 	}
 	
 	public void subtraiSaldo(double valor) throws SaldoInsuficienteException, ContaBloqueadaException{
@@ -154,7 +160,11 @@ public class Conta implements Serializable {
 			
 			throw new SaldoInsuficienteException();
 		}
+						
 		this.saldo = saldo - valor;
+		
+		BigDecimal bd = new BigDecimal(this.saldo).setScale(2, RoundingMode.HALF_EVEN);	
+		this.saldo = bd.doubleValue();
 	}
 
 	public List<Transacoes> getTransacoes() {
