@@ -521,6 +521,14 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 ###### Exemplos de tratamento de exceção da Transferência
 ---
 
+## Swagger do BlueBank
+
+A Swagger UI fornece uma página que lê um documento de especificação OpenAPI e gera um site de documentação interativo a partir de seu projeto em spring boot.
+
+![Swagger BlueBank]()
+###### Swagger BlueBank
+
+---
 
 ## Patrocinadores
 
