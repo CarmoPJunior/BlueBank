@@ -51,7 +51,7 @@ public interface  ClienteControllerDocs {
     ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @RequestBody @Valid ClienteDTO obj) throws ClienteNaoEncontradaException;
 	
         
-    @ApiOperation(value = "Insere um cliente.")
+    @ApiOperation(value = "Deleta um cliente.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Cliente deletado com sucesso!"),  
             @ApiResponse(code = 404, message = "Cliente não encontrado!")

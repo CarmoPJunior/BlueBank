@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiResponses;
 @Api("Gerencia as Contas")
 public interface ContaControllerDocs {
 
-	@ApiOperation(value = "Retorna uma conta, passando o ID da Conta")
+	@ApiOperation(value = "Retorna as transações paginadas de uma conta, passando o ID da Conta")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Conta encontrada!"),
             @ApiResponse(code = 404, message = "Conta não encontrado!")
@@ -73,4 +73,11 @@ public interface ContaControllerDocs {
             @ApiResponse(code = 404, message = "Conta não encontrada!")
     })
 	ResponseEntity<Void> delete(@PathVariable Integer id) throws ContaNaoEncontradaException;
+	
+	@ApiOperation(value = "Retorna uma conta, passando o ID da Conta")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Conta encontrada!"),
+            @ApiResponse(code = 404, message = "Conta não encontrado!")
+    })
+	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) throws ContaNaoEncontradaException;
 }
