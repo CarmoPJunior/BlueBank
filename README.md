@@ -9,6 +9,7 @@
 * [Diagrama de Classes](#Diagrama-de-Classes)
 * [Gerência do Projeto](#Gerência-do-Projeto)
 * [Endpoints](#Endpoints)
+* [Tratamento de Exceção](#Tratamento_de_Exceção)
 * [Patrocinadores](#Patrocinadores)
 
 
@@ -508,13 +509,13 @@ http://localhost:8080/transacoes/transferencia
 O tratamento de exceções do BlueBank é realizado de diversas formas e parâmetros nas classes do projeto. O package de Exceptions apresenta as exceções das classes de Cliente, Conta, Contato, Endereço e Transações. E suas mensagens de validação pode ser verificadas e alteradas em -> src/main/resources/ValidationMessages.properties
 
 
-###### [Exemplos de tratamento de exceção do Cliente]()
+###### [Exemplos de tratamento de exceção do Cliente](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Excecoes_cliente.jpg)
 
 
-###### [Exemplos de tratamento de exceção da Conta]()
+###### [Exemplos de tratamento de exceção da Conta](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Excecoes_Conta.jpg)
 
 
-###### [Exemplos de tratamento de exceção da Transferência]()
+###### [Exemplos de tratamento de exceção da Transferência](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Excecoes_Transferencia.jpg)
 
 
 
