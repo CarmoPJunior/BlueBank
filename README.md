@@ -11,6 +11,7 @@
 * [Swagger do BlueBank](#Swagger-do-BlueBank)
 * [Endpoints](#Endpoints)
 * [Tratamento de Exceção](#Tratamento-de-Exceção)
+* [AWS BlueBank](#AWS-BlueBank)
 * [Patrocinadores](#Patrocinadores)
 
 
@@ -531,10 +532,10 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 ###### Exemplos de tratamento de exceção da Transferência
 ---
 
-## AWS do BlueBank
+## AWS BlueBank
 
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Consulta_Cliente_AWS.jpg)
 ###### Exemplo de Consulta de Clientes e Endereço na AWS
 
 
