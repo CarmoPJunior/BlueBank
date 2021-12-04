@@ -49,7 +49,7 @@ public interface TransacaoControllerDocs {
             @ApiResponse(code = 401, message = "Saldo Insuficiente!"),
             @ApiResponse(code = 401, message = "Conta Bloqueada!")
     })
-	public ResponseEntity<Transacoes> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
+	public ResponseEntity<TransacaoDTO> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
 	
 	
 	@ApiOperation(value = "Realiza um deposito")
@@ -59,7 +59,7 @@ public interface TransacaoControllerDocs {
             @ApiResponse(code = 400, message = "Requisição possui campos inválidos"),
             @ApiResponse(code = 401, message = "Conta Bloqueada!")
     })
-	public ResponseEntity<Transacoes> deposito(@RequestBody @Valid Transacoes transacao) throws ContaNaoEncontradaException, ContaBloqueadaException;
+	public ResponseEntity<TransacaoDTO> deposito(@RequestBody @Valid Transacoes transacao) throws ContaNaoEncontradaException, ContaBloqueadaException;
 	
 	
 	@ApiOperation(value = "Realiza um saque")
@@ -70,5 +70,5 @@ public interface TransacaoControllerDocs {
             @ApiResponse(code = 401, message = "Saldo Insuficiente!"),
             @ApiResponse(code = 401, message = "Conta Bloqueada!")
     })
-	public ResponseEntity<Transacoes> saque(@RequestBody @Valid Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
+	public ResponseEntity<TransacaoDTO> saque(@RequestBody @Valid Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
 }

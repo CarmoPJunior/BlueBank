@@ -70,7 +70,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 	}
 
 	@Override
-	public Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+	public TransacaoDTO transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 		
 		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
 		valor = bd.doubleValue();
@@ -89,11 +89,13 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoOri.setData(fmt.format(new Date()));
 		transacaoOri.setValor(valor);
 		transacaoOri.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
-		return transacaoRepository.save(transacaoOri);
+		transacaoRepository.save(transacaoOri);
+		TransacaoDTO transacaoDTO = transacaoDTO(transacaoOri);
+		return transacaoDTO;
 	}
 
 	@Override
-	public Transacoes deposito(Conta conta, Double valor) throws ContaNaoEncontradaException, ContaBloqueadaException {
+	public TransacaoDTO deposito(Conta conta, Double valor) throws ContaNaoEncontradaException, ContaBloqueadaException {
 		
 		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
 		valor = bd.doubleValue();
@@ -107,11 +109,13 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoAux.setData(fmt.format(new Date()));
 		transacaoAux.setValor(valor);
 		transacaoAux.setTipoTransacao(TipoTransacao.DEPOSITO);
-		return transacaoRepository.save(transacaoAux);
+		transacaoRepository.save(transacaoAux);
+		TransacaoDTO transacaoDTO = transacaoDTO(transacaoAux);
+		return transacaoDTO;
 	}
 
 	@Override
-	public Transacoes saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+	public TransacaoDTO saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 		
 		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
 		valor = bd.doubleValue();
@@ -125,7 +129,9 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoAux.setData(fmt.format(new Date()));
 		transacaoAux.setValor(valor);
 		transacaoAux.setTipoTransacao(TipoTransacao.SAQUE);
-		return transacaoRepository.save(transacaoAux);
+		transacaoRepository.save(transacaoAux);
+		TransacaoDTO transacaoDTO = transacaoDTO(transacaoAux);
+		return transacaoDTO;
 		
 	}
 

@@ -16,11 +16,11 @@ public interface TransacaoInterfaceService {
 	
 	List<Transacoes> obterTodos();
 	
-	Transacoes transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
+	TransacaoDTO transferenciaContas(Conta origem, Conta destino, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
 	
-	Transacoes deposito(Conta conta, Double valor) throws ContaNaoEncontradaException, ContaBloqueadaException;
+	TransacaoDTO deposito(Conta conta, Double valor) throws ContaNaoEncontradaException, ContaBloqueadaException;
 	
-	Transacoes saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
+	TransacaoDTO saque(Conta conta, Double valor) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException;
 
 	TransacaoDTO obterPorCodDTO(Integer id);
 

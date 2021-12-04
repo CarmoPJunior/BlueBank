@@ -51,30 +51,30 @@ public class TransacaoController implements TransacaoControllerDocs{
 	};
 	
 	@PostMapping(value = "/transferencia")
-	public ResponseEntity<Transacoes> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+	public ResponseEntity<TransacaoDTO> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 				
-		Transacoes newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(), transacao.getValor());
+		TransacaoDTO newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(), transacao.getValor());
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(newObj);
 	}
 
 	@PostMapping(value = "/deposito")
-	public ResponseEntity<Transacoes> deposito(@RequestBody @Valid Transacoes transacao) throws ContaNaoEncontradaException, ContaBloqueadaException {
+	public ResponseEntity<TransacaoDTO> deposito(@RequestBody @Valid Transacoes transacao) throws ContaNaoEncontradaException, ContaBloqueadaException {
 				
-		Transacoes newObj = service.deposito(transacao.getContaOrigem(), transacao.getValor());
+		TransacaoDTO newObj = service.deposito(transacao.getContaOrigem(), transacao.getValor());
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(newObj);
 		}
 
 	@PostMapping(value = "/saque")
-	public ResponseEntity<Transacoes> saque(@RequestBody @Valid Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+	public ResponseEntity<TransacaoDTO> saque(@RequestBody @Valid Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
 				
-		Transacoes newObj = service.saque(transacao.getContaOrigem(), transacao.getValor());
+		TransacaoDTO newObj = service.saque(transacao.getContaOrigem(), transacao.getValor());
 		URI uri =
 		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(newObj);
 		
 		}
 	
