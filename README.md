@@ -8,8 +8,9 @@
 * [Transformadores da Gama Academy](#Transformadores-da-Gama-Academy)
 * [Diagrama de Classes](#Diagrama-de-Classes)
 * [Gerência do Projeto](#Gerência-do-Projeto)
+* [Swagger do BlueBank](#Swagger-do-BlueBank)
 * [Endpoints](#Endpoints)
-* [Tratamento de Exceção](#Tratamento_de_Exceção)
+* [Tratamento de Exceção](#Tratamento-de-Exceção)
 * [Patrocinadores](#Patrocinadores)
 
 
@@ -91,6 +92,15 @@ Para utilizar e testar o back-end do BlueBank, é necessário:
   - Instalar uma base de dados MySQL([MySQL Workbench](https://dev.mysql.com/downloads/workbench/)) para armazenamento dos dados.
   - Alterar a senha da base de dados do MySQL no application.properties na package -> src/main/resources
   - Instalar o [Postman](https://www.postman.com/downloads/), [Insomnia](https://insomnia.rest/download) ou acessar o link do [Swagger](http://localhost:8080/swagger-ui.html#/) para inserção de dados, consulta, alterção e inclusão de dados.
+---
+
+## Swagger do BlueBank
+
+A Swagger UI fornece uma página que lê um documento de especificação OpenAPI e gera um site de documentação interativo a partir de seu projeto em spring boot.
+
+![Swagger BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger%20BlueBank.jpg)
+###### Swagger BlueBank
+
 ---
 
 ## Endpoints
@@ -521,14 +531,12 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 ###### Exemplos de tratamento de exceção da Transferência
 ---
 
-## Swagger do BlueBank
+## AWS do BlueBank
 
-A Swagger UI fornece uma página que lê um documento de especificação OpenAPI e gera um site de documentação interativo a partir de seu projeto em spring boot.
 
-![Swagger BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger%20BlueBank.jpg)
-###### Swagger BlueBank
+![]()
+###### Exemplo de Consulta de Clientes e Endereço na AWS
 
----
 
 ## Patrocinadores
 
