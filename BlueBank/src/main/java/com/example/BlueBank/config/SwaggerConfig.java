@@ -18,9 +18,9 @@ public class SwaggerConfig {
 
     private static final String BASE_PACKAGE = "com.example.BlueBank.controllers";
     private static final String API_TITLE = "BlueBank API";
-    private static final String API_DESCRIPTION = "REST API para gerência contas.";
+    private static final String API_DESCRIPTION = "Squad 2 - Undefined Coders\nREST API para gerência contas.";
     private static final String CONTACT_NAME = "BlueBank";
-    private static final String CONTACT_GITHUB = "https://github.com/";
+    private static final String CONTACT_GITHUB = "https://github.com/CarmoPJunior/BlueBank";
     private static final String CONTACT_EMAIL = "email@email.com";
 
     @Bean
