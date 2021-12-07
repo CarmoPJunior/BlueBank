@@ -16,7 +16,8 @@ import com.example.BlueBank.models.Transacoes;
 public interface TransacaoRepository extends JpaRepository<Transacoes, Integer>{
 
 	//@Query("select t from Transacoes t WHERE t.tipoTransacao = :tipoTransacao")
-	@Query(value="select t.* from Transacoes t WHERE t.tipo_transacao = :tipoTransacao",nativeQuery=true)
-	List<Transacoes> findAllByTipo(@Param("tipoTransacao") Integer tipoTransacao);
+	
+	//@Query(value="select t.* from Transacoes t WHERE t.tipo_transacao = :tipoTransacao",nativeQuery=true)
+	//List<Transacoes> findAllByTipo(@Param("tipoTransacao") Integer tipoTransacao);
 	
 }
