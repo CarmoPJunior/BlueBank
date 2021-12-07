@@ -70,6 +70,7 @@ public class ContaService implements ContaInterfaceService {
 		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
 		Conta clienteConta = contaRepository.findByClienteConta(conta.getCliente().getId());
 		conta.getCliente().setNome(cliente.getNome());
+		System.out.println(conta.getTipoConta().toString());
 		ContaDTO contaDTO = contaDTO(conta);
 		if (clienteConta==null) {
 			this.contaRepository.save(conta);
