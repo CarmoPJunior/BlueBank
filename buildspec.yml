@@ -6,12 +6,12 @@ phases:
   build:
     commands:
       - echo "Build started"
-      - cd BlueBank
+      - cd /BlueBank
       - mvn clean install -DskipTests
   post_build:
     commands:
       - echo "Pipeline success"
-      - cd BlueBank
+      - cd /BlueBank
       - mv target/*.jar BlueBank.jar
 artifacts:
   files:
