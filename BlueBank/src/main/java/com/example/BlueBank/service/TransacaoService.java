@@ -3,7 +3,6 @@ package com.example.BlueBank.service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -88,18 +87,11 @@ public class TransacaoService implements TransacaoInterfaceService {
 		return transacaoDTO(obj.get());
 	}
 	
-	@Override
-	public List<TransacaoDTO> obterPorTipoTransacao(Integer id) {
-		List<TransacaoDTO> listaAux = new ArrayList<TransacaoDTO>();
-		//this.transacaoRepository.findAllByTipo().stream().map(this::transacaoDTO).collect(Collectors.toList());
-		List<TransacaoDTO> lista = this.transacaoRepository.findAll().stream().map(this::transacaoDTO).collect(Collectors.toList());
-		for (TransacaoDTO transacaoDTO : lista) {
-			if (transacaoDTO.getTipoTransacao().getId() == id) {
-				listaAux.add(transacaoDTO);
-			}
-		}
-		return listaAux;
-	}
+//	@Override
+//	public List<TransacaoDTO> obterPorTipoTransacao(Integer id) {
+//				
+//		return this.transacaoRepository.findAllByTipo(id).stream().map(this::transacaoDTO).collect(Collectors.toList());
+//	}
 
 	@Override
 	public List<Transacoes> obterTodos() {		
@@ -133,7 +125,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoOri.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
 		transacaoRepository.save(transacaoOri);
 		TransacaoDTO transacaoDTO = transacaoDTO(transacaoOri);
-		sendSMS("Foi Depositado R$ " + valor + " em sua conta! BlueBak - Teste" , "+5581987428692");
+		sendSMS("Foi transferido R$ " + valor + " em sua conta! BlueBak - Teste" , "+5581987428692");
 		return transacaoDTO;
 	}
 
@@ -158,6 +150,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		//String numero = conta.getCliente().getContato().stream().forEach(n -> n.getNumeroTelefone());
 		
 		sendSMS("Foi depositado R$ " + valor + " em sua conta! BlueBak - Teste" , "+5511948541077");
+		
 		return transacaoDTO;
 	}
 

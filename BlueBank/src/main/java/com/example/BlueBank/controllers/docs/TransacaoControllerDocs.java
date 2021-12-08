@@ -35,11 +35,11 @@ public interface TransacaoControllerDocs {
     })
 	public ResponseEntity<List<TransacaoDTO>> findAll();
 	
-	@ApiOperation(value = "Retorna todas as transações realizadas por tipo, saque, deposito ou transferência")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Transações encontradas!")
-    })
-	public ResponseEntity<List<TransacaoDTO>> findByTipo(@PathVariable Integer id);
+//	@ApiOperation(value = "Retorna todas as transações realizadas por tipo, saque, deposito ou transferência")
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 200, message = "Transações encontradas!")
+//    })
+//	public ResponseEntity<List<TransacaoDTO>> findByTipo(@PathVariable Integer id);
 	
 	@ApiOperation(value = "Insere uma transferência")
     @ApiResponses(value = {
