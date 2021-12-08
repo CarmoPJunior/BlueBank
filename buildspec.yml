@@ -4,19 +4,19 @@ phases:
     runtime-versions:
       java: corretto11
   build:
-    base-directory: ./BlueBank/BlueBank/
+    base-directory: 'BlueBank*'
     commands:
       - echo "Build started"
       - mvn clean install -DskipTests
   post_build:
-    base-directory: ./BlueBank/BlueBank/
+    base-directory: 'BlueBank*'
     commands:
       - echo "Pipeline success"
-      - mvn package
+      - mv target/*.jar BlueBank.jar
 artifacts:
   files:
     - BlueBank.jar
-  base-directory: ./BlueBank/
+  base-directory: 'BlueBank*'
 
 
    
