@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,12 @@ import com.example.BlueBank.exceptions.ContaBloqueadaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.example.BlueBank.models.Conta;
+import com.example.BlueBank.models.Contato;
 import com.example.BlueBank.models.TipoTransacao;
 import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.repositories.ContaRepository;
 import com.example.BlueBank.repositories.TransacaoRepository;
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 
 @Service
 public class TransacaoService implements TransacaoInterfaceService {
@@ -87,11 +90,27 @@ public class TransacaoService implements TransacaoInterfaceService {
 		return transacaoDTO(obj.get());
 	}
 	
-//	@Override
-//	public List<TransacaoDTO> obterPorTipoTransacao(Integer id) {
-//				
-//		return this.transacaoRepository.findAllByTipo(id).stream().map(this::transacaoDTO).collect(Collectors.toList());
-//	}
+	@Override
+	public List<List<TransacaoDTO>> obterPorTipoTransacao(Integer id) {
+		List<TransacaoDTO> trans = this.transacaoRepository.findAll()
+				.stream()
+				.map(this::transacaoDTO)
+				.collect(Collectors.toList());
+		
+		Map<TipoTransacao, List<TransacaoDTO>> transacoesPorTipo = trans
+				.stream()
+				.collect(Collectors.groupingBy(TransacaoDTO::getTipoTransacao));
+		
+	
+		List<List<TransacaoDTO>> result = transacoesPorTipo.entrySet()
+				.stream()
+				.filter(t -> t.getKey().getId() == id)
+				.map(t -> t.getValue())
+				.collect(Collectors.toList());
+		
+		
+		return result;
+	}
 
 	@Override
 	public List<Transacoes> obterTodos() {		
@@ -125,7 +144,14 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoOri.setTipoTransacao(TipoTransacao.TRANSFERENCIA);
 		transacaoRepository.save(transacaoOri);
 		TransacaoDTO transacaoDTO = transacaoDTO(transacaoOri);
-		sendSMS("Foi transferido R$ " + valor + " em sua conta! BlueBak - Teste" , "+5581987428692");
+		
+		String numero = "";
+		for(Contato contato : contaOrigem.getCliente().getContato()) {
+			numero = contato.getNumeroTelefone();
+			break;
+		}
+		
+		sendSMS("Foi transferido R$ " + valor + " de sua conta para " + contaDestino.getCliente().getNome() +"! BlueBak - Teste" , "+55" + numero);
 		return transacaoDTO;
 	}
 
@@ -134,6 +160,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 		
 		BigDecimal bd = new BigDecimal(valor).setScale(2, RoundingMode.HALF_EVEN);	
 		valor = bd.doubleValue();
+		
 		
 		
 		Conta contaAux = contaService.obterContaPorCod(conta.getId());
@@ -147,9 +174,14 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoAux.setTipoTransacao(TipoTransacao.DEPOSITO);
 		transacaoRepository.save(transacaoAux);
 		TransacaoDTO transacaoDTO = transacaoDTO(transacaoAux);
-		//String numero = conta.getCliente().getContato().stream().forEach(n -> n.getNumeroTelefone());
 		
-		sendSMS("Foi depositado R$ " + valor + " em sua conta! BlueBak - Teste" , "+5511948541077");
+		String numero = "";
+		for(Contato contato : contaAux.getCliente().getContato()) {
+			numero = contato.getNumeroTelefone();
+			break;
+		}
+		
+		sendSMS("Foi depositado R$ " + valor + " em sua conta! BlueBak - Teste" , "+55" + numero);
 		
 		return transacaoDTO;
 	}
@@ -171,7 +203,13 @@ public class TransacaoService implements TransacaoInterfaceService {
 		transacaoAux.setTipoTransacao(TipoTransacao.SAQUE);
 		transacaoRepository.save(transacaoAux);
 		TransacaoDTO transacaoDTO = transacaoDTO(transacaoAux);
-		sendSMS("Foi sacado R$ " + valor + " em sua conta! BlueBak - Teste" , "+5581987428692");
+		String numero = "";
+		for(Contato contato : contaAux.getCliente().getContato()) {
+			numero = contato.getNumeroTelefone();
+			break;
+		}
+		
+		sendSMS("Foi sacado R$ " + valor + " em sua conta! BlueBak - Teste" , "+55" + numero);
 		return transacaoDTO;
 		
 	}
