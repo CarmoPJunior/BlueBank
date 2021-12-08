@@ -44,11 +44,11 @@ public class TransacaoController implements TransacaoControllerDocs{
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping(value = "/tipo/{id}")
-	public ResponseEntity<List<TransacaoDTO>> findByTipo(@PathVariable Integer id) {
-		List<TransacaoDTO> list = service.obterPorTipoTransacao(id);
-		return ResponseEntity.ok().body(list);
-	};
+//	@GetMapping(value = "/tipo/{id}")
+//	public ResponseEntity<List<TransacaoDTO>> findByTipo(@PathVariable Integer id) {
+//		List<TransacaoDTO> list = service.obterPorTipoTransacao(id);
+//		return ResponseEntity.ok().body(list);
+//	};
 	
 	@PostMapping(value = "/transferencia")
 	public ResponseEntity<TransacaoDTO> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {

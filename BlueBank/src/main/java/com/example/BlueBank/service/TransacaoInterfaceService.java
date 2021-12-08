@@ -26,7 +26,7 @@ public interface TransacaoInterfaceService {
 
 	List<TransacaoDTO> obterTodosDTO();
 
-	List<TransacaoDTO> obterPorTipoTransacao(Integer id);
+	//List<TransacaoDTO> obterPorTipoTransacao(Integer id);
 
 	
 	
