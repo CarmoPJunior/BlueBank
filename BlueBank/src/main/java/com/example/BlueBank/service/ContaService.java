@@ -69,7 +69,7 @@ public class ContaService implements ContaInterfaceService {
 	public ContaDTO criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
 		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
 		Conta clienteConta = contaRepository.findByClienteConta(conta.getCliente().getId());
-		conta.getCliente().setNome(cliente.getNome());		
+		conta.getCliente().setNome(cliente.getNome());
 		ContaDTO contaDTO = contaDTO(conta);
 		if (clienteConta==null) {
 			this.contaRepository.save(conta);
