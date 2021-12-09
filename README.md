@@ -17,12 +17,12 @@
 
 ## O Projeto
 
-Desenvolver uma aplicação de um banco fictício BlueBank. O sistema deve gerenciar as transações e cadastros de clientes, permitindo incluir os dados pessoais e de contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy.](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/doc/banco_pan_desafio_final_bluebank.pdf)
+Desenvolver uma aplicação de um banco fictício **BlueBank**. O sistema deve gerenciar as transações, cadastros de clientes, permitindo incluir os dados pessoais e de contato. No sistema o cliente vai ser atrelado a uma conta bancária e registrar histórico de transações entre contas. Software desenvolvido conforme os requisitos descritos no documento do projeto final [Projeto Final PanAcademy.](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/doc/banco_pan_desafio_final_bluebank.pdf)
 
 
 ## Desenvolvedores
 
-Projeto desenvolvido pelo grupo 2 - Squad Undefined Coders 
+Projeto desenvolvido pelo grupo 2 - Squad **Undefined Coders** 
 
 
 <table>
@@ -56,13 +56,15 @@ O sistema foi representado de forma visual sua estrutura a partir do modelo de D
 
 ## Diagrama do Banco de Dados
 
+Diagramas Entidade Relacionamento(DER) são mais utilizados para projetar ou depurar bancos de dados relacionais. Também conhecidos como DERs, ou modelos ER, usam um conjunto definido de símbolos, tais como retângulos, diamantes, ovais e linhas de conexão para representar a interconectividade de entidades, relacionamentos e seus atributos.
+
 ![Diagrama do Banco de Dados](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/DIAGRAMA_DER_BLUE_BANK.PNG)
 
-###### Diagrama de Banco de Dados SQL
+###### Diagrama de ER do Banco de Dados SQL - BlueBank
 
 ## Gerência do Projeto
 
-O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a sua gestão. Através de uma equipe multidisciplinar auto gerenciável, com a rotação de Tech Leader entre os desenvolvedores.
+O projeto foi desenvolvido aplicando as técninas de metodologias ágeis para a sua gestão, a equipe é multidisciplinar e auto gerenciável, com possui a presença de Tech Leader entre os desenvolvedores.
 
 Para o controle e gestão de fluxo do projeto foi utilizado o [Trello](https://trello.com/b/b2gm8LNx/kanban-bluebank-squad2), adicionando e dividindo as tarefas através de um quadro Kanban, que possui a etapas padrão: to do, doing e done. 
 
@@ -87,12 +89,36 @@ As tarefas são adicionadas através de uma reunião de equipe, onde é definido
 - Postman
 - AWS
 
-Para utilizar e testar o back-end do BlueBank, é necessário:
+Para utilizar e testar o *back-end* do BlueBank em sua máquina local(localhost), é necessário:
   - Baixar ou clonar o projeto do Github, 
   - Instalar uma IDE em Java([Eclipse](https://www.eclipse.org/downloads/) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/download/#section=windows)) ou outra IDE Java e importar o projeto do BlueBank. 
   - Instalar uma base de dados MySQL([MySQL Workbench](https://dev.mysql.com/downloads/workbench/)) para armazenamento dos dados.
   - Alterar a senha da base de dados do MySQL no application.properties na package -> src/main/resources
   - Instalar o [Postman](https://www.postman.com/downloads/), [Insomnia](https://insomnia.rest/download) ou acessar o link do [Swagger](http://localhost:8080/swagger-ui.html#/) para inserção de dados, consulta, alterção e inclusão de dados.
+
+Para usar o BlueBank na **AWS** no serviço de Elastic Beanstalk, é necessário:
+ - Foi adicionado no projeto o arquivo application-beanstalk.properties em src/main/resources e adicionar informações no pom.xml. 
+ - No arquivo raiz do projeto BlueBank, clica com o botao direito vai em "run as-> Mavem build", na tela tem o campo Goals inseri o nome "clean install", marca na caixa de seleção "Skip Tests" e depois "Run" e aguarda a criação do arquivo BlueBank-0.0.1-SNAPSHOT.jar.
+ - No ambiente da AWS:
+  - Pesquisa o serviço Elastic Beanstalk e vai em criar um novo ambiente.
+  - Seleciona o Ambiente Servidor Web 
+  - Informa o Nome do Aplicativo (minusculo), escolhe a Plataforma (do exemplo Java 11), ramificação (qual versão do Java) e versão da plataforma.
+  - Faz Upload do arquivo gerado BlueBank-0.0.1-SNAPSHOT.jar. 
+  - Depois seleciona - Configurar mais opções, vai em banco de dados e clica em Editar: 
+     - não modifica nada em Snapshot, escolhe a versão do MySQL "Recomendado a versão 8.0.23", mantêm a classe "db.t2.micro", deixa disponibilidade "Baixa" e cria o "nome do usuário do BD" e a "senha do BD" e marca em Excluir e salvar. E aguarda o ambiente ser criado, demora alguns minutos.
+ - Com o ambiente criado, no lado Esquerdo abaixo do ambiente criado em clica em "configurações", na nova tela em "software" e depois em "editar", nas propriedades de ambiente adiciona os dois campos abaixo:
+```
+SERVER_PORT                 5000
+SPRING_PROFILES_ACTIVE      beanstalk, mysql
+```
+
+Clica em Aplicar, o ambiente é criado e a Integridade fica OK!. Com o link Criado agora é testar a aplicação.
+
+
+![Elastic Beanstalk - BlueBank]()
+###### Elastic Beanstalk - BlueBank
+
+
 ---
 
 ## Swagger do BlueBank
@@ -233,7 +259,7 @@ http://localhost:8080/contas/1/transacoes?page=1&size=2&sort=id,asc
 }
 ```
 
-##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (0-Conta Corrente, 1-Conta Poupança, 2-Conta Salário).
+##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (1-Conta Corrente, 2-Conta Poupança, 3-Conta Salário).
 ```
 http://localhost:8080/contas
 ```
@@ -436,7 +462,7 @@ http://localhost:8080/transacoes/{id}
 ###### Exemplo de consulta por ID
 ---
 
-##### Método GET - Consulta o tipo de transação por ID - (0-SAQUE, 1-DEPOSITO, 3-TRANSFERENCIA).
+##### Método GET - Consulta o tipo de transação por ID - (1-SAQUE, 2-DEPOSITO, 3-TRANSFERENCIA).
 ```
 http://localhost:8080/transacoes/tipo/{id}
 ```
@@ -534,9 +560,21 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 ## AWS BlueBank
 
+![]()
+###### Swagger na AWS - Elastic Beanstalk
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Consulta_Cliente_AWS.jpg)
-###### Exemplo de Consulta de Clientes e Endereço na AWS
+###### Exemplo de Consulta de Clientes e Endereço na AWS - Elastic Beanstalk
+
+![]()
+###### Exemplo de Consulta paginada de Clientes na AWS - Elastic Beanstalk
+
+![]()
+###### Exemplo de inclusão de dados de Contatos via Postman na AWS - Elastic Beanstalk
+
+![]()
+###### Exemplo de Transação entre Clientes via Postman na AWS - Elastic Beanstalk
+
 
 
 ## Patrocinadores
@@ -547,3 +585,4 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 ###### [Gama Academy](https://www.gama.academy/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
+
