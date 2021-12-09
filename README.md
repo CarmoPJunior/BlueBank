@@ -115,7 +115,7 @@ SPRING_PROFILES_ACTIVE      beanstalk, mysql
 Clica em Aplicar, o ambiente é criado e a Integridade fica OK!. Com o link Criado agora é testar a aplicação.
 
 
-![Elastic Beanstalk - BlueBank]()
+![Elastic Beanstalk - BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Elastic%20Beanstalk%20ok.jpg)
 ###### Elastic Beanstalk - BlueBank
 
 
@@ -560,19 +560,23 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 ## AWS BlueBank
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger_na_Aws.jpg)
 ###### Swagger na AWS - Elastic Beanstalk
+---
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Consulta_Cliente_AWS.jpg)
 ###### Exemplo de Consulta de Clientes e Endereço na AWS - Elastic Beanstalk
+---
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/2%20-%20Paginacao%20Cliente%20aws.jpg)
 ###### Exemplo de Consulta paginada de Clientes na AWS - Elastic Beanstalk
+---
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Inclus%C3%A3o%20Contato_Cliente_Aws.jpg)
 ###### Exemplo de inclusão de dados de Contatos via Postman na AWS - Elastic Beanstalk
+---
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Exemplo%20Transacao_Cliente_Aws.jpg)
 ###### Exemplo de Transação entre Clientes via Postman na AWS - Elastic Beanstalk
 
 
