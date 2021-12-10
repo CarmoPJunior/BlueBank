@@ -564,10 +564,6 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 O **AWS Elastic Beanstalk** é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Basta fazer o upload de seu código e o Elastic Beanstalk se encarrega automaticamente da implementação, desde o provisionamento de capacidade, o balanceamento de carga e a escalabilidade automática até o monitoramento da saúde do aplicativo.
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Swagger_na_Aws.jpg)
-###### Swagger na AWS - Elastic Beanstalk
----
-
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Consulta_Cliente_AWS.jpg)
 ###### Exemplo de Consulta de Clientes e Endereço na AWS - Elastic Beanstalk
 ---
@@ -610,6 +606,13 @@ O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedor
 
 ![]()
 ###### Exemplo de API Gateway do BlueBank via AWS - API Gateway
+
+
+### Swagger na AWS
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Swagger_na_Aws.jpg)
+###### Swagger na AWS - Elastic Beanstalk
+---
 
 
 ## Patrocinadores
