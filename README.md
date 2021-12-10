@@ -96,7 +96,7 @@ Para utilizar e testar o *back-end* do BlueBank em sua máquina local(localhost)
   - Alterar a senha da base de dados do MySQL no application.properties na package -> src/main/resources
   - Instalar o [Postman](https://www.postman.com/downloads/), [Insomnia](https://insomnia.rest/download) ou acessar o link do [Swagger](http://localhost:8080/swagger-ui.html#/) para inserção de dados, consulta, alterção e inclusão de dados.
 
-Para usar o BlueBank na **AWS** no serviço de Elastic Beanstalk, é necessário:
+Para usar o BlueBank na **AWS** no serviço de **Elastic Beanstalk**, é necessário:
  - Foi adicionado no projeto o arquivo application-beanstalk.properties em src/main/resources e adicionar informações no pom.xml. 
  - No arquivo raiz do projeto BlueBank, clica com o botao direito vai em "run as-> Mavem build", na tela tem o campo Goals inseri o nome "clean install", marca na caixa de seleção "Skip Tests" e depois "Run" e aguarda a criação do arquivo BlueBank-0.0.1-SNAPSHOT.jar.
  - No ambiente da AWS:
@@ -259,7 +259,7 @@ http://localhost:8080/contas/1/transacoes?page=1&size=2&sort=id,asc
 }
 ```
 
-##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (1-Conta Corrente, 2-Conta Poupança, 3-Conta Salário).
+##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (0-Conta Corrente, 1-Conta Poupança, 2-Conta Salário).
 ```
 http://localhost:8080/contas
 ```
@@ -462,7 +462,7 @@ http://localhost:8080/transacoes/{id}
 ###### Exemplo de consulta por ID
 ---
 
-##### Método GET - Consulta o tipo de transação por ID - (1-SAQUE, 2-DEPOSITO, 3-TRANSFERENCIA).
+##### Método GET - Consulta o tipo de transação por ID - (0-SAQUE, 1-DEPOSITO, 2-TRANSFERENCIA).
 ```
 http://localhost:8080/transacoes/tipo/{id}
 ```
@@ -560,6 +560,10 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 ## AWS BlueBank
 
+### Amazon Elastic Beanstalk
+
+O **AWS Elastic Beanstalk** é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Basta fazer o upload de seu código e o Elastic Beanstalk se encarrega automaticamente da implementação, desde o provisionamento de capacidade, o balanceamento de carga e a escalabilidade automática até o monitoramento da saúde do aplicativo.
+
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger_na_Aws.jpg)
 ###### Swagger na AWS - Elastic Beanstalk
 ---
@@ -578,7 +582,34 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Exemplo%20Transacao_Cliente_Aws.jpg)
 ###### Exemplo de Transação entre Clientes via Postman na AWS - Elastic Beanstalk
+---
 
+### Amazon Simple Notification Service (Amazon SNS)
+
+O **Amazon Simple Notification Service** (Amazon SNS) é um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P), seus sistemas editores podem repassar mensagens para um grande número de sistemas de assinantes, incluindo filas do Amazon SQS, funções do AWS Lambda e endpoints HTTPS e o Amazon Kinesis Data Firehose para processamento paralelo. A funcionalidade A2P permite enviar mensagens para usuários em grande escala por SMS, push de dispositivos móveis e e-mail.
+
+![]()
+###### Exemplo de transação para o Cliente via AWS - Simple Notification Service (Amazon SNS)
+
+
+![]()
+###### Exemplo de envio de Email para o Cliente via AWS - Simple Notification Service (Amazon SNS)
+---
+
+### Amazon CodePipeline
+
+O **AWS CodePipeline** é um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, teste e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.
+
+![]()
+###### Exemplo de Pipeline do BlueBank via AWS - CodePipeline
+---
+
+### Amazon API Gateway
+
+O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade. APIs agem como a “porta de entrada” para aplicativos acessarem dados, lógica de negócios ou funcionalidade de seus serviços de back-end.
+
+![]()
+###### Exemplo de API Gateway do BlueBank via AWS - API Gateway
 
 
 ## Patrocinadores
