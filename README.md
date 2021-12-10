@@ -608,6 +608,16 @@ O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedor
 ###### Exemplo de API Gateway do BlueBank via AWS - API Gateway
 ---
 
+### Amazon Lambda
+
+O **AWS Lambda** é um serviço de computação sem servidor e orientado a eventos que permite executar código para praticamente qualquer tipo de aplicação ou serviço de backend sem provisionar ou gerenciar servidores.
+
+![]()
+###### Exemplo de envio de email para o Cliente via AWS - Lambda
+---
+
+
+
 ### Swagger na AWS
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Swagger_na_Aws.jpg)
@@ -623,4 +633,5 @@ O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedor
 
 ###### [Gama Academy](https://www.gama.academy/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
+
 
