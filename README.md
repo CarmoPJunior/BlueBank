@@ -115,7 +115,7 @@ SPRING_PROFILES_ACTIVE      beanstalk, mysql
 Clica em Aplicar, o ambiente é criado e a Integridade fica OK!. Com o link Criado agora é testar a aplicação.
 
 
-![Elastic Beanstalk - BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Elastic%20Beanstalk%20ok.jpg)
+![Elastic Beanstalk - BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Elastic%20Beanstalk%20ok.jpg)
 ###### Elastic Beanstalk - BlueBank
 
 
@@ -564,23 +564,23 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 
 O **AWS Elastic Beanstalk** é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Basta fazer o upload de seu código e o Elastic Beanstalk se encarrega automaticamente da implementação, desde o provisionamento de capacidade, o balanceamento de carga e a escalabilidade automática até o monitoramento da saúde do aplicativo.
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger_na_Aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Swagger_na_Aws.jpg)
 ###### Swagger na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Consulta_Cliente_AWS.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Consulta_Cliente_AWS.jpg)
 ###### Exemplo de Consulta de Clientes e Endereço na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/2%20-%20Paginacao%20Cliente%20aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/2%20-%20Paginacao%20Cliente%20aws.jpg)
 ###### Exemplo de Consulta paginada de Clientes na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Inclus%C3%A3o%20Contato_Cliente_Aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Inclus%C3%A3o%20Contato_Cliente_Aws.jpg)
 ###### Exemplo de inclusão de dados de Contatos via Postman na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Exemplo%20Transacao_Cliente_Aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo%20Transacao_Cliente_Aws.jpg)
 ###### Exemplo de Transação entre Clientes via Postman na AWS - Elastic Beanstalk
 ---
 
@@ -588,11 +588,11 @@ O **AWS Elastic Beanstalk** é um serviço de fácil utilização para implanta�
 
 O **Amazon Simple Notification Service** (Amazon SNS) é um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P), seus sistemas editores podem repassar mensagens para um grande número de sistemas de assinantes, incluindo filas do Amazon SQS, funções do AWS Lambda e endpoints HTTPS e o Amazon Kinesis Data Firehose para processamento paralelo. A funcionalidade A2P permite enviar mensagens para usuários em grande escala por SMS, push de dispositivos móveis e e-mail.
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo2_SNS_AWS_Smartphone.jpg)
 ###### Exemplo de transação para o Cliente via AWS - Simple Notification Service (Amazon SNS)
 
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo_EMAIL_SNS_AWS.jpg)
 ###### Exemplo de envio de Email para o Cliente via AWS - Simple Notification Service (Amazon SNS)
 ---
 
