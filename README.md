@@ -606,7 +606,7 @@ O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedor
 
 ![]()
 ###### Exemplo de API Gateway do BlueBank via AWS - API Gateway
-
+---
 
 ### Swagger na AWS
 
