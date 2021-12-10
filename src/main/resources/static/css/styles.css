@@ -5599,7 +5599,7 @@ textarea.form-control-lg {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 600px;
     margin: 1.75rem auto;
   }
 
@@ -5612,7 +5612,7 @@ textarea.form-control-lg {
   }
 
   .modal-sm {
-    max-width: 300px;
+    max-width: 480px;
   }
 }
 @media (min-width: 992px) {
@@ -11587,6 +11587,25 @@ footer a:hover, footer a:active, footer a:focus {
 .masthead .masthead-device-mockup .device-wrapper {
   max-width: 10rem;
 }
+
+/* Table */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+  
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+  
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 @media (min-width: 576px) {
   .masthead .masthead-device-mockup .circle {
     width: 70%;
