@@ -8,6 +8,7 @@ com\example\BlueBank\controllers\docs\TransacaoControllerDocs.class
 com\example\BlueBank\repositories\ContaRepository.class
 com\example\BlueBank\DTO\ContatoDTO.class
 com\example\BlueBank\controllers\RestExceptionHandler.class
+com\example\BlueBank\controllers\IndexController.class
 com\example\BlueBank\DTOExceptions\ErrorObject.class
 com\example\BlueBank\exceptions\ClienteJaExisteException.class
 com\example\BlueBank\repositories\ClienteRepository.class
