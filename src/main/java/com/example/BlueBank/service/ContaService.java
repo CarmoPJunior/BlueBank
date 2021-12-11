@@ -79,7 +79,7 @@ public class ContaService implements ContaInterfaceService {
 		
 		ContaDTO contaDTO = contaDTO(conta); 
 		if (clienteConta==null) {
-			AwsSNSClient.sendToTopic("Bem Vindo ao BlueBank", corpo);
+			//AwsSNSClient.sendToTopic("Bem Vindo ao BlueBank", corpo);
 			this.contaRepository.save(conta);
 			return contaDTO;
 		}
