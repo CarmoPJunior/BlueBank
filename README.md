@@ -541,6 +541,7 @@ http://localhost:8080/transacoes/transferencia
 ###### Exemplo de inclusão JSON
 ---
 
+
 ## Tratamento de Exceção
 
 O tratamento de exceções do BlueBank é realizado de diversas formas e parâmetros nas classes do projeto. O package de Exceptions apresenta as exceções das classes de Cliente, Conta, Contato, Endereço e Transações. E suas mensagens de validação pode ser verificadas e alteradas em -> src/main/resources/ValidationMessages.properties
@@ -557,6 +558,7 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 ![Exemplos de tratamento de exceção da Transferência](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Excecoes_Transferencia.jpg)
 ###### Exemplos de tratamento de exceção da Transferência
 ---
+
 
 ## AWS BlueBank
 
@@ -596,7 +598,7 @@ O **Amazon Simple Notification Service** (Amazon SNS) é um serviço de mensagen
 
 O **AWS CodePipeline** é um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, teste e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Pipeline_Blubankpip.jpg)
 ###### Exemplo de Pipeline do BlueBank via AWS - CodePipeline
 ---
 
@@ -604,7 +606,7 @@ O **AWS CodePipeline** é um serviço gerenciado de entrega contínua que ajuda 
 
 O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade. APIs agem como a “porta de entrada” para aplicativos acessarem dados, lógica de negócios ou funcionalidade de seus serviços de back-end.
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/AWS%20Api%20Gateway.jpg)
 ###### Exemplo de API Gateway do BlueBank via AWS - API Gateway
 ---
 
@@ -612,10 +614,9 @@ O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedor
 
 O **AWS Lambda** é um serviço de computação sem servidor e orientado a eventos que permite executar código para praticamente qualquer tipo de aplicação ou serviço de backend sem provisionar ou gerenciar servidores.
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Envio%20email%20Lambda.jpg)
 ###### Exemplo de envio de email para o Cliente via AWS - Lambda
 ---
-
 
 
 ### Swagger na AWS
@@ -633,5 +634,4 @@ O **AWS Lambda** é um serviço de computação sem servidor e orientado a event
 
 ###### [Gama Academy](https://www.gama.academy/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
-
 
