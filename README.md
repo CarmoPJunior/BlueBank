@@ -12,7 +12,7 @@
 * [Endpoints](#Endpoints)
 * [Tratamento de Exceção](#Tratamento-de-Exceção)
 * [AWS BlueBank](#AWS-BlueBank)
-* [Patrocinadores](#Patrocinadores)
+* [Agradecimentos](#Agradecimentos)
 
 
 ## O Projeto
@@ -626,7 +626,7 @@ O **AWS Lambda** é um serviço de computação sem servidor e orientado a event
 ---
 
 
-## Patrocinadores
+## Agradecimentos
 
 ###### [Banco PAN](https://www.bancopan.com.br/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_bancoPan.png)
@@ -635,3 +635,4 @@ O **AWS Lambda** é um serviço de computação sem servidor e orientado a event
 ###### [Gama Academy](https://www.gama.academy/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
 
+Feito com 💙 pela Squad - Undefined Coders 💻
