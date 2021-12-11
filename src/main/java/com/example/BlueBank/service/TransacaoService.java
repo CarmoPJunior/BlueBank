@@ -126,7 +126,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 			break;
 		}
 		
-		AwsSNSClient.sendSMS("Foi transferido R$ " + valor + " de sua conta para " + contaDestino.getCliente().getNome() +"! BlueBak - Teste" , "+55" + numero);
+		//AwsSNSClient.sendSMS("Foi transferido R$ " + valor + " de sua conta para " + contaDestino.getCliente().getNome() +"! BlueBak - Teste" , "+55" + numero);
 		return transacaoDTO;
 	}
 
@@ -156,7 +156,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 			break;
 		}
 		
-		AwsSNSClient.sendSMS("Foi depositado R$ " + valor + " em sua conta! BlueBak - Teste" , "+55" + numero);
+		//AwsSNSClient.sendSMS("Foi depositado R$ " + valor + " em sua conta! BlueBak - Teste" , "+55" + numero);
 		
 		return transacaoDTO;
 	}
@@ -184,7 +184,7 @@ public class TransacaoService implements TransacaoInterfaceService {
 			break;
 		}
 		
-		AwsSNSClient.sendSMS("Foi sacado R$ " + valor + " em sua conta! BlueBak - Teste" , "+55" + numero);
+		//AwsSNSClient.sendSMS("Foi sacado R$ " + valor + " em sua conta! BlueBak - Teste" , "+55" + numero);
 		return transacaoDTO;
 		
 	}
