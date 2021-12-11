@@ -588,7 +588,7 @@ O **Amazon Simple Notification Service** (Amazon SNS) é um serviço de mensagen
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo2_SNS_AWS_Smartphone.jpg)
 ###### Exemplo de transação para o Cliente via AWS - Simple Notification Service (Amazon SNS)
-
+---
 
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo_EMAIL_SNS_AWS.jpg)
 ###### Exemplo de envio de Email para o Cliente via AWS - Simple Notification Service (Amazon SNS)
