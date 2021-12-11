@@ -90,8 +90,8 @@ As tarefas são adicionadas através de uma reunião de equipe, onde é definido
 - AWS
 
 Para utilizar e testar o *back-end* do BlueBank em sua máquina local(localhost), é necessário:
-  - Baixar ou clonar o projeto do Github, 
-  - Instalar o Java JDK(Versão 11 ou superior)
+  - Baixar ou clonar o projeto do Github. 
+  - Instalar o Java JDK (Versão 11 ou superior).
   - Instalar uma IDE em Java([Eclipse](https://www.eclipse.org/downloads/) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/download/#section=windows)) ou outra IDE Java e importar o projeto do BlueBank. 
   - Instalar uma base de dados MySQL([MySQL Workbench](https://dev.mysql.com/downloads/workbench/)) para armazenamento dos dados.
   - Alterar a senha da base de dados do MySQL no application.properties na package -> src/main/resources
