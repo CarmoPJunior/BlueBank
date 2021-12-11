@@ -16,6 +16,7 @@ import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContaDTO;
 import com.example.BlueBank.DTO.ContatoDTO;
 import com.example.BlueBank.DTO.TransacaoDTO;
+import com.example.BlueBank.SNS.AwsSNSClient;
 import com.example.BlueBank.exceptions.ClienteJaPossuiContaException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
@@ -70,8 +71,15 @@ public class ContaService implements ContaInterfaceService {
 		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
 		Conta clienteConta = contaRepository.findByClienteConta(conta.getCliente().getId());
 		conta.getCliente().setNome(cliente.getNome());
-		ContaDTO contaDTO = contaDTO(conta);
+		
+		String corpo = "Olá " + cliente.getNome() + ", segue os dados de sua conta\n\nConta: " + conta.getNumeroConta() +
+				"\nAgência: " + conta.getAgencia() + "\nTipo da conta: " + conta.getTipoConta() + "\nSaldo: R$ " + conta.getSaldo()
+				+ "\n\n Obrigado - Teste - Undefined Coders";
+		
+		
+		ContaDTO contaDTO = contaDTO(conta); 
 		if (clienteConta==null) {
+			AwsSNSClient.sendToTopic("Bem Vindo ao BlueBank", corpo);
 			this.contaRepository.save(conta);
 			return contaDTO;
 		}

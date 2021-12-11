@@ -3,3 +3,6 @@
 /.classpath
 /.gitignore
 target/
+.settings/
+target/
+
