@@ -1,0 +1,9 @@
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      Timeout: 300
+      MemorySize: 128
+      Handler: com.bluebank.lambdaEmail.Handler
+      CodeUri: C:\Users\carmo\Downloads\lambdaEmail
+      Runtime: java11

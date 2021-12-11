@@ -12,7 +12,7 @@
 * [Endpoints](#Endpoints)
 * [Tratamento de Exceção](#Tratamento-de-Exceção)
 * [AWS BlueBank](#AWS-BlueBank)
-* [Patrocinadores](#Patrocinadores)
+* [Agradecimentos](#Agradecimentos)
 
 
 ## O Projeto
@@ -90,13 +90,14 @@ As tarefas são adicionadas através de uma reunião de equipe, onde é definido
 - AWS
 
 Para utilizar e testar o *back-end* do BlueBank em sua máquina local(localhost), é necessário:
-  - Baixar ou clonar o projeto do Github, 
+  - Baixar ou clonar o projeto do Github. 
+  - Instalar o Java JDK (Versão 11 ou superior).
   - Instalar uma IDE em Java([Eclipse](https://www.eclipse.org/downloads/) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/download/#section=windows)) ou outra IDE Java e importar o projeto do BlueBank. 
   - Instalar uma base de dados MySQL([MySQL Workbench](https://dev.mysql.com/downloads/workbench/)) para armazenamento dos dados.
   - Alterar a senha da base de dados do MySQL no application.properties na package -> src/main/resources
   - Instalar o [Postman](https://www.postman.com/downloads/), [Insomnia](https://insomnia.rest/download) ou acessar o link do [Swagger](http://localhost:8080/swagger-ui.html#/) para inserção de dados, consulta, alterção e inclusão de dados.
 
-Para usar o BlueBank na **AWS** no serviço de Elastic Beanstalk, é necessário:
+Para usar o BlueBank na **AWS** no serviço de **Elastic Beanstalk**, é necessário:
  - Foi adicionado no projeto o arquivo application-beanstalk.properties em src/main/resources e adicionar informações no pom.xml. 
  - No arquivo raiz do projeto BlueBank, clica com o botao direito vai em "run as-> Mavem build", na tela tem o campo Goals inseri o nome "clean install", marca na caixa de seleção "Skip Tests" e depois "Run" e aguarda a criação do arquivo BlueBank-0.0.1-SNAPSHOT.jar.
  - No ambiente da AWS:
@@ -115,7 +116,7 @@ SPRING_PROFILES_ACTIVE      beanstalk, mysql
 Clica em Aplicar, o ambiente é criado e a Integridade fica OK!. Com o link Criado agora é testar a aplicação.
 
 
-![Elastic Beanstalk - BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Elastic%20Beanstalk%20ok.jpg)
+![Elastic Beanstalk - BlueBank](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Elastic%20Beanstalk%20ok.jpg)
 ###### Elastic Beanstalk - BlueBank
 
 
@@ -259,7 +260,7 @@ http://localhost:8080/contas/1/transacoes?page=1&size=2&sort=id,asc
 }
 ```
 
-##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (1-Conta Corrente, 2-Conta Poupança, 3-Conta Salário).
+##### Método POST - Cria a conta de acordo com o ID do cliente e pode selecionar o tipoConta (0-Conta Corrente, 1-Conta Poupança, 2-Conta Salário).
 ```
 http://localhost:8080/contas
 ```
@@ -462,7 +463,7 @@ http://localhost:8080/transacoes/{id}
 ###### Exemplo de consulta por ID
 ---
 
-##### Método GET - Consulta o tipo de transação por ID - (1-SAQUE, 2-DEPOSITO, 3-TRANSFERENCIA).
+##### Método GET - Consulta o tipo de transação por ID - (0-SAQUE, 1-DEPOSITO, 2-TRANSFERENCIA).
 ```
 http://localhost:8080/transacoes/tipo/{id}
 ```
@@ -541,6 +542,7 @@ http://localhost:8080/transacoes/transferencia
 ###### Exemplo de inclusão JSON
 ---
 
+
 ## Tratamento de Exceção
 
 O tratamento de exceções do BlueBank é realizado de diversas formas e parâmetros nas classes do projeto. O package de Exceptions apresenta as exceções das classes de Cliente, Conta, Contato, Endereço e Transações. E suas mensagens de validação pode ser verificadas e alteradas em -> src/main/resources/ValidationMessages.properties
@@ -558,30 +560,74 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 ###### Exemplos de tratamento de exceção da Transferência
 ---
 
+
 ## AWS BlueBank
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Swagger_na_Aws.jpg)
-###### Swagger na AWS - Elastic Beanstalk
----
+### Amazon Elastic Beanstalk
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Consulta_Cliente_AWS.jpg)
+O **AWS Elastic Beanstalk** é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Basta fazer o upload de seu código e o Elastic Beanstalk se encarrega automaticamente da implementação, desde o provisionamento de capacidade, o balanceamento de carga e a escalabilidade automática até o monitoramento da saúde do aplicativo.
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Consulta_Cliente_AWS.jpg)
 ###### Exemplo de Consulta de Clientes e Endereço na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/2%20-%20Paginacao%20Cliente%20aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/2%20-%20Paginacao%20Cliente%20aws.jpg)
 ###### Exemplo de Consulta paginada de Clientes na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Inclus%C3%A3o%20Contato_Cliente_Aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Inclus%C3%A3o%20Contato_Cliente_Aws.jpg)
 ###### Exemplo de inclusão de dados de Contatos via Postman na AWS - Elastic Beanstalk
 ---
 
-![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/Exemplo%20Transacao_Cliente_Aws.jpg)
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo%20Transacao_Cliente_Aws.jpg)
 ###### Exemplo de Transação entre Clientes via Postman na AWS - Elastic Beanstalk
+---
+
+### Amazon Simple Notification Service (Amazon SNS)
+
+O **Amazon Simple Notification Service** (Amazon SNS) é um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P), seus sistemas editores podem repassar mensagens para um grande número de sistemas de assinantes, incluindo filas do Amazon SQS, funções do AWS Lambda e endpoints HTTPS e o Amazon Kinesis Data Firehose para processamento paralelo. A funcionalidade A2P permite enviar mensagens para usuários em grande escala por SMS, push de dispositivos móveis e e-mail.
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo2_SNS_AWS_Smartphone.jpg)
+###### Exemplo de transação para o Cliente via AWS - Simple Notification Service (Amazon SNS)
+---
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Exemplo_EMAIL_SNS_AWS.jpg)
+###### Exemplo de envio de Email para o Cliente via AWS - Simple Notification Service (Amazon SNS)
+---
+
+### Amazon CodePipeline
+
+O **AWS CodePipeline** é um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, teste e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Pipeline_Blubankpip.jpg)
+###### Exemplo de Pipeline do BlueBank via AWS - CodePipeline
+---
+
+### Amazon API Gateway
+
+O **Amazon API Gateway** é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade. APIs agem como a “porta de entrada” para aplicativos acessarem dados, lógica de negócios ou funcionalidade de seus serviços de back-end.
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/AWS%20Api%20Gateway.jpg)
+###### Exemplo de API Gateway do BlueBank via AWS - API Gateway
+---
+
+### Amazon Lambda
+
+O **AWS Lambda** é um serviço de computação sem servidor e orientado a eventos que permite executar código para praticamente qualquer tipo de aplicação ou serviço de backend sem provisionar ou gerenciar servidores.
+
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Envio%20email%20Lambda.jpg)
+###### Exemplo de envio de email para o Cliente via AWS - Lambda
+---
 
 
+### Swagger na AWS
 
-## Patrocinadores
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Swagger_na_Aws.jpg)
+###### Swagger na AWS - Elastic Beanstalk
+---
+
+
+## Agradecimentos
 
 ###### [Banco PAN](https://www.bancopan.com.br/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_bancoPan.png)
@@ -590,3 +636,4 @@ O tratamento de exceções do BlueBank é realizado de diversas formas e parâme
 ###### [Gama Academy](https://www.gama.academy/)
 ![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/logo_gamaAcademy.png)
 
+Feito com 💙 pela Squad - Undefined Coders 💻

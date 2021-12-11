@@ -2,7 +2,7 @@ package com.example.BlueBank.models;
 
 public enum TipoTransacao {
 
-	SAQUE(1), DEPOSITO(2), TRANSFERENCIA(3);
+	SAQUE(0), DEPOSITO(1), TRANSFERENCIA(2);
 	
 	public int id;
 	
