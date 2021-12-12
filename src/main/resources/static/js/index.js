@@ -23,7 +23,7 @@ function formataMoeda(valor){
 
 async function listarClientes() {
 
-	const url = "http://localhost:8080/clientes/";
+	const url = window.location + "clientes/";
 	const response = await request("GET", url);
 
 	const clientes = JSON.parse(response);
@@ -45,7 +45,7 @@ async function listarClientes() {
 
 async function listarTransacoes() {
 
-	const url = "http://localhost:8080/transacoes";
+	const url = window.location + "transacoes";
 	const response = await request("GET", url);
 
 	const transacoes = JSON.parse(response);
