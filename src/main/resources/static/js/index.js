@@ -27,7 +27,8 @@ async function listarClientes() {
 	const response = await request("GET", url);
 
 	const clientes = JSON.parse(response);
-	console.log(clientes.content)
+	
+	
 
 	let table = document.getElementById('tabelaClientes');
 
