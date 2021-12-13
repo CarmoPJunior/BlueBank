@@ -628,7 +628,7 @@ O **AWS Lambda** é um serviço de computação sem servidor e orientado a event
 
 ### Homepage BlueBank
 
-![]()
+![](https://github.com/CarmoPJunior/BlueBank/blob/main/src_readme/img/AWS/Tela_inicial_AWS.jpg)
 ###### Homepage do BlueBank na AWS
 ---
 
