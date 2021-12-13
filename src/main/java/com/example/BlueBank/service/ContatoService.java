@@ -20,20 +20,19 @@ public class ContatoService implements ContatoInterfaceService {
 
 	@Autowired
 	ContatoRepository contatoRepository;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
 
 	@Autowired
 	private ClienteService clienteService;
-	
+
 	@Override
 	public ContatoDTO obterPorCod(Integer id) throws ContatoNaoEncontradoException {
 		Contato obj = this.contatoRepository.findById(id).orElseThrow(ContatoNaoEncontradoException::new);
 		return contatoDTO(obj);
 	}
-	
+
 	@Override
 	public List<ContatoDTO> obterTodos() {
 		return this.contatoRepository.findAll().stream().map(this::contatoDTO).collect(Collectors.toList());
@@ -47,10 +46,10 @@ public class ContatoService implements ContatoInterfaceService {
 		ContatoDTO contatoDTO = contatoDTO(contato);
 		return contatoDTO;
 	}
-	
+
 	@Override
 	public ContatoDTO alterarContato(Integer id, ContatoDTO obj) throws ContatoNaoEncontradoException {
-		//ContatoDTO newObj = obterPorCod(id);
+		// ContatoDTO newObj = obterPorCod(id);
 		Contato contato = obterContatoPorCod(id);
 		contato.setNumeroTelefone(obj.getNumeroTelefone());
 		contato.setEmail(obj.getEmail());
@@ -63,11 +62,11 @@ public class ContatoService implements ContatoInterfaceService {
 		obterPorCod(id);
 		this.contatoRepository.deleteById(id);
 	}
-	
+
 	public ContatoDTO contatoDTO(Contato contato) {
 		return modelMapper.map(contato, ContatoDTO.class);
 	}
-	
+
 //	private Contato contato(ContatoDTO contatoDTO) {
 //		return modelMapper.map(contatoDTO, Contato.class);
 //	}

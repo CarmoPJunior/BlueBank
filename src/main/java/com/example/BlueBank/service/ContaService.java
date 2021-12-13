@@ -1,6 +1,5 @@
 package com.example.BlueBank.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,9 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.BlueBank.DTO.ClienteDTO;
 import com.example.BlueBank.DTO.ContaDTO;
-import com.example.BlueBank.DTO.ContatoDTO;
 import com.example.BlueBank.DTO.TransacaoDTO;
-import com.example.BlueBank.SNS.AwsSNSClient;
 import com.example.BlueBank.exceptions.ClienteJaPossuiContaException;
 import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
@@ -33,10 +30,10 @@ public class ContaService implements ContaInterfaceService {
 
 	@Autowired
 	ClienteService clienteService;
-	
+
 	@Autowired
 	TransacaoService transacaoService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -46,40 +43,36 @@ public class ContaService implements ContaInterfaceService {
 
 		return contaDTO(obj);
 	}
-	
-	public Page<TransacaoDTO>  obterContasPaginadas(Integer id, Pageable page) throws ContaNaoEncontradaException {
+
+	public Page<TransacaoDTO> obterContasPaginadas(Integer id, Pageable page) throws ContaNaoEncontradaException {
 		Conta obj = this.contaRepository.findById(id).orElseThrow(ContaNaoEncontradaException::new);
 		ContaDTO objDTO = contaDTO(obj);
-		
+
 		Page<Transacoes> personPage = contaRepository.findAllByConta(objDTO.getId(), page);
-        int totalElements = (int) personPage.getTotalElements();
-        return new PageImpl<TransacaoDTO>(personPage.getContent()
-                .stream()
-                .map(this::transacaoDTO)
-                .collect(Collectors.toList()), page, totalElements);		
+		int totalElements = (int) personPage.getTotalElements();
+		return new PageImpl<TransacaoDTO>(
+				personPage.getContent().stream().map(this::transacaoDTO).collect(Collectors.toList()), page,
+				totalElements);
 	}
 
 	@Override
 	public List<ContaDTO> obterTodos() {
 		return this.contaRepository.findAll().stream().map(this::contaDTO).collect(Collectors.toList());
 	}
-	
-	
-	
+
 	@Override
 	public ContaDTO criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
 		ClienteDTO cliente = clienteService.obterPorCod(conta.getCliente().getId());
 		Conta clienteConta = contaRepository.findByClienteConta(conta.getCliente().getId());
 		conta.getCliente().setNome(cliente.getNome());
-		
-		String corpo = "Olá " + cliente.getNome() + ", segue os dados de sua conta\n\nConta: " + conta.getNumeroConta() +
-				"\nAgência: " + conta.getAgencia() + "\nTipo da conta: " + conta.getTipoConta() + "\nSaldo: R$ " + conta.getSaldo()
-				+ "\n\n Obrigado - Teste - Undefined Coders";
-		
-		
-		ContaDTO contaDTO = contaDTO(conta); 
-		if (clienteConta==null) {
-			//AwsSNSClient.sendToTopic("Bem Vindo ao BlueBank", corpo);
+
+		String corpo = "Olá " + cliente.getNome() + ", segue os dados de sua conta\n\nConta: " + conta.getNumeroConta()
+				+ "\nAgência: " + conta.getAgencia() + "\nTipo da conta: " + conta.getTipoConta() + "\nSaldo: R$ "
+				+ conta.getSaldo() + "\n\n Obrigado - Teste - Undefined Coders";
+
+		ContaDTO contaDTO = contaDTO(conta);
+		if (clienteConta == null) {
+			// AwsSNSClient.sendToTopic("Bem Vindo ao BlueBank", corpo);
 			this.contaRepository.save(conta);
 			return contaDTO;
 		}
@@ -87,7 +80,7 @@ public class ContaService implements ContaInterfaceService {
 	}
 
 	public ContaDTO atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException {
-		//ContaDTO newObj = obterPorCod(id);
+		// ContaDTO newObj = obterPorCod(id);
 		Conta conta = obterContaPorCod(id);
 		conta.setTipoConta(obj.getTipoConta());
 		conta.setNumeroConta(obj.getNumeroConta());
@@ -122,10 +115,10 @@ public class ContaService implements ContaInterfaceService {
 	@Override
 	public Conta obterContaPorCod(Integer id) throws ContaNaoEncontradaException {
 		Optional<Conta> obj = this.contaRepository.findById(id);
-		return obj.orElseThrow(() ->  new ContaNaoEncontradaException());
+		return obj.orElseThrow(() -> new ContaNaoEncontradaException());
 
 	}
-	
+
 	public TransacaoDTO transacaoDTO(Transacoes transacao) {
 		return modelMapper.map(transacao, TransacaoDTO.class);
 	}

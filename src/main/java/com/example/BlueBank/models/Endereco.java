@@ -19,40 +19,38 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-//	@NotEmpty
 	@JsonIgnoreProperties("endereco")
 	@OneToOne
 	@JoinColumn(name = "idCliente", nullable = false)
 	@NotNull(message = "{id.not.null}")
 	private Cliente cliente;
 
-//	@NotEmpty
 	@NotBlank(message = "{logradouro.not.blank}")
 	private String logradouro;
-//	@NotEmpty
+
 	@NotBlank(message = "{cidade.not.blank}")
 	private String cidade;
-//	@NotEmpty
+
 	@NotBlank(message = "{estado.not.blank}")
 	private String estado;
 	@NotNull
 //	@NotBlank(message = "{nuncasa.not.blank}")
 	private Integer numero;
-//	@NotEmpty
+
 	@NotBlank(message = "{cep.not.blank}")
 	private String cep;
-	
+
 	public Endereco() {
 		super();
 	}
 
-	public Endereco(Cliente cliente, @NotEmpty String logradouro, @NotEmpty String cidade,
-			@NotEmpty String estado, @NotEmpty int numero, @NotEmpty String cep) {
+	public Endereco(Cliente cliente, @NotEmpty String logradouro, @NotEmpty String cidade, @NotEmpty String estado,
+			@NotEmpty int numero, @NotEmpty String cep) {
 		super();
 		this.cliente = cliente;
 		this.logradouro = logradouro;
@@ -138,5 +136,5 @@ public class Endereco implements Serializable {
 		Endereco other = (Endereco) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }

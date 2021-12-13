@@ -27,56 +27,57 @@ import com.example.BlueBank.validacao.GroupTransacao;
 
 @RestController
 @RequestMapping(path = "/transacoes")
-public class TransacaoController implements TransacaoControllerDocs{
-	
+public class TransacaoController implements TransacaoControllerDocs {
+
 	@Autowired
 	private TransacaoService service;
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TransacaoDTO> findById(@PathVariable Integer id) {
 		TransacaoDTO obj = this.service.obterPorCodDTO(id);
 		return ResponseEntity.ok().body(obj);
 	};
-	
+
 	@GetMapping
 	public ResponseEntity<List<TransacaoDTO>> findAll() {
 		List<TransacaoDTO> list = service.obterTodosDTO();
 		return ResponseEntity.ok().body(list);
 	}
-	
+
 	@GetMapping(value = "/tipo/{id}")
 	public ResponseEntity<List<List<TransacaoDTO>>> findByTipo(@PathVariable Integer id) {
 		List<List<TransacaoDTO>> list = service.obterPorTipoTransacao(id);
 		return ResponseEntity.ok().body(list);
 	};
-	
+
 	@PostMapping(value = "/transferencia")
-	public ResponseEntity<TransacaoDTO> transferencia(@RequestBody @Validated(GroupTransacao.class) Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
-				
-		TransacaoDTO newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(), transacao.getValor());
-		URI uri =
-		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+	public ResponseEntity<TransacaoDTO> transferencia(
+			@RequestBody @Validated(GroupTransacao.class) Transacoes transacao)
+			throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+
+		TransacaoDTO newObj = service.transferenciaContas(transacao.getContaOrigem(), transacao.getContaDestino(),
+				transacao.getValor());
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
 	}
 
 	@PostMapping(value = "/deposito")
-	public ResponseEntity<TransacaoDTO> deposito(@RequestBody @Valid Transacoes transacao) throws ContaNaoEncontradaException, ContaBloqueadaException {
-				
+	public ResponseEntity<TransacaoDTO> deposito(@RequestBody @Valid Transacoes transacao)
+			throws ContaNaoEncontradaException, ContaBloqueadaException {
+
 		TransacaoDTO newObj = service.deposito(transacao.getContaOrigem(), transacao.getValor());
-		URI uri =
-		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
-		}
+	}
 
 	@PostMapping(value = "/saque")
-	public ResponseEntity<TransacaoDTO> saque(@RequestBody @Valid Transacoes transacao) throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
-				
+	public ResponseEntity<TransacaoDTO> saque(@RequestBody @Valid Transacoes transacao)
+			throws SaldoInsuficienteException, ContaNaoEncontradaException, ContaBloqueadaException {
+
 		TransacaoDTO newObj = service.saque(transacao.getContaOrigem(), transacao.getValor());
-		URI uri =
-		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
-		
-		}
-	
+
+	}
+
 }
-	

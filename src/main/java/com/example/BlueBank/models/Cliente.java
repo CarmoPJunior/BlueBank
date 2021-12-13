@@ -24,26 +24,27 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@NotEmpty(message =  "{cliente.nome.not.blank}")
+	@NotEmpty(message = "{cliente.nome.not.blank}")
 	private String nome;
-	@CPF	
-	@NotEmpty(message =  "{cliente.cpf.not.blank}")
+	@CPF
+	@NotEmpty(message = "{cliente.cpf.not.blank}")
 	@Column(unique = true)
 	private String cpf;
-	@NotEmpty(message =  "{cliente.dataDeNascimento.not.blank}")
+	@NotEmpty(message = "{cliente.dataDeNascimento.not.blank}")
 	private String dataDeNascimento;
-	
-	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
+
+	@OneToOne(mappedBy = "cliente", cascade = CascadeType.REMOVE)
 	private Endereco endereco;
-	
-	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL )
+
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Contato> contato;
-	
-	@OneToOne(mappedBy="cliente", cascade = CascadeType.REMOVE)
-	
+
+	@OneToOne(mappedBy = "cliente", cascade = CascadeType.REMOVE)
+
 	private Conta conta;
 
 	public Cliente() {
+		super();
 	}
 
 	public Cliente(@NotEmpty String nome, @CPF String cpf, Endereco endereco, @NotEmpty String dataDeNascimento,
@@ -134,7 +135,5 @@ public class Cliente implements Serializable {
 	public String toString() {
 		return nome;
 	}
-	
-	
 
 }

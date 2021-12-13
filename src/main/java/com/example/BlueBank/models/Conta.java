@@ -24,7 +24,6 @@ import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
 public class Conta implements Serializable {
 
@@ -36,33 +35,31 @@ public class Conta implements Serializable {
 
 	@OneToOne()
 	@JoinColumn(name = "idCliente", referencedColumnName = "id")
-	@NotNull(message =  "{cliente.not.null}")
+	@NotNull(message = "{cliente.not.null}")
 	private Cliente cliente;
-	@NotNull(message =  "{status.not.null}")
+	@NotNull(message = "{status.not.null}")
 	private boolean status = true;
-	@NotNull(message =  "{tipoConta.not.null}")
+	@NotNull(message = "{tipoConta.not.null}")
 	private TipoConta tipoConta;
-	@NotBlank(message =  "{numeroConta.not.null}")
+	@NotBlank(message = "{numeroConta.not.null}")
 	@Column(unique = true)
 	private String numeroConta;
-	@NotBlank(message =  "{agencia.not.null}")
-	private String agencia; 
+	@NotBlank(message = "{agencia.not.null}")
+	private String agencia;
 
-	@PositiveOrZero(message =  "{saldo.Positive}")
-	//@NotEmpty(message =  "{saldo.not.empty}")
-	//@NotBlank(message =  "{saldo.not.null}")	
-	@NotNull(message =  "{saldo.not.null}")
+	@PositiveOrZero(message = "{saldo.Positive}")
+	// @NotEmpty(message = "{saldo.not.empty}")
+	// @NotBlank(message = "{saldo.not.null}")
+	@NotNull(message = "{saldo.not.null}")
 	private double saldo;
-	
-	@OneToMany(mappedBy="contaOrigem", cascade = CascadeType.ALL )
-	@JsonIgnoreProperties({"contaOrigem", "contaDestino"})
+
+	@OneToMany(mappedBy = "contaOrigem", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({ "contaOrigem", "contaDestino" })
 	private List<Transacoes> transacoes;
-	
+
 	public Conta() {
 		super();
 	}
-
-	
 
 	public Conta(Integer id, Cliente cliente, @NotNull boolean status, @NotNull TipoConta tipoConta,
 			@NotNull String numeroConta, @NotNull String agencia, @PositiveOrZero @NotNull double saldo,
@@ -76,10 +73,8 @@ public class Conta implements Serializable {
 		this.agencia = agencia;
 		this.saldo = saldo;
 		this.transacoes = transacoes;
-		
-	}
-	
 
+	}
 
 	public Integer getId() {
 		return id;
@@ -88,7 +83,7 @@ public class Conta implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -128,42 +123,42 @@ public class Conta implements Serializable {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
-	
+
 	public boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) throws  PossuiSaldoException {
-		
-		if(this.saldo >0 ) {
+	public void setStatus(boolean status) throws PossuiSaldoException {
+
+		if (this.saldo > 0) {
 			throw new PossuiSaldoException();
 		}
-		
+
 		this.status = status;
 	}
 
-	public void somaSaldo(double valor) throws ContaBloqueadaException {	
-		if(!status) {
+	public void somaSaldo(double valor) throws ContaBloqueadaException {
+		if (!status) {
 			throw new ContaBloqueadaException();
 		}
-				
+
 		this.saldo = saldo + valor;
-		
-		BigDecimal bd = new BigDecimal(this.saldo).setScale(2, RoundingMode.HALF_EVEN);	
+
+		BigDecimal bd = new BigDecimal(this.saldo).setScale(2, RoundingMode.HALF_EVEN);
 		this.saldo = bd.doubleValue();
 	}
-	
-	public void subtraiSaldo(double valor) throws SaldoInsuficienteException, ContaBloqueadaException{
-		if(!status) {
+
+	public void subtraiSaldo(double valor) throws SaldoInsuficienteException, ContaBloqueadaException {
+		if (!status) {
 			throw new ContaBloqueadaException();
-		}else if(valor > saldo ) {
-			
+		} else if (valor > saldo) {
+
 			throw new SaldoInsuficienteException();
 		}
-						
+
 		this.saldo = saldo - valor;
-		
-		BigDecimal bd = new BigDecimal(this.saldo).setScale(2, RoundingMode.HALF_EVEN);	
+
+		BigDecimal bd = new BigDecimal(this.saldo).setScale(2, RoundingMode.HALF_EVEN);
 		this.saldo = bd.doubleValue();
 	}
 
@@ -193,6 +188,5 @@ public class Conta implements Serializable {
 				&& Objects.equals(cliente, other.cliente) && Objects.equals(numeroConta, other.numeroConta)
 				&& Objects.equals(tipoConta, other.tipoConta);
 	}
-	
-	
+
 }

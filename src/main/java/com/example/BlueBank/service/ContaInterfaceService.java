@@ -11,15 +11,15 @@ import com.example.BlueBank.models.Conta;
 public interface ContaInterfaceService {
 
 	ContaDTO obterPorCod(Integer id) throws ContaNaoEncontradaException;
-	
+
 	Conta obterContaPorCod(Integer id) throws ContaNaoEncontradaException;
-	
-	List<ContaDTO> obterTodos();	
-	
+
+	List<ContaDTO> obterTodos();
+
 	ContaDTO criar(Conta conta) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException;
-	
+
 	ContaDTO atualizar(Integer id, ContaDTO obj) throws ContaNaoEncontradaException;
-	
+
 	void deletar(Integer id) throws ContaNaoEncontradaException;
-	
+
 }

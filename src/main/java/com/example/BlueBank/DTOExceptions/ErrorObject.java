@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_EMPTY)
 public class ErrorObject {
-	
+
 	private final String message;
-    private final String field;
-    private final Object parameter;
-    
-    
+	private final String field;
+	private final Object parameter;
+
 	public ErrorObject(String message, String field, Object parameter) {
 		super();
 		this.message = message;
@@ -18,20 +17,16 @@ public class ErrorObject {
 		this.parameter = parameter;
 	}
 
-
 	public String getMessage() {
 		return message;
 	}
-
 
 	public String getField() {
 		return field;
 	}
 
-
 	public Object getParameter() {
 		return parameter;
 	}
-    
-    
+
 }

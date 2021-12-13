@@ -1,4 +1,3 @@
-
 package com.example.BlueBank.models;
 
 import java.io.Serializable;
@@ -27,7 +26,7 @@ public class Contato implements Serializable {
 	@JsonIgnoreProperties("contato")
 	@ManyToOne
 	@JoinColumn(name = "idCliente", nullable = false)
-	@NotNull(message =  "{id.not.null}")
+	@NotNull(message = "{id.not.null}")
 	private Cliente cliente;
 
 	@NotBlank(message = "{telefone.not.blank}")
@@ -124,4 +123,3 @@ public class Contato implements Serializable {
 	}
 
 }
-

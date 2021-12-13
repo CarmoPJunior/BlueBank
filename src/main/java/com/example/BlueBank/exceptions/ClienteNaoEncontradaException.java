@@ -5,8 +5,7 @@ public class ClienteNaoEncontradaException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public ClienteNaoEncontradaException() {
-        super("Cliente não encotrado!");
-    }
-
+		super("Cliente não encotrado!");
+	}
 
 }

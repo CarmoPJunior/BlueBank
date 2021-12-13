@@ -25,11 +25,11 @@ import com.example.BlueBank.service.ClienteService;
 
 @RestController
 @RequestMapping(path = "/clientes")
-public class ClienteController implements ClienteControllerDocs{
-	
+public class ClienteController implements ClienteControllerDocs {
+
 	@Autowired
 	private ClienteService clienteService;
-		
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) throws ClienteNaoEncontradaException {
 		ClienteDTO obj = this.clienteService.obterPorCod(id);
@@ -43,16 +43,16 @@ public class ClienteController implements ClienteControllerDocs{
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @RequestBody @Valid ClienteDTO obj) throws ClienteNaoEncontradaException {
+	public ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @RequestBody @Valid ClienteDTO obj)
+			throws ClienteNaoEncontradaException {
 		ClienteDTO newObj = clienteService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PostMapping
-	public ResponseEntity<ClienteDTO> create(@RequestBody @Valid Cliente obj) throws ClienteJaExisteException {		
+	public ResponseEntity<ClienteDTO> create(@RequestBody @Valid Cliente obj) throws ClienteJaExisteException {
 		ClienteDTO newObj = clienteService.criar(obj);
-		URI uri =
-		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
 	}
 

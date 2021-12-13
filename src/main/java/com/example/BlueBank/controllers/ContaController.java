@@ -28,24 +28,24 @@ import com.example.BlueBank.exceptions.ClienteNaoEncontradaException;
 import com.example.BlueBank.exceptions.ContaNaoEncontradaException;
 import com.example.BlueBank.exceptions.PossuiSaldoException;
 import com.example.BlueBank.models.Conta;
-import com.example.BlueBank.models.Transacoes;
 import com.example.BlueBank.service.ContaService;
 
 @RestController
 @RequestMapping(path = "/contas")
-public class ContaController implements ContaControllerDocs{
+public class ContaController implements ContaControllerDocs {
 
 	@Autowired
 	private ContaService contaService;
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ContaDTO> findById(@PathVariable Integer id) throws ContaNaoEncontradaException {
 		ContaDTO obj = this.contaService.obterPorCod(id);
 		return ResponseEntity.ok().body(obj);
 	};
-	
+
 	@GetMapping(value = "/{id}/transacoes")
-	public ResponseEntity<Page<TransacaoDTO>> findById(@PathVariable Integer id,@PageableDefault(size = 6) Pageable page) throws ContaNaoEncontradaException {
+	public ResponseEntity<Page<TransacaoDTO>> findById(@PathVariable Integer id,
+			@PageableDefault(size = 6) Pageable page) throws ContaNaoEncontradaException {
 		Page<TransacaoDTO> obj = this.contaService.obterContasPaginadas(id, page);
 		return ResponseEntity.ok().body(obj);
 	};
@@ -57,25 +57,27 @@ public class ContaController implements ContaControllerDocs{
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ContaDTO> update(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException {
+	public ResponseEntity<ContaDTO> update(@PathVariable Integer id, @RequestBody ContaDTO obj)
+			throws ContaNaoEncontradaException {
 		ContaDTO newObj = contaService.atualizar(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PutMapping(value = "/atualizarstatus/{id}")
-	public ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj) throws ContaNaoEncontradaException, PossuiSaldoException {
+	public ResponseEntity<ContaDTO> updateStatus(@PathVariable Integer id, @RequestBody ContaDTO obj)
+			throws ContaNaoEncontradaException, PossuiSaldoException {
 		ContaDTO newObj = contaService.atualizarStatus(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<ContaDTO> create(@RequestBody @Valid Conta obj) throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
-				
+	public ResponseEntity<ContaDTO> create(@RequestBody @Valid Conta obj)
+			throws ClienteNaoEncontradaException, ClienteJaPossuiContaException {
+
 		ContaDTO newObj = contaService.criar(obj);
-		URI uri =
-		ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
-		
+
 	}
 
 	@DeleteMapping(value = "/{id}")
@@ -83,5 +85,5 @@ public class ContaController implements ContaControllerDocs{
 		contaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
-		
+
 }

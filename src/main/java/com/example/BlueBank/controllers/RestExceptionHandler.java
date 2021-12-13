@@ -26,55 +26,46 @@ import com.example.BlueBank.exceptions.EnderecoNaoEncontradoException;
 import com.example.BlueBank.exceptions.SaldoInsuficienteException;
 
 @RestControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler{
-	
-	 	@Override
-	 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-	        List<ErrorObject> errors = getErrors(ex);
-	        ErrorResponse errorResponse = getErrorResponse(ex, status, errors);
-	        return new ResponseEntity<>(errorResponse, status);
-	    }
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-	    private ErrorResponse getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status, List<ErrorObject> errors) {
-	        return new ErrorResponse("Requisição possui campos inválidos", status.value(),
-	                status.getReasonPhrase(), ex.getBindingResult().getObjectName(),new Date(), errors);
-	    }
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		List<ErrorObject> errors = getErrors(ex);
+		ErrorResponse errorResponse = getErrorResponse(ex, status, errors);
+		return new ResponseEntity<>(errorResponse, status);
+	}
 
-	    private List<ErrorObject> getErrors(MethodArgumentNotValidException ex) {
-	        return ex.getBindingResult().getFieldErrors().stream()
-	                .map(error -> new ErrorObject(error.getDefaultMessage(), error.getField(), error.getRejectedValue()))
-	                .collect(Collectors.toList());
-	    }
-	    
-	  @ExceptionHandler({SaldoInsuficienteException.class, ContaBloqueadaException.class, ClienteJaExisteException.class, PossuiSaldoException.class, ClienteJaPossuiContaException.class})
-		public ResponseEntity<ErrorResponse> handleBadRequestException(Exception ex, WebRequest request) {
-			
-			ErrorResponse message = new ErrorResponse(
-					ex.getMessage(),
-					HttpStatus.UNAUTHORIZED.value(),
-					HttpStatus.UNAUTHORIZED.getReasonPhrase(),
-					null,
-					new Date(),
-					null);
+	private ErrorResponse getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status,
+			List<ErrorObject> errors) {
+		return new ErrorResponse("Requisição possui campos inválidos", status.value(), status.getReasonPhrase(),
+				ex.getBindingResult().getObjectName(), new Date(), errors);
+	}
 
-			return new ResponseEntity<ErrorResponse>(message, HttpStatus.UNAUTHORIZED);
-		}		
-	    
+	private List<ErrorObject> getErrors(MethodArgumentNotValidException ex) {
+		return ex.getBindingResult().getFieldErrors().stream()
+				.map(error -> new ErrorObject(error.getDefaultMessage(), error.getField(), error.getRejectedValue()))
+				.collect(Collectors.toList());
+	}
 
-		@ExceptionHandler({ContaNaoEncontradaException.class, ContatoNaoEncontradoException.class, ClienteNaoEncontradaException.class, EnderecoNaoEncontradoException.class})
-		public ResponseEntity<ErrorResponse> handleNotFoundException(Exception ex, WebRequest request) {
-			
-			ErrorResponse message = new ErrorResponse(
-					ex.getMessage(),
-					HttpStatus.NOT_FOUND.value(),
-					HttpStatus.NOT_FOUND.getReasonPhrase(),
-					null,
-					new Date(),
-					null);
+	@ExceptionHandler({ SaldoInsuficienteException.class, ContaBloqueadaException.class, ClienteJaExisteException.class,
+			PossuiSaldoException.class, ClienteJaPossuiContaException.class })
+	public ResponseEntity<ErrorResponse> handleBadRequestException(Exception ex, WebRequest request) {
 
-			return new ResponseEntity<ErrorResponse>(message, HttpStatus.BAD_REQUEST);
-		}
+		ErrorResponse message = new ErrorResponse(ex.getMessage(), HttpStatus.UNAUTHORIZED.value(),
+				HttpStatus.UNAUTHORIZED.getReasonPhrase(), null, new Date(), null);
 
-	
+		return new ResponseEntity<ErrorResponse>(message, HttpStatus.UNAUTHORIZED);
+	}
+
+	@ExceptionHandler({ ContaNaoEncontradaException.class, ContatoNaoEncontradoException.class,
+			ClienteNaoEncontradaException.class, EnderecoNaoEncontradoException.class })
+	public ResponseEntity<ErrorResponse> handleNotFoundException(Exception ex, WebRequest request) {
+
+		ErrorResponse message = new ErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND.value(),
+				HttpStatus.NOT_FOUND.getReasonPhrase(), null, new Date(), null);
+
+		return new ResponseEntity<ErrorResponse>(message, HttpStatus.BAD_REQUEST);
+	}
 
 }

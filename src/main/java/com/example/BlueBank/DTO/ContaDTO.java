@@ -17,7 +17,7 @@ public class ContaDTO {
 	private String numeroConta;
 	private String agencia;
 	private double saldo;
-	@JsonIgnoreProperties({"nomeClienteOrigem", "contaOrigem"})
+	@JsonIgnoreProperties({ "nomeClienteOrigem", "contaOrigem" })
 	private List<TransacaoDTO> transacoes;
 
 	public Integer getId() {
@@ -83,7 +83,5 @@ public class ContaDTO {
 	public void setTransacoes(List<TransacaoDTO> transacoes) {
 		this.transacoes = transacoes;
 	}
-	
-	
 
 }

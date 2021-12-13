@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class ClienteDTO {
 
 	private Integer id;
-	@NotEmpty(message =  "{cliente.nome.not.blank}")
+	@NotEmpty(message = "{cliente.nome.not.blank}")
 	private String nome;
-	@NotEmpty(message =  "{cliente.cpf.not.blank}")
+	@NotEmpty(message = "{cliente.cpf.not.blank}")
 	@CPF
 	private String cpf;
-	@NotEmpty(message =  "{cliente.dataDeNascimento.not.blank}")
-	private String dataDeNascimento;	
+	@NotEmpty(message = "{cliente.dataDeNascimento.not.blank}")
+	private String dataDeNascimento;
 	@JsonIgnoreProperties("nomeCliente")
-	private EnderecoDTO endereco;	
+	private EnderecoDTO endereco;
 	@JsonIgnoreProperties("nomeCliente")
 	private List<ContatoDTO> contato;
 	@JsonIgnoreProperties("nomeCliente")

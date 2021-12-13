@@ -11,14 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import com.example.BlueBank.validacao.GroupTransacao;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
 
 @Entity
 public class Transacoes implements Serializable {
@@ -28,27 +25,31 @@ public class Transacoes implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String data;
-	@PositiveOrZero(message =  "{valor.Positive}")
-	@NotNull(groups = GroupTransacao.class,message ="{valor.not.null}")
-	@NotNull(message ="{valor.not.null}")
+	@PositiveOrZero(message = "{valor.Positive}")
+	@NotNull(groups = GroupTransacao.class, message = "{valor.not.null}")
+	@NotNull(message = "{valor.not.null}")
 	private Double valor;
 	@Enumerated(EnumType.ORDINAL)
 	private TipoTransacao tipoTransacao;
-	
+
 	@JsonIgnoreProperties("transacoes")
 	@ManyToOne
 	@JoinColumn(name = "idContaOrigem")
-	@NotNull(groups = GroupTransacao.class,message ="{contaOrigem.not.null}")
-	@NotNull(message ="{contaOrigem.not.null}")
+	@NotNull(groups = GroupTransacao.class, message = "{contaOrigem.not.null}")
+	@NotNull(message = "{contaOrigem.not.null}")
 	private Conta contaOrigem;
-	
+
 	@JsonIgnoreProperties("transacoes")
 	@ManyToOne
 	@JoinColumn(name = "idContaDestino", nullable = true)
-	@NotNull(groups = GroupTransacao.class,message ="{contaDestino.not.null}")
+	@NotNull(groups = GroupTransacao.class, message = "{contaDestino.not.null}")
 	private Conta contaDestino;
+
+	public Transacoes() {
+		super();
+	}
 
 	public Transacoes(String data, Double valor, TipoTransacao tipoTransacao, Conta contaOrigem, Conta contaDestino) {
 		super();
@@ -57,11 +58,6 @@ public class Transacoes implements Serializable {
 		this.tipoTransacao = tipoTransacao;
 		this.contaOrigem = contaOrigem;
 		this.contaDestino = contaDestino;
-	}
-
-	public Transacoes() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
@@ -96,8 +92,6 @@ public class Transacoes implements Serializable {
 		this.tipoTransacao = tipoTransacao;
 	}
 
-	
-
 	public Conta getContaOrigem() {
 		return contaOrigem;
 	}
@@ -130,9 +124,5 @@ public class Transacoes implements Serializable {
 		Transacoes other = (Transacoes) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
-	
+
 }

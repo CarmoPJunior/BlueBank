@@ -626,6 +626,12 @@ O **AWS Lambda** é um serviço de computação sem servidor e orientado a event
 ###### Swagger na AWS - Elastic Beanstalk
 ---
 
+### Homepage BlueBank
+
+![]()
+###### Homepage do BlueBank na AWS
+---
+
 
 ## Agradecimentos
 

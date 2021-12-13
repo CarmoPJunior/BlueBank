@@ -44,7 +44,8 @@ public class ContatoController implements ContatoControllerDocs {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ContatoDTO> update(@PathVariable Integer id, @RequestBody ContatoDTO obj) throws ContatoNaoEncontradoException {
+	public ResponseEntity<ContatoDTO> update(@PathVariable Integer id, @RequestBody ContatoDTO obj)
+			throws ContatoNaoEncontradoException {
 		ContatoDTO newObj = contatoService.alterarContato(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}

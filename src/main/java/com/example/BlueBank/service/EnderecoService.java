@@ -17,13 +17,13 @@ import com.example.BlueBank.repositories.EnderecoRepository;
 
 @Service
 public class EnderecoService implements EnderecoInterfaceService {
-	
+
 	@Autowired
 	EnderecoRepository enderecoRepository;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private ClienteService clienteService;
 
@@ -41,14 +41,15 @@ public class EnderecoService implements EnderecoInterfaceService {
 	@Override
 	public EnderecoDTO criar(Endereco endereco) throws ClienteNaoEncontradaException {
 		ClienteDTO cliente = clienteService.obterPorCod(endereco.getCliente().getId());
-		endereco.getCliente().setNome(cliente.getNome());;
+		endereco.getCliente().setNome(cliente.getNome());
+		;
 		this.enderecoRepository.save(endereco);
 		EnderecoDTO enderecoDTO = enderecoDTO(endereco);
 		return enderecoDTO;
 	}
 
-	public EnderecoDTO alterarEndereco(Integer id, EnderecoDTO obj) throws EnderecoNaoEncontradoException {		
-	//  EnderecoDTO newObj = obterPorCod(id);
+	public EnderecoDTO alterarEndereco(Integer id, EnderecoDTO obj) throws EnderecoNaoEncontradoException {
+		// EnderecoDTO newObj = obterPorCod(id);
 		Endereco endereco = obterPorCod(id);
 
 		endereco.setCep(obj.getCep());
@@ -56,31 +57,29 @@ public class EnderecoService implements EnderecoInterfaceService {
 		endereco.setEstado(obj.getEstado());
 		endereco.setLogradouro(obj.getLogradouro());
 		endereco.setNumero(obj.getNumero());
-		
+
 		enderecoRepository.save(endereco);
 		return enderecoDTO(endereco);
 	}
-	
-	
+
 	@Override
 	public void deletar(Integer id) throws EnderecoNaoEncontradoException {
 		obterPorCod(id);
-		this.enderecoRepository.deleteById(id);	
+		this.enderecoRepository.deleteById(id);
 	}
 
 	private EnderecoDTO enderecoDTO(Endereco endereco) {
 		return modelMapper.map(endereco, EnderecoDTO.class);
 	}
-	
+
 //	private Endereco endereco(EnderecoDTO enderecoDTO) {
 //		return modelMapper.map(enderecoDTO, Endereco.class);
 //	}
-	
+
 	@Override
 	public Endereco obterPorCod(Integer id) throws EnderecoNaoEncontradoException {
-		Optional<Endereco> obj = this.enderecoRepository.findById(id);		
+		Optional<Endereco> obj = this.enderecoRepository.findById(id);
 		return obj.orElseThrow(EnderecoNaoEncontradoException::new);
 	}
-	
 
 }

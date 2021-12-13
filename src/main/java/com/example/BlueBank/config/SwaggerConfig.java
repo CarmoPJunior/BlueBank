@@ -11,36 +11,26 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static springfox.documentation.builders.RequestHandlerSelectors.*;
 
-
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
-    private static final String BASE_PACKAGE = "com.example.BlueBank.controllers";
-    private static final String API_TITLE = "BlueBank API";
-    private static final String API_DESCRIPTION = "Squad 2 - Undefined Coders\nREST API para gerência contas.";
-    private static final String CONTACT_NAME = "BlueBank";
-    private static final String CONTACT_GITHUB = "https://github.com/CarmoPJunior/BlueBank";
-    private static final String CONTACT_EMAIL = "email@email.com";
+	private static final String BASE_PACKAGE = "com.example.BlueBank.controllers";
+	private static final String API_TITLE = "BlueBank API";
+	private static final String API_DESCRIPTION = "Squad 2 - Undefined Coders\nREST API para gerência contas.";
+	private static final String CONTACT_NAME = "BlueBank";
+	private static final String CONTACT_GITHUB = "https://github.com/CarmoPJunior/BlueBank";
+	private static final String CONTACT_EMAIL = "email@email.com";
 
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(basePackage(BASE_PACKAGE))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(buildApiInfo());
-    }
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(basePackage(BASE_PACKAGE))
+				.paths(PathSelectors.any()).build().apiInfo(buildApiInfo());
+	}
 
-    private ApiInfo buildApiInfo() {
-        return new ApiInfoBuilder()
-                .title(API_TITLE)
-                .description(API_DESCRIPTION)
-                .version("1.0.0")
-                .contact(new Contact(CONTACT_NAME, CONTACT_GITHUB, CONTACT_EMAIL))
-                .build();
-    }
-
+	private ApiInfo buildApiInfo() {
+		return new ApiInfoBuilder().title(API_TITLE).description(API_DESCRIPTION).version("1.0.0")
+				.contact(new Contact(CONTACT_NAME, CONTACT_GITHUB, CONTACT_EMAIL)).build();
+	}
 
 }

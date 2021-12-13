@@ -26,11 +26,11 @@ import com.example.BlueBank.service.EnderecoService;
 
 @RestController
 @RequestMapping(path = "/enderecos")
-public class EnderecoController implements EnderecoControllerDocs{
-	
+public class EnderecoController implements EnderecoControllerDocs {
+
 	@Autowired
 	private EnderecoService enderecoService;
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<EnderecoDTO> findById(@PathVariable Integer id) throws EnderecoNaoEncontradoException {
 		EnderecoDTO obj = this.enderecoService.obterPorCodDTO(id);
@@ -44,14 +44,15 @@ public class EnderecoController implements EnderecoControllerDocs{
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<EnderecoDTO> update(@PathVariable Integer id, @RequestBody EnderecoDTO obj) throws EnderecoNaoEncontradoException {
+	public ResponseEntity<EnderecoDTO> update(@PathVariable Integer id, @RequestBody EnderecoDTO obj)
+			throws EnderecoNaoEncontradoException {
 		EnderecoDTO newObj = enderecoService.alterarEndereco(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PostMapping
 	public ResponseEntity<EnderecoDTO> create(@RequestBody @Valid Endereco obj) throws ClienteNaoEncontradaException {
-				
+
 		EnderecoDTO newObj = enderecoService.criar(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
