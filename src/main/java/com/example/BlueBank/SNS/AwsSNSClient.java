@@ -15,8 +15,8 @@ public class AwsSNSClient {
 	private static final String AWS_ACCESS_KEY_ID = "aws.accessKeyId";
 	private static final String AWS_SECRET_KEY = "aws.secretKey";
 	static {
-		System.setProperty(AWS_ACCESS_KEY_ID, "AKIA6BZRT7L43XEARTUK");
-		System.setProperty(AWS_SECRET_KEY, "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");
+		System.setProperty(AWS_ACCESS_KEY_ID, "");
+		System.setProperty(AWS_SECRET_KEY, "");
 	}
 
 	public static void sendSMS(String messege, String phoneNumber) {
